@@ -2,8 +2,8 @@
 layout: default
 ---
 
-<h2>{{ post.title }}</h2>
-{% include post_metadata.html param=post.date param2=post.author %}
+<h2>{{ page.title }}</h2>
+{% include post_metadata.html param=page.date param2=page.author %}
 <div class="post other link">
     {{ content }}
 </div>

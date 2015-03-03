@@ -1,0 +1,26 @@
+---
+layout: post
+tags: jekyll
+
+---
+
+This is a post that allows me to check my Jekyll configuration quickly.
+
+Code sample:
+{% highlight ruby linenos %}
+class User &lt; ActiveRecord::Base
+  # Wow this Ruby source code highlighting looks great!
+  has_many :user_assignments, :dependent =&gt; :destroy test code test code test code test code test code test code 
+  has_many :hospitals, :through =&gt; :user_assignments
+end
+{% endhighlight %}
+
+\\( \LaTeX \\) sample:
+\\[\frac{1}{x^2}\\]
+
+> Blockquote
+
+Image sample:
+
+<p align="center"><img src="http://jekyllrb.com/img/logo-2x.png"></p>
+
