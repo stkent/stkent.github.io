@@ -4,6 +4,9 @@ highligher:  true
 paginate:    5
 description: Stuart Kent | Android Developer @ Detroit Labs
 
+collections:
+- apps
+
 defaults:
   -
     scope:

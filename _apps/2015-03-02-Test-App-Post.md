@@ -1,6 +1,6 @@
 ---
-layout: post
-category: apps
+name: Interpolator Maker
+store_url: https://play.google.com/store/apps/details?id=com.detroitlabs.interpolatormaker&hl=en
 
 ---
 
