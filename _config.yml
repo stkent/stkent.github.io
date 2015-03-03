@@ -1,10 +1,13 @@
 name:        Stuart Kent
 markdown:    redcarpet
 highligher:  true
-paginate:    8
+paginate:    5
 description: Stuart Kent | Android Developer @ Detroit Labs
 
-owner:
-  name:           Stuart Kent
-  twitter:       skentphd
-  github:        stkent
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      author: "Stuart Kent"

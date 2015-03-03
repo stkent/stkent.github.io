@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: [hello, world]
+category: apps
 
 ---
 
