@@ -1,7 +1,7 @@
 ---
 title: Android Workflow Tips
 date: January 2015
-slides: /assets/pdfs/Android-Workflow-Tips.pdf
+slides_url: /assets/pdfs/Android-Workflow-Tips.pdf
 
 ---
 
