@@ -4,5 +4,5 @@ layout: default
 ---
 
 {% for app in site.apps %}
-##[{{ app.name }}]({{ app.store_url }})
+{% include item_summary.html title=app.title summary=app.content metadata=app.date_range url=app.store_url %}
 {% endfor %}

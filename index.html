@@ -3,9 +3,6 @@ layout: default
 ---
 
 {% for post in site.posts %}
-    <div>
-        <h2><a href="{{post.url}}">{{ post.title }}</a></h2>
-        <span style='color: gray;'>{{ post.excerpt }}</span>
-        {% include post_metadata.html param=post.date param2=post.author %}
-    </div>
+    {% capture post_metadata %}{{ post.author }} - {{ post.date | date: "%B %-d, %Y" }}{% endcapture %}
+    {% include item_summary.html title=post.title summary=post.excerpt metadata=post_metadata url=post.url %}
 {% endfor %}
