@@ -41,7 +41,7 @@ header {
   align-items: center;
 }
 
-#title-style {
+.title-style {
   display: inline;
   font-size: 32px;
 }
@@ -77,7 +77,6 @@ ul.nav li {
 @media all and (max-width: 500px) {
   header {
     padding: 16px 0;
-    display: flex;
     flex-direction: column;
     justify-content: center;
   }
