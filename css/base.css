@@ -32,7 +32,7 @@ a:active { color: #263329; }
 }
 
 header {
-  max-width: 864px;
+  max-width: 724px;
   margin: 0 auto;
   padding: 12px 16px;
   display: flex;
@@ -56,11 +56,10 @@ ul.nav li {
   display: inline;
   list-style: none;
   text-transform: uppercase;
-  text-align: center;
 }
 
 /* Medium screens */
-@media all and (max-width: 800px) {
+@media all and (max-width: 756px) {
   header {
     display: flex;
     flex-direction: column;
@@ -70,6 +69,7 @@ ul.nav li {
   ul.nav li {
     display: inline;
     margin: 0 16px;
+    text-align: center;
   }
 }
 
@@ -89,7 +89,7 @@ ul.nav li {
 
 .container {
   margin: 0 auto;
-  max-width: 864px;
+  max-width: 724px;
   padding: 0 16px;
 }
 
