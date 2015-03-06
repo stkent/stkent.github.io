@@ -1,8 +1,10 @@
 name:        Stuart Kent
-markdown:    redcarpet
+markdown:    kramdown
 highligher:  true
 paginate:    5
-description: Stuart Kent | Android Developer @ Detroit Labs
+description: Stuart Kent
+kramdown:
+  input: GFM
 
 collections:
 - apps

@@ -3,4 +3,5 @@ layout: default
 ---
 
 <h2>{{ page.title }}</h2>
+{% include post_metadata.html author=page.author date=page.date %}
 {{ content }}

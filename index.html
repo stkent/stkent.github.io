@@ -2,7 +2,18 @@
 layout: default
 ---
 
-{% for post in site.posts %}
-    {% capture post_metadata %}{{ post.author }} | {{ post.date | date: "%B %-d, %Y" }}{% endcapture %}
-    {% include item_summary.html title=post.title summary=post.excerpt metadata=post_metadata url=post.url %}
+{% for post in paginator.posts %}
+    {% include post_summary.html url=post.url title=post.title summary=post.excerpt author=post.author date=post.date %}
 {% endfor %}
+
+{% if paginator.total_pages > 1 %}
+<div class="pagination">
+    {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" style="flex-grow: 1">&laquo; Older</a>
+    {% endif %}
+
+    {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" style="flex-grow: 1; text-align: right">Newer &raquo;</a>
+    {% endif %}
+</div>
+{% endif %}
