@@ -3,6 +3,6 @@ layout: default
 ---
 
 {% for post in site.posts %}
-    {% capture post_metadata %}{{ post.author }} - {{ post.date | date: "%B %-d, %Y" }}{% endcapture %}
+    {% capture post_metadata %}{{ post.author }} | {{ post.date | date: "%B %-d, %Y" }}{% endcapture %}
     {% include item_summary.html title=post.title summary=post.excerpt metadata=post_metadata url=post.url %}
 {% endfor %}
