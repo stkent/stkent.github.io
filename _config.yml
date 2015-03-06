@@ -5,6 +5,8 @@ paginate:    5
 description: Stuart Kent
 kramdown:
   input: GFM
+# sass:
+#   style: :compressed
 
 collections:
 - apps

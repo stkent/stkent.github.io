@@ -1,1 +1,2 @@
-<p><span class='metadata'>{{ include.author }} | {{ include.date | date: "%B %-d, %Y" }}</span></p>
+{% capture disqus_suffix_url %}{{ include.url }}#disqus_thread{% endcapture %}
+<p><span class='metadata'>{{ include.author }} | {{ include.date | date: "%B %-d, %Y" }} | <a href="{{ disqus_suffix_url }}" class=disqus-comment></a></span></p>

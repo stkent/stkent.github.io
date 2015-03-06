@@ -1,23 +1,68 @@
+---
+---
+
+/*------------------------------------------------------------------------------
+  Begin SASS setup
+------------------------------------------------------------------------------*/
+
+$white:        #FFFFFF;
+$dark_green:   #243829;
+$bright_green: #28A646;
+$header_bg:    $dark_green;
+
+$content_width:   724px;
+$content_padding:  24px;
+
+$sans_serif_font: "Asap", Helvetica, Arial, sans-serif;
+$serif_font: "Crimson Text", serif;
+
+/*------------------------------------------------------------------------------
+  End SASS setup
+------------------------------------------------------------------------------*/
+
 * {
-  padding:0;
-  margin:0;
-  -webkit-print-color-adjust: exact; 
+  padding: 0;
+  margin: 0;
+  transition: 0.3s;
+  -webkit-print-color-adjust: exact;
 }
 
-p, pre, blockquote, ul, ol { margin:1em 0; }
-li { margin-left:6%; }
+p, pre, blockquote, ul, ol {
+  margin:1em 0;
+}
+
+li {
+  margin-left:6%;
+}
+
+.header-container {
+  top: 0;
+  left: 0;
+  right: 0;
+  color: $white;
+  background-color: $header_bg;
+  padding: 8px;
+}
+
+header {
+  max-width: $content_width;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 
 body {
-  font-family: "Crimson Text", serif;
+  border-top: 6px solid $white;
+  font-family: $serif_font;
   font-size: 20px;
+  color: $dark_green;
   line-height: 1.4;
-  color: #263329;
-  border-top: 6px solid #263329;
 }
 
 p {
-  font-weight: 1em
-  display: block;
+  font-weight: 400;
 }
 
 strong {
@@ -25,38 +70,23 @@ strong {
 }
 
 ul {
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
 }
 
 a {
-  color: #263329;
-  text-decoration: none;
-}
+  &:link, &:visited, &:hover, &:active {
+    color: $bright_green;
+    text-decoration: none;
+  }
 
-a:visited { color: #263329; }
-a:hover { color: #263329; text-decoration: underline; }
-a:active { color: #263329; }
-
-.header-container {
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: #A3D9B0;
-}
-
-header {
-  max-width: 724px;
-  margin: 0 auto;
-  padding: 12px 16px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  &:hover {
+    color: $dark_green;
+  }
 }
 
 .title-style {
-  font-family: "Asap", Helvetica, Arial, sans-serif;
+  font-family: $sans_serif_font;
   display: inline;
   font-size: 32px;
 }
@@ -65,11 +95,8 @@ header {
   color: #999;
 }
 
-.footnote {
-  color: red;
-}
-
 .footnotes {
+
 }
 
 .pagination {
@@ -77,25 +104,36 @@ header {
   flex-direction: row;
   justify-content: space-between;
   margin: 0 0.5em;
-  color: #A3D9B0;
+  color: $bright_green;
 }
 
-ul.nav {
-  margin: 0;
+.nav {
   display: inline;
-  font-size: 18px
-}
+  font-size: 18px;
+  color: $bright_green;
 
-ul.nav li {
-  font-family: "Asap", Helvetica, Arial, sans-serif;
-  margin: 0 0 0 32px;
-  display: inline;
-  list-style: none;
-  text-transform: uppercase;
-}
+  li {
+    font-family: $sans_serif_font;
+    margin: 0 0 0 32px;
+    display: inline;
+    list-style: none;
+    text-transform: uppercase;
+  }
+
+  a {
+    &:link, &:visited, &:hover, &:active {
+      color: $bright_green;
+      text-decoration: none;
+    }
+
+    &:hover {
+      color: $white;
+    }
+  }
+} 
 
 /* Medium and small screens */
-@media all and (max-width: 756px) {
+@media all and (max-width: $content_width + 2 * $content_padding) {
   header {
     flex-direction: column;
     justify-content: center;
@@ -111,8 +149,16 @@ ul.nav li {
 
 .container {
   margin: 0 auto 2em auto;
-  max-width: 724px;
-  padding: 0 16px;
+  max-width: $content_width;
+  padding: 0 $content_padding;
+}
+
+#disqus_thread {
+  margin-top: 2em;
+}
+
+.disqus-comment {
+  color: $bright_green;
 }
 
 /*------------------------------------------------------------------------------
@@ -120,7 +166,7 @@ ul.nav li {
 ------------------------------------------------------------------------------*/
 
 h2 {
-  font-family: "Asap", Helvetica, Arial, sans-serif;
+  font-family: $sans_serif_font;
   margin: 1.5em 0 -0.5em 0;
   font-size: 32px;
   font-weight: normal;  
