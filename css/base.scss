@@ -12,20 +12,31 @@ $header_bg:    $dark_green;
 
 $content_width:   724px;
 $content_padding:  16px;
+$nav_padding:      16px;
+
+$medium-screen-width: $content_width + 2 * $content_padding;
+$small-screen-width:  480px;
 
 $sans_serif_font: "Asap", Helvetica, Arial, sans-serif;
 $serif_font: "Crimson Text", serif;
 
+
+
+
 /*------------------------------------------------------------------------------
-  End SASS setup
+  Normalization
 ------------------------------------------------------------------------------*/
+
+@import "normalize";
 
 * {
   padding: 0;
   margin: 0;
-  transition: 0.3s;
   -webkit-print-color-adjust: exact;
 }
+
+
+
 
 %noselect {
   -webkit-touch-callout: none;
@@ -37,7 +48,7 @@ $serif_font: "Crimson Text", serif;
 }
 
 p, pre, blockquote, ul, ol {
-  margin:1em 0;
+  margin: 1em 0;
 }
 
 li {
@@ -50,7 +61,8 @@ li {
   right: 0;
   color: $white;
   background-color: $header_bg;
-  padding: 8px;
+  padding: $nav_padding;
+  line-height: 1;
 }
 
 header {
@@ -80,13 +92,10 @@ strong {
   font-weight: 700;
 }
 
-ul {
-  margin-top: 1.25em;
-  margin-bottom: 1.25em;
-}
-
 a {
   @extend %noselect;
+
+  transition: 0.3s;
 
   &:link, &:visited, &:hover, &:active {
     color: $bright_green;
@@ -120,14 +129,15 @@ a {
   color: $bright_green;
 }
 
-.nav {
+ul.nav {
   font-size: 18px;
   font-family: $sans_serif_font;
   text-transform: uppercase;
   color: $white;
+  margin: 0;
 
   li {
-    margin: 0 0 0 32px;
+    margin: 0 0 0 2 * $nav_padding;
     display: inline;
   }
 
@@ -141,20 +151,43 @@ a {
       color: $white;
     }
   }
-} 
+}
 
-/* Medium and small screens */
-@media all and (max-width: $content_width + 2 * $content_padding) {
+/* Medium screens */
+@media all
+and (max-width: $medium_screen_width)
+and (min-width: $small_screen_width) {
+
   header {
     flex-direction: column;
-    justify-content: center;
-    text-align: center;
   }
 
-  ul.nav li {
-    display: inline;
-    margin: 0 16px;
-    text-align: center;
+  ul.nav {
+    margin: $nav_padding 0 0 0;
+
+    li {
+      margin: 0 16px;
+      text-align: center;
+    }
+  }
+}
+
+/* Small screens */
+@media all
+and (max-width: $small_screen_width) {
+
+  header {
+    flex-direction: column;
+  }
+
+  ul.nav {
+    margin: 0;
+
+    li {
+      display: block;
+      margin: $nav_padding 0 0 0;
+      text-align: center;
+    }
   }
 }
 
@@ -209,6 +242,9 @@ blockquote p {
 img {
   max-width: 80%;
 }
+
+
+
 
 /*------------------------------------------------------------------------------
   Syntax highlighting
