@@ -4,10 +4,17 @@
             {{ site.name }}
         </div>
         <ul class="nav">
-            <li><a href="/">Posts</a></li>
-            <li><a href="/apps">Apps</a></li>
-            <li><a href="/presentations">Slides</a></li>
-            <li><a href="/about">About</a></li>
+            {% for navigation_entry in site.data.navigation %}
+
+                {% capture navigation_url %}{{ site.url }}{{ navigation_entry.href }}{% endcapture %}
+
+                {% if page.title != navigation_entry.title %}
+                    <li><a href="{{ navigation_url }}">{{ navigation_entry.title }}</a></li>
+                {% else %}
+                    <li>{{ navigation_entry.title }}</li>
+                {% endif %}
+                
+            {% endfor %}
         </ul>
     </header>
 </div>
