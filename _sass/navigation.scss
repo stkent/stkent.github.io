@@ -1,0 +1,102 @@
+/*------------------------------------------------------------------------------
+  Main navigation
+------------------------------------------------------------------------------*/
+
+.header-container {
+  top: 0;
+  left: 0;
+  right: 0;
+  color: $white;
+  background-color: $header_bg;
+  padding: $nav_padding;
+  line-height: 1;
+}
+
+.page-title {
+  display: inline;
+  font-size: 32px;
+}
+
+header {
+  @extend %noselect;
+
+  max-width: $content_width;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav {
+  font-size: 18px;
+  text-transform: uppercase;
+  color: $white;
+  margin: 0;
+
+  li {
+    margin: 0 0 0 2 * $nav_padding;
+    display: inline;
+  }
+
+  a {
+    &:link, &:visited, &:hover, &:active {
+      color: $bright_green;
+      text-decoration: none;
+    }
+
+    &:hover {
+      color: $white;
+    }
+  }
+}
+
+/* Medium screens */
+@media all
+and (max-width: $medium_screen_width)
+and (min-width: $small_screen_width) {
+
+  header {
+    flex-direction: column;
+  }
+
+  nav {
+    margin: $nav_padding 0 0 0;
+
+    li {
+      margin: 0 16px;
+      text-align: center;
+    }
+  }
+}
+
+/* Small screens */
+@media all
+and (max-width: $small_screen_width) {
+
+  header {
+    flex-direction: column;
+  }
+
+  nav {
+    margin: 0;
+
+    li {
+      display: block;
+      margin: $nav_padding 0 0 0;
+      text-align: center;
+    }
+  }
+}
+
+/*------------------------------------------------------------------------------
+  Pagination navigation
+------------------------------------------------------------------------------*/
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 0.5em;
+  color: $bright_green;
+}

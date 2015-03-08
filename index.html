@@ -5,17 +5,22 @@ title: Posts
 ---
 
 {% for post in paginator.posts %}
-    {% include post_summary.html url=post.url title=post.title summary=post.excerpt author=post.author date=post.date %}
+    <summary>
+        {% capture trimmed_excerpt %}{{ post.excerpt | remove: '<p>' | remove: '</p>' }}{% endcapture %}
+        {% include post_summary.html url=post.url title=post.title summary=trimmed_excerpt author=post.author date=post.date %}
+    </summary>
 {% endfor %}
 
-{% if paginator.total_pages > 1 %}
-<div class="pagination">
-    {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" style="flex-grow: 1">&laquo; Older</a>
-    {% endif %}
+<footer>
+    {% if paginator.total_pages > 1 %}
+    <div class="pagination">
+        {% if paginator.next_page %}
+            <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" style="flex-grow: 1">&laquo; Older</a>
+        {% endif %}
 
-    {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" style="flex-grow: 1; text-align: right">Newer &raquo;</a>
+        {% if paginator.previous_page %}
+            <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" style="flex-grow: 1; text-align: right">Newer &raquo;</a>
+        {% endif %}
+    </div>
     {% endif %}
-</div>
-{% endif %}
+</footer>

@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-    {% include head.html %}
-</head>
-<body>
-    {% include navigation.html %}
-    <div class="container">
-        {{ content }}
-    </div>
+    <head>
+        {% include head.html %}
+    </head>
+    <body>
+        {% include navigation.html %}
+        <main>
+            {{ content }}
+        </main>
 
-<script type="text/javascript">
-var disqus_shortname = 'stkent';
+        <script type="text/javascript">
+        var disqus_shortname = 'stkent';
 
-/* * * DON'T EDIT BELOW THIS LINE * * */
-(function () {
-var s = document.createElement('script'); s.async = true;
-s.type = 'text/javascript';
-s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+        </script>
 
-</body>
+    </body>
 </html>

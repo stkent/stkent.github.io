@@ -2,13 +2,21 @@
 ---
 
 /*------------------------------------------------------------------------------
-  Begin SASS setup
+  SASS setup
+------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------
+  Colors
 ------------------------------------------------------------------------------*/
 
 $white:        #FFFFFF;
 $dark_green:   #243829;
 $bright_green: #28A646;
 $header_bg:    $dark_green;
+
+/*------------------------------------------------------------------------------
+  Dimensions
+------------------------------------------------------------------------------*/
 
 $content_width:   724px;
 $content_padding:  16px;
@@ -17,28 +25,15 @@ $nav_padding:      16px;
 $medium-screen-width: $content_width + 2 * $content_padding;
 $small-screen-width:  480px;
 
-$site_font: "Asap", Helvetica, Arial, sans-serif;
-
-
-
-@import "syntax";
-
-
-
 /*------------------------------------------------------------------------------
-  Normalization
+  Fonts
 ------------------------------------------------------------------------------*/
 
-@import "normalize";
+$site_font: "Asap", Helvetica, Arial, sans-serif;
 
-* {
-  padding: 0;
-  margin: 0;
-  -webkit-print-color-adjust: exact;
-}
-
-
-
+/*------------------------------------------------------------------------------
+  Placeholder selectors
+------------------------------------------------------------------------------*/
 
 %noselect {
   -webkit-touch-callout: none;
@@ -49,198 +44,11 @@ $site_font: "Asap", Helvetica, Arial, sans-serif;
   user-select: none;
 }
 
-p, pre, blockquote, ul, ol {
-  margin: 1em 0;
-}
-
-li {
-  margin-left:6%;
-}
-
-.header-container {
-  top: 0;
-  left: 0;
-  right: 0;
-  color: $white;
-  background-color: $header_bg;
-  padding: $nav_padding;
-  line-height: 1;
-}
-
-header {
-  @extend %noselect;
-
-  max-width: $content_width;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-body {
-  border-top: 4px solid $bright_green;
-  font-family: $site_font;
-  font-size: 17px;
-  color: $dark_green;
-  line-height: 1.5;
-}
-
-p {
-  font-weight: 400;
-}
-
-strong {
-  font-weight: 700;
-}
-
-a {
-  @extend %noselect;
-
-  transition: 0.3s;
-
-  &:link, &:visited, &:hover, &:active {
-    color: $bright_green;
-    text-decoration: none;
-  }
-
-  &:hover {
-    color: $dark_green;
-  }
-}
-
-.title-style {
-  font-family: $site_font;
-  display: inline;
-  font-size: 32px;
-}
-
-.metadata {
-  color: #999;
-}
-
-.footnotes {
-
-}
-
-.pagination {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 0 0.5em;
-  color: $bright_green;
-}
-
-ul.nav {
-  font-size: 18px;
-  font-family: $site_font;
-  text-transform: uppercase;
-  color: $white;
-  margin: 0;
-
-  li {
-    margin: 0 0 0 2 * $nav_padding;
-    display: inline;
-  }
-
-  a {
-    &:link, &:visited, &:hover, &:active {
-      color: $bright_green;
-      text-decoration: none;
-    }
-
-    &:hover {
-      color: $white;
-    }
-  }
-}
-
-/* Medium screens */
-@media all
-and (max-width: $medium_screen_width)
-and (min-width: $small_screen_width) {
-
-  header {
-    flex-direction: column;
-  }
-
-  ul.nav {
-    margin: $nav_padding 0 0 0;
-
-    li {
-      margin: 0 16px;
-      text-align: center;
-    }
-  }
-}
-
-/* Small screens */
-@media all
-and (max-width: $small_screen_width) {
-
-  header {
-    flex-direction: column;
-  }
-
-  ul.nav {
-    margin: 0;
-
-    li {
-      display: block;
-      margin: $nav_padding 0 0 0;
-      text-align: center;
-    }
-  }
-}
-
-.container {
-  margin: 0 auto 2em auto;
-  max-width: $content_width;
-  padding: 0 $content_padding;
-}
-
-#disqus_thread {
-  margin-top: 2em;
-}
-
-.disqus-comment {
-  color: $bright_green;
-}
-
-.separator {
-  display:inline-block;
-  min-width: 25px;
-  text-align: center;
-}
-
 /*------------------------------------------------------------------------------
-  Post Styles
+  Imports
 ------------------------------------------------------------------------------*/
 
-h2 {
-  font-family: $site_font;
-  margin: 1.5em 0 -0.5em 0;
-  font-size: 32px;
-  font-weight: normal;  
-}
-
-h3 {
-  @extend h2;
-  font-size: 22px;
-}
-
-blockquote {
-  margin: 1.0em 0;
-  padding: 0 0 0 15px;
-  border-left: 2px solid #AAAAAA;
-  font-style: italic;
-}
-
-blockquote p {
-  margin: 12px 0;
-  color: #999999;
-}
-
-img {
-  max-width: 80%;
-}
+@import "normalize";
+@import "content";
+@import "navigation";
+@import "syntax";

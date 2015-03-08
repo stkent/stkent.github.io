@@ -1,9 +1,9 @@
 <div class="header-container">
     <header>
-        <div class="title-style">
+        <div class="page-title">
             {{ site.name }}
         </div>
-        <ul class="nav">
+        <nav>
             {% for navigation_entry in site.data.navigation %}
 
                 {% capture navigation_url %}{{ site.url }}{{ navigation_entry.href }}{% endcapture %}
@@ -15,6 +15,6 @@
                 {% endif %}
                 
             {% endfor %}
-        </ul>
+        </nav>
     </header>
 </div>

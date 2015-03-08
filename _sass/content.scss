@@ -1,0 +1,109 @@
+body {
+  border-top: 4px solid $bright_green;
+  font-family: $site_font;
+  font-size: 17px;
+  color: $dark_green;
+}
+
+main {
+  margin: 0 auto 2em auto;
+  max-width: $content_width;
+  padding: 0 $content_padding;
+}
+
+p, pre, blockquote, ul, ol {
+  margin: 1em 0;
+}
+
+li {
+  margin-left: 6%;
+}
+
+h2 {
+  margin: 0.5em 0 -0.25em 0;
+  font-size: 36px;
+  font-weight: normal;
+}
+
+h3 {
+  @extend h2;
+  font-size: 22px;
+}
+
+blockquote {
+  margin: 1.0em 0;
+  padding: 0 0 0 15px;
+  border-left: 2px solid #AAAAAA;
+  font-style: italic;
+}
+
+blockquote p {
+  margin: 12px 0;
+  color: #999999;
+}
+
+img {
+  max-width: 75%;
+}
+
+a {
+  @extend %noselect;
+
+  transition: 0.3s;
+
+  &:link, &:visited, &:hover, &:active {
+    color: $bright_green;
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: $dark_green;
+  }
+}
+
+/*------------------------------------------------------------------------------
+  Post content
+------------------------------------------------------------------------------*/
+
+article {
+  line-height: 1.5;
+}
+
+summary {
+  @extend article;
+  margin-bottom: 36px;
+}
+
+.metadata {
+  color: #999;
+}
+
+.separator {
+  display: inline-block;
+  min-width: 25px;
+  text-align: center;
+}
+
+.disqus-comment {
+  color: $bright_green;
+}
+
+/*------------------------------------------------------------------------------
+  Internal post navigation
+------------------------------------------------------------------------------*/
+
+.footnote {
+
+}
+
+.footnotes {
+
+}
+
+/*------------------------------------------------------------------------------
+  Disqus built-ins
+------------------------------------------------------------------------------*/
+
+#disqus_thread {
+  margin-top: 2em;
+}
