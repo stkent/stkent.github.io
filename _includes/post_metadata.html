@@ -1,11 +1,9 @@
 {% capture disqus_suffix_url %}{{ include.url }}#disqus_thread{% endcapture %}
 
-<p>
-    <div class='metadata'>
-        <div style="display: inline-block;">{{ include.author }}</div>
-        {% include separator.html %}
-        <div style="display: inline-block;">{{ include.date | date: "%B %-d, %Y" }}</div>
-        {% include separator.html %}
-        <div style="display: inline-block;"><a href="{{ disqus_suffix_url }}" class=disqus-comment></a></div>
-    </div>
-</p>
+<div class='metadata'>
+    <div style="display: inline-block;">{{ include.author }}</div>
+    {% include separator.html %}
+    <div style="display: inline-block;">{{ include.date | date: "%B %-d, %Y" }}</div>
+    {% include separator.html %}
+    <div style="display: inline-block;"><a href="{{ disqus_suffix_url }}" class=disqus-comment></a></div>
+</div>

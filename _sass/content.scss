@@ -6,13 +6,14 @@ body {
 }
 
 main {
-  margin: 0 auto 2em auto;
+  margin: 36px auto 48px auto;
   max-width: $content_width;
   padding: 0 $content_padding;
 }
 
 p, pre, blockquote, ul, ol {
-  margin: 1em 0;
+  margin-bottom: 12px;
+  line-height: 1.5;
 }
 
 li {
@@ -20,21 +21,20 @@ li {
 }
 
 h2 {
-  margin: 0.5em 0 -0.25em 0;
+  margin: 0 0 8px 0;
   font-size: 36px;
   font-weight: normal;
 }
 
 h3 {
   @extend h2;
-  font-size: 22px;
+  font-size: 24px;
 }
 
 blockquote {
-  margin: 1.0em 0;
-  padding: 0 0 0 15px;
+  margin: 36px 0;
+  padding: 0 0 0 16px;
   border-left: 2px solid #AAAAAA;
-  font-style: italic;
 }
 
 blockquote p {
@@ -65,27 +65,19 @@ a {
   Post content
 ------------------------------------------------------------------------------*/
 
-article {
-  line-height: 1.5;
-}
-
-summary {
-  @extend article;
-  margin-bottom: 36px;
+article p, pre, blockquote, ul, ol {
+  margin-bottom: 24px;
 }
 
 .metadata {
   color: #999;
+  margin-bottom: 48px;
 }
 
 .separator {
   display: inline-block;
   min-width: 25px;
   text-align: center;
-}
-
-.disqus-comment {
-  color: $bright_green;
 }
 
 /*------------------------------------------------------------------------------
@@ -105,5 +97,5 @@ summary {
 ------------------------------------------------------------------------------*/
 
 #disqus_thread {
-  margin-top: 2em;
+  margin-top: 48px;
 }

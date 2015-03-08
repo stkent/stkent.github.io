@@ -6,8 +6,7 @@ title: Posts
 
 {% for post in paginator.posts %}
     <summary>
-        {% capture trimmed_excerpt %}{{ post.excerpt | remove: '<p>' | remove: '</p>' }}{% endcapture %}
-        {% include post_summary.html url=post.url title=post.title summary=trimmed_excerpt author=post.author date=post.date %}
+        {% include post_summary.html url=post.url title=post.title summary=post.summary author=post.author date=post.date %}
     </summary>
 {% endfor %}
 

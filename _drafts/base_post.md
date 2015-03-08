@@ -3,7 +3,7 @@ layout: post
 title: Base Post
 author: Firsty McSurname
 tags: tag1, tag2
-excerpt: This is an excerpt describing the post.
+summary: This is a single paragraph describing the post.
 
 ---
 

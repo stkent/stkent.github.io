@@ -1,6 +1,8 @@
 ---
 layout: post
 tags: jekyll
+summary: A summary goes here
+author: Stuart Kent
 
 ---
 
