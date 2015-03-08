@@ -17,8 +17,7 @@ $nav_padding:      16px;
 $medium-screen-width: $content_width + 2 * $content_padding;
 $small-screen-width:  480px;
 
-$sans_serif_font: "Asap", Helvetica, Arial, sans-serif;
-$serif_font: "EB Garamond", serif;
+$site_font: "Asap", Helvetica, Arial, sans-serif;
 
 
 
@@ -81,10 +80,10 @@ header {
 
 body {
   border-top: 4px solid $bright_green;
-  font-family: $serif_font;
-  font-size: 20px;
+  font-family: $site_font;
+  font-size: 17px;
   color: $dark_green;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 p {
@@ -111,7 +110,7 @@ a {
 }
 
 .title-style {
-  font-family: $sans_serif_font;
+  font-family: $site_font;
   display: inline;
   font-size: 32px;
 }
@@ -134,7 +133,7 @@ a {
 
 ul.nav {
   font-size: 18px;
-  font-family: $sans_serif_font;
+  font-family: $site_font;
   text-transform: uppercase;
   color: $white;
   margin: 0;
@@ -219,7 +218,7 @@ and (max-width: $small_screen_width) {
 ------------------------------------------------------------------------------*/
 
 h2 {
-  font-family: $sans_serif_font;
+  font-family: $site_font;
   margin: 1.5em 0 -0.5em 0;
   font-size: 32px;
   font-weight: normal;  
