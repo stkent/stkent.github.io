@@ -8,6 +8,10 @@ $content-line-height-multiple: 1.5;
   Common
 ------------------------------------------------------------------------------*/
 
+html {
+  overflow-y: scroll;
+}
+
 body {
   border-top: 4px solid $bright_green;
   font-family: $site_font;
