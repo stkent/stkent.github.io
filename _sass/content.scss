@@ -2,7 +2,7 @@
   SASS variables
 ------------------------------------------------------------------------------*/
 
-$content-line-height-multiple: 1.5;
+$content-line-height-multiple: 1.7;
 
 /*------------------------------------------------------------------------------
   Common
@@ -15,7 +15,8 @@ html {
 body {
   border-top: 4px solid $bright_green;
   font-family: $site_font;
-  font-size: 17px;
+  font-weight: 300;
+  font-size: 18px;
   color: $dark_green;
 }
 
