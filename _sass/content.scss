@@ -3,6 +3,7 @@
 ------------------------------------------------------------------------------*/
 
 $content-line-height-multiple: 1.7;
+$vertical-block-separation: 36px;
 
 /*------------------------------------------------------------------------------
   Common
@@ -14,14 +15,14 @@ html {
 
 body {
   border-top: 4px solid $bright_green;
-  font-family: $site_font;
+  font-family: $content_font;
   font-weight: 300;
   font-size: 18px;
   color: $dark_green;
 }
 
 main {
-  margin: 36px auto 48px auto;
+  margin: $vertical-block-separation auto 48px auto;
   max-width: $content_width;
   padding: 0 $content_padding;
 }
@@ -38,12 +39,22 @@ li {
 h2 {
   margin: 0 0 16px 0;
   font-size: 36px;
+  font-family: $title_font;
   font-weight: normal;
 }
 
 h3 {
   @extend h2;
   font-size: 24px;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: #EFEFEF 1px solid;
+  margin: $vertical-block-separation 16px;
+  padding: 0;
 }
 
 blockquote {
@@ -81,12 +92,12 @@ a {
 ------------------------------------------------------------------------------*/
 
 article p, pre, blockquote, ul, ol {
-  margin-bottom: 24px;
+  margin-top: $vertical-block-separation;
 }
 
 .metadata {
-  color: #999;
-  margin-bottom: 48px;
+  color: #AAAAAA;
+  font-family: $title_font;
   line-height: $content-line-height-multiple;
 }
 
@@ -106,12 +117,4 @@ article p, pre, blockquote, ul, ol {
 
 .footnotes {
 
-}
-
-/*------------------------------------------------------------------------------
-  Disqus built-ins
-------------------------------------------------------------------------------*/
-
-#disqus_thread {
-  margin-top: 48px;
 }
