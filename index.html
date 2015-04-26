@@ -15,11 +15,11 @@ title: Posts
     {% if paginator.total_pages > 1 %}
     <div class="pagination">
         {% if paginator.next_page %}
-            <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" style="flex-grow: 1">&laquo; Older</a>
+            <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" style="flex-grow: 1">&#9664; &nbsp; Older Posts</a>
         {% endif %}
 
         {% if paginator.previous_page %}
-            <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" style="flex-grow: 1; text-align: right">Newer &raquo;</a>
+            <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" style="flex-grow: 1; text-align: right">Newer Posts &nbsp; &#9658;</a>
         {% endif %}
     </div>
     {% endif %}
