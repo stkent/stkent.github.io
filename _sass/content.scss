@@ -4,6 +4,8 @@
 
 $content-line-height-multiple: 1.7;
 $vertical-block-separation: 36px;
+$horizontal-divider-color: #DDDDDD;
+$horizontal-divider-height: 1px;
 
 /*------------------------------------------------------------------------------
   Common
@@ -50,10 +52,10 @@ h3 {
 
 hr {
   display: block;
-  height: 1px;
+  height: $horizontal-divider-height;
   border: 0;
-  border-top: #EFEFEF 1px solid;
-  margin: $vertical-block-separation 16px;
+  border-top: $horizontal-divider-color 1px solid;
+  margin: $vertical-block-separation 0;
   padding: 0;
 }
 
@@ -91,7 +93,7 @@ a {
   Post content
 ------------------------------------------------------------------------------*/
 
-article p, pre, blockquote, ul, ol {
+article p, pre, blockquote, ul, ol, img {
   margin-top: $vertical-block-separation;
 }
 
@@ -107,6 +109,14 @@ article p, pre, blockquote, ul, ol {
   text-align: center;
 }
 
+.image-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
 /*------------------------------------------------------------------------------
   Internal post navigation
 ------------------------------------------------------------------------------*/
@@ -116,5 +126,6 @@ article p, pre, blockquote, ul, ol {
 }
 
 .footnotes {
-
+  margin: $vertical-block-separation 0;
+  border-top: $horizontal-divider-color $horizontal-divider-height solid;
 }
