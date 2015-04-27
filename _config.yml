@@ -1,5 +1,5 @@
 name:        Stuart Kent
-markdown:    kramdown
+markdown:    redcarpet
 highligher:  true
 paginate:    5
 description: Stuart Kent
