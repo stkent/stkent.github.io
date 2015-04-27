@@ -93,7 +93,7 @@ a {
   Post content
 ------------------------------------------------------------------------------*/
 
-article p, pre, blockquote, ul, ol, img {
+article p, article pre, article blockquote, article ul, article ol, article img {
   margin-top: $vertical-block-separation;
 }
 
