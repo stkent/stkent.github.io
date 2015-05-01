@@ -5,4 +5,4 @@ slides_url: /assets/pdfs/Android-Layouts.pdf
 
 ---
 
-Description goes here
+An introduction to Android View classes and layout hierarchies. No prior experience with xml or Android widgets required!
