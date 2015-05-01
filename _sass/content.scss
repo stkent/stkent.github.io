@@ -115,6 +115,7 @@ article p, article pre, article blockquote, article ul, article ol, article img 
   justify-content: space-around;
   align-items: flex-start;
   align-content: flex-start;
+  margin: $vertical-block-separation 0;
 }
 
 /*------------------------------------------------------------------------------
