@@ -6,11 +6,11 @@ title: About
 
 ## Today
 
-I am an Android Developer at Detroit Labs, currently working on the [DTE Energy app]({{ site.baseurl }}/apps#dte-energy). I began developing software professionally in 2014.
+I am an Android Developer at Detroit Labs, currently working on the [DTE Energy app]({{ site.baseurl }}/apps#dte-energy). I began developing software professionally in 2014. Opinions expressed on this website are my own, as are any errors. If you spot a mistake, please [let me know](mailto:skent.dev@gmail.com) - I hope to use this blog as a vehicle for for both teaching _and_ learning :-)
 
-If you enjoy this blog, you may also be interested in checking out my:
+If you enjoy this site, you may also be interested in checking out my:
 
-* (public) code on [GitHub](https://github.com/stkent);
+* public code on [GitHub](https://github.com/stkent);
 * community contributions on [Stack Overflow](http://stackoverflow.com/users/2911458/stkent?tab=profile);
 * occasional off-topic utterances on [Twitter](https://twitter.com/skentphd).
 
