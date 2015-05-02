@@ -3,7 +3,7 @@
 ------------------------------------------------------------------------------*/
 
 $content-line-height-multiple: 1.7;
-$vertical-block-separation: 36px;
+$vertical-block-separation: 24px;
 $horizontal-divider-color: #DDDDDD;
 $horizontal-divider-height: 1px;
 
@@ -24,13 +24,13 @@ body {
 }
 
 main {
-  margin: $vertical-block-separation auto 48px auto;
+  margin: 1.5*$vertical-block-separation auto;
   max-width: $content_width;
   padding: 0 $content_padding;
 }
 
-p, pre, blockquote, ul, ol {
-  margin-bottom: 12px;
+p, pre, blockquote, ul, ol, img {
+  margin: 2*$vertical-block-separation/3 0;
   line-height: $content-line-height-multiple;
 }
 
@@ -39,7 +39,8 @@ li {
 }
 
 h2 {
-  margin: $vertical-block-separation 0 $vertical-block-separation/2 0;
+  margin-top: $vertical-block-separation;
+  margin-bottom: $vertical-block-separation/4;
   font-size: 36px;
   font-family: $title_font;
   font-weight: normal;
@@ -60,7 +61,7 @@ hr {
 }
 
 blockquote {
-  margin: 36px 0;
+  margin: $vertical-block-separation 0;
   padding: 0 0 0 16px;
   border-left: 2px solid #AAAAAA;
 }
@@ -74,24 +75,32 @@ img {
   max-width: 75%;
 }
 
-a {
-  @extend %noselect;
+.main-content {
+  a {
+    @extend %noselect;
 
-  transition: 0.3s;
+    transition: 0.3s;
 
-  &:link, &:visited, &:hover, &:active {
-    color: $bright_green;
-    text-decoration: none;
-  }
+    &:link, &:visited, &:hover, &:active {
+      color: $bright_green;
+      text-decoration: none;
+    }
 
-  &:hover {
-    color: $dark_green;
+    &:hover {
+      color: $dark_green;
+    }
   }
 }
 
 /*------------------------------------------------------------------------------
   Post content
 ------------------------------------------------------------------------------*/
+
+article {
+  & p, & pre, & blockquote, & ul, & ol, & img {
+  margin-bottom: $vertical-block-separation;
+  }
+}
 
 article p, article pre, article blockquote, article ul, article ol, article img {
   margin-top: $vertical-block-separation;
@@ -101,12 +110,33 @@ article p, article pre, article blockquote, article ul, article ol, article img 
   color: #AAAAAA;
   font-family: $title_font;
   line-height: $content-line-height-multiple;
+  margin-bottom: $vertical-block-separation;
 }
 
 .separator {
   display: inline-block;
   min-width: 25px;
   text-align: center;
+}
+
+a.btn {
+  -webkit-border-radius: 8;
+  -moz-border-radius: 8;
+  border-radius: 8px;
+  background: $bright_green;
+  display: inline-block;
+  font-family: $title_font;
+  padding: 8px 16px;
+  text-decoration: none;
+
+  &:link, &:visited, &:hover, &:active {
+    color: $white;
+  }
+
+  &:hover {
+    background: $dark_green;
+    text-decoration: none;
+  }
 }
 
 .image-container {

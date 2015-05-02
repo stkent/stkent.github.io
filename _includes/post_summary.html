@@ -1,9 +1,9 @@
 <h2>
-    <a href="{{ include.url }}">
-        {{ include.title }}
-    </a>
+  {{ include.title }}
 </h2>
+
+{% include post_metadata.html author=include.author date=include.date url=include.url %}
 
 <p>{{ include.summary }}</p>
 
-{% include post_metadata.html author=include.author date=include.date url=include.url %}
+<a href="{{ include.url }}" class="btn">Continue Reading</a>

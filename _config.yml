@@ -1,5 +1,5 @@
 name:        Stuart Kent
-markdown:    redcarpet
+markdown:    kramdown
 highligher:  true
 paginate:    5
 description: Stuart Kent
@@ -11,11 +11,3 @@ kramdown:
 collections:
 - apps
 - presentations
-
-defaults:
-  -
-    scope:
-      path: ""
-      type: "posts"
-    values:
-      author: "Stuart Kent"

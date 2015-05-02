@@ -8,9 +8,9 @@ author: Stuart Kent
 
 Over the past few years, the software industry has come to recognize the importance of providing developers with opportunities to pursue side-projects. Google’s “Innovation Time Off”, which encourages engineers to spend 20 percent of their time contributing to any internal project they are interested in, has spawned a number of high-profile products - including Gmail, Google News, and AdSense.[^1][^2] The success of this program has since led to the introduction of similar schemes at tech companies of all sizes, typically with two primary goals:
 
-- providing engineers with opportunities to flex their creative muscles, improving engagement and retention;
+* providing engineers with opportunities to flex their creative muscles, improving engagement and retention;
 
-- exploring product/service spaces outside the company’s core focus.
+* exploring product/service spaces outside the company’s core focus.
 
 Detroit Labs’ version of this program dedicates a portion of our non-project time to hacking. Unlike at Google, we are not restricted to working on internal projects (although in-house apps like Flipback, Landmarked, and Finger Treadmill are all hack-time projects). Instead, the rules are simple: you must be learning, and you have to demo what you learned or built at our Demo Day every Friday. Focusing on supporting learning itself (rather than on the products of that learning) allows everyone to develop broader skill-sets [3] - especially valuable for those of us who began our software development careers at Detroit Labs and are not formally trained in computer science.
 
