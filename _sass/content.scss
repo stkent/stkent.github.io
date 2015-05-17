@@ -160,3 +160,11 @@ a.btn {
   margin: $vertical-block-separation 0;
   border-top: $horizontal-divider-color $horizontal-divider-height solid;
 }
+
+/*------------------------------------------------------------------------------
+  Disqus
+------------------------------------------------------------------------------*/
+
+#disqus_thread {
+  margin: 2.5*$vertical-block-separation 0 $vertical-block-separation 0;
+}
