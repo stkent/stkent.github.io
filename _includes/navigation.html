@@ -6,14 +6,12 @@
         <nav>
             {% for navigation_entry in site.data.navigation %}
 
-                {% capture navigation_url %}{{ site.url }}{{ navigation_entry.href }}{% endcapture %}
-
                 {% if page.title != navigation_entry.title %}
-                    <li><a href="{{ navigation_url }}">{{ navigation_entry.title }}</a></li>
+                    <li><a href="{{ navigation_entry.href }}">{{ navigation_entry.title }}</a></li>
                 {% else %}
                     <li>{{ navigation_entry.title }}</li>
                 {% endif %}
-                
+
             {% endfor %}
         </nav>
     </header>
