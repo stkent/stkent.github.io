@@ -1,5 +1,5 @@
 name:        Stuart Kent
-description: A development blog with a focus on Android.
+description: Stuart Kent
 url:         http://stkent.github.io
 markdown:    kramdown
 highligher:  true
