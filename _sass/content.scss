@@ -39,16 +39,22 @@ li {
 }
 
 h2 {
-  margin-top: $vertical-block-separation;
-  margin-bottom: $vertical-block-separation/4;
+  margin: 1.5*$vertical-block-separation 0 0.25*$vertical-block-separation 0;
   font-size: 36px;
   font-family: $title_font;
   font-weight: normal;
 }
 
 h3 {
+  margin: 1.5*$vertical-block-separation 0 1.25*$vertical-block-separation 0;
   @extend h2;
-  font-size: 28px;
+  font-size: 30px;
+}
+
+h4 {
+  margin: 1.25*$vertical-block-separation 0;
+  @extend h2;
+  font-size: 22px;
 }
 
 hr {
@@ -56,7 +62,7 @@ hr {
   height: $horizontal-divider-height;
   border: 0;
   border-top: $horizontal-divider-color 1px solid;
-  margin: $vertical-block-separation 0;
+  margin: 1.75*$vertical-block-separation 0 1.5*$vertical-block-separation 0;
   padding: 0;
 }
 
@@ -159,4 +165,12 @@ a.btn {
 .footnotes {
   margin: $vertical-block-separation 0;
   border-top: $horizontal-divider-color $horizontal-divider-height solid;
+}
+
+/*------------------------------------------------------------------------------
+  Disqus
+------------------------------------------------------------------------------*/
+
+#disqus_thread {
+  margin: 2.5*$vertical-block-separation 0 $vertical-block-separation 0;
 }

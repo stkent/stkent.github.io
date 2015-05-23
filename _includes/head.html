@@ -4,12 +4,11 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-{% capture canonical %}{{ site.url }}{% if site.permalink contains '.html' %}{{ page.url }}{% else %}{{ page.url | remove:'index.html' | strip_slash }}{% endif %}{% endcapture %}
+<base href="{{ site.url }}">
+<link rel="alternate" type="application/rss+xml" href="/feed.xml" title="{{ site.title }}">
+<link href="/css/base.css" type="text/css" rel="stylesheet" />
 
-<link rel="canonical" href="{{ canonical }}">
-<link href="{{ site.url }}/feed.xml" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
-<link href='http://fonts.googleapis.com/css?family=Merriweather:300|Asap:400' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="{{ site.url }}/css/base.css" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Merriweather:300|Asap:400' type='text/css' rel='stylesheet'>
 
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({

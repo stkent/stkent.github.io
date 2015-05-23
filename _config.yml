@@ -1,8 +1,10 @@
 name:        Stuart Kent
+description: Stuart Kent
+url:         http://stkent.github.io
 markdown:    kramdown
 highligher:  true
 paginate:    5
-description: Stuart Kent
+comments:    true
 kramdown:
   input: GFM
 # sass:
@@ -11,3 +13,12 @@ kramdown:
 collections:
 - apps
 - presentations
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      comments: "true"
+      layout: "post"
