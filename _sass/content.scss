@@ -67,14 +67,22 @@ hr {
 }
 
 blockquote {
-  margin: $vertical-block-separation 0;
-  padding: 0 0 0 16px;
-  border-left: 2px solid #AAAAAA;
+  font-family: $title_font;
+  font-style: italic;
+  margin: $vertical-block-separation 16px;
+  padding: 16px;
+  border-left: 4px solid $bright_green;
+  background: #F7F7F7;
 }
 
 blockquote p {
-  margin: 12px 0;
-  color: #999999;
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 img {
@@ -103,12 +111,12 @@ img {
 ------------------------------------------------------------------------------*/
 
 article {
-  & p, & pre, & blockquote, & ul, & ol, & img {
+  & p, & pre, & ul, & ol, & img {
   margin-bottom: $vertical-block-separation;
   }
 }
 
-article p, article pre, article blockquote, article ul, article ol, article img {
+article p, article pre, article ul, article ol, article img {
   margin-top: $vertical-block-separation;
 }
 
