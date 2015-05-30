@@ -12,7 +12,7 @@ summary: When patching together a finite number of cubic B&eacute;zier curves to
 
 ![Too many choices!](/path/to/img.jpg)
 
-Since animators are often used to describe motion, 
+Since animators are often used to describe motion,
 
 ### Notation
 
@@ -311,7 +311,7 @@ public class EPointF {
   public EPointF plus(float factor, EPointF ePointF) {
     return new EPointF(x + factor * ePointF.x, y + factor * ePointF.y);
   }
-  
+
   public EPointF plus(EPointF ePointF) {
     return plus(1.0f, ePointF);
   }
@@ -319,7 +319,7 @@ public class EPointF {
   public EPointF minus(float factor, EPointF ePointF) {
     return new EPointF(x - factor * ePointF.x, y - factor * ePointF.y);
   }
-  
+
   public EPointF minus(EPointF ePointF) {
     return minus(1.0f, ePointF);
   }
@@ -334,5 +334,3 @@ public class EPointF {
 ### Further reading
 
 [^1]:The general (parametric) form of a cubic B&eacute;zier curve can be found in [the Wikipedia entry on B&eacute;zier Curves](http://en.wikipedia.org/wiki/B%C3%A9zier_curve#Cubic_B.C3.A9zier_curves).
-
-[^2]:The docs for the non-compat [PathInterpolator](https://developer.android.com/reference/android/view/animation/PathInterpolator.html) confirm this equivalence, albeit in a much more verbose manner.

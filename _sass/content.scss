@@ -85,10 +85,6 @@ blockquote p {
   }
 }
 
-img {
-  max-width: 75%;
-}
-
 .main-content {
   a {
     @extend %noselect;
@@ -104,6 +100,20 @@ img {
       color: $dark_green;
     }
   }
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:2px solid #ff0000;
+}
+
+th {
+    border:2px solid #000000;
+}
+
+td {
+    border:1px solid #000000;
 }
 
 /*------------------------------------------------------------------------------
