@@ -7,21 +7,22 @@ summary: When patching together a finite number of cubic B&eacute;zier curves to
 
 ---
 
-Version 22.1 of the Support v4 library[^1]. The most flexible of these new classes is `PathInterpolatorCompat`. Using this class, we can convert (almost) any `Path` that connects the points (0,0) and (1,1) into an interpolator.
+
+
 
 ![Too many choices!](/path/to/img.jpg)
 
-Since animators (and therefore interpolators) are often used to describe motion
+Since animators are often used to describe motion, 
 
 ### Notation
 
-Let $\lbrace K_i \in \mathbb{R}^m : i \in 0,\ldots,n \rbrace$ represent a collection of $n+1$ _knots_.
+Let $\lbrace k_i \in \mathbb{R}^m : i \in 0,\ldots,n \rbrace$ represent a collection of $n+1$ _knots_.
 
-Let $\Gamma_i$ represent any cubic B&eacute;zier curve connecting $K_i$ to $K_{i+1}$ for $i \in 0,\ldots,n-1$. Each $\Gamma_i$ may then be represented by a parametric equation of the form[^2]
+Let $\Gamma_i$ represent any cubic B&eacute;zier curve connecting $k_i$ to $k_{i+1}$ for $i \in 0,\ldots,n-1$. Each $\Gamma_i$ may then be represented by a parametric equation of the form
 
-$$ \Gamma_i(t) = (1-t)^3 K_i + 3(1-t)^2 t P_{i,0} + 3(1-t) t^2 P_{i,1} + t^3 K_{i+1} $$
+$$ \Gamma_i(t) = (1-t)^3 k_i + 3(1-t)^2 t c_{i,0} + 3(1-t) t^2 c_{i,1} + t^3 k_{i+1} $$
 
-where $t$ ranges between $0$ and $1$, and $P_{i,0} \in \mathbb{R}^m $ and $P_{i,1} \in \mathbb{R}^m $ are intermediate _control points_ that determine the curvature (and presumably the torsion, if $m \geq 3$) of $\Gamma_i$.
+where $t$ ranges between $0$ and $1$, and $c_{i,0} \in \mathbb{R}^m $ and $c_{i,1} \in \mathbb{R}^m $ are intermediate _control points_ that determine the curvature of $\Gamma_i$.
 
 ### Goal
 
@@ -31,51 +32,49 @@ For any given collection of knots, we aim to compute control points that guarant
 
 - $ \Gamma $ satisfies natural boundary conditions (i.e. $\Gamma'' = 0$ at each end).
 
-Each $ \Gamma_i $ is clearly $ C^\infty $ away from the endpoints $ K_i $ and $ K_{i+1} $, so the first condition above is equivalent to requiring that $ \Gamma $ be twice-differentiable at every knot.
-
-// insert a note here about the fact that we've made a choice; we could relax c2 and instead improve localization of response; link to one of the pdfs here
+Each $ \Gamma_i $ is clearly $ C^\infty $ away from the endpoints $ k_i $ and $ k_{i+1} $, so the first condition above is equivalent to requiring that $ \Gamma $ be twice-differentiable at every knot.
 
 ### Derivation
 
 Note that
 
-$$ \Gamma_i^{\prime}(t) = 3 \left[ - (1-t)^2 K_i + (3t-1)(t-1) P_{i,0} - t(3t-2) P_{i,1} + t^2 K_{i+1} \right] $$
+$$ \Gamma_i^{\prime}(t) = 3 \left[ - (1-t)^2 k_i + (3t-1)(t-1) c_{i,0} - t(3t-2) c_{i,1} + t^2 k_{i+1} \right] $$
 
 and
 
-$$ \Gamma_i^{\prime\prime}(t) = 6 \left[ (1-t) K_i + (3t-2) P_{i,0} - (3t-1) P_{i,1} + t K_{i+1} \right]. $$
+$$ \Gamma_i^{\prime\prime}(t) = 6 \left[ (1-t) k_i + (3t-2) c_{i,0} - (3t-1) c_{i,1} + t k_{i+1} \right]. $$
 
 For $\Gamma$ to be $C^2$ at each interior knot, we require that
 
-$$ \left.\Gamma_{i-1}^{\prime}\right\vert_{K_{i}} = \left.\Gamma_{i}^{\prime}\right\vert_{K_{i}} \hspace{0.2in} \text{ and } \hspace{0.2in} \left.\Gamma_{i-1}^{\prime\prime}\right\vert_{K_{i}} = \left.\Gamma_{i}^{\prime\prime}\right\vert_{K_{i}} $$
+$$ \left.\Gamma_{i-1}^{\prime}\right\vert_{k_{i}} = \left.\Gamma_{i}^{\prime}\right\vert_{k_{i}} \hspace{0.2in} \text{ and } \hspace{0.2in} \left.\Gamma_{i-1}^{\prime\prime}\right\vert_{k_{i}} = \left.\Gamma_{i}^{\prime\prime}\right\vert_{k_{i}} $$
 
 for $ i \in \lbrace 1,\ldots,n-1 \rbrace $. Substituting the derivative expressions computed above, we see that these equalities are equivalent to choosing control points that satisfy
 
-$$ P_{i-1,1} + P_{i,0} = 2K_{i} \text{ for } i \in \lbrace 1,\ldots,n-1 \rbrace $$
+$$ c_{i-1,1} + c_{i,0} = 2k_{i} \text{ for } i \in \lbrace 1,\ldots,n-1 \rbrace $$
 
 and
 
-$$ P_{i-1,0} - 2P_{i-1,1} = P_{i,1} - 2P_{i,0} \text{ for } i \in \lbrace 1,\ldots,n-1 \rbrace. $$
+$$ c_{i-1,0} - 2c_{i-1,1} = c_{i,1} - 2c_{i,0} \text{ for } i \in \lbrace 1,\ldots,n-1 \rbrace. $$
 
 So far, we have $2(n-1)$ constraints for $2n$ control points. The final constraints that will uniquely determine the locations of all control points are the boundary conditions
 
-$$ \left.\Gamma_0^{\prime\prime}\right\vert_{K_0} = 0 \hspace{0.2in} \text{ and } \hspace{0.2in} \left.\Gamma_{n-1}^{\prime\prime}\right\vert_{K_n} = 0. $$
+$$ \left.\Gamma_0^{\prime\prime}\right\vert_{k_0} = 0 \hspace{0.2in} \text{ and } \hspace{0.2in} \left.\Gamma_{n-1}^{\prime\prime}\right\vert_{k_n} = 0. $$
 
 Equivalently,
 
-$$ K_0 - 2P_{0,0} + P_{0,1} = 0 $$
+$$ k_0 - 2c_{0,0} + c_{0,1} = 0 $$
 
 and
 
-$$ P_{n-1,0} - 2P_{n-1,1} + K_n = 0. $$
+$$ c_{n-1,0} - 2c_{n-1,1} + k_n = 0. $$
 
-Eliminating $P_{i,1}$ from all these equations gives a system of $n$ equations for $ \lbrace P_{i,0} : i \in 0,\ldots,n-1 \rbrace $:
+Eliminating $c_{i,1}$ from all these equations gives a system of $n$ equations for $ \lbrace c_{i,0} : i \in 0,\ldots,n-1 \rbrace $:
 
-$$ P_{i-1,0} + 4 P_{i,0} + P_{i+1,0} = 2(2K_{i} + K_{i+1}) \text{ for } i \in \lbrace 1,\ldots,n-2 \rbrace, $$
+$$ c_{i-1,0} + 4 c_{i,0} + c_{i+1,0} = 2(2k_{i} + k_{i+1}) \text{ for } i \in \lbrace 1,\ldots,n-2 \rbrace, $$
 
-$$ 2P_{0,0} + P_{1,0} = K_0 + 2K_1, $$
+$$ 2c_{0,0} + c_{1,0} = k_0 + 2k_1, $$
 
-$$ 2P_{n-2,0} + 7P_{n-1,0} = 8 K_{n-1} + K_n $$
+$$ 2c_{n-2,0} + 7c_{n-1,0} = 8 k_{n-1} + k_n $$
 
 Writing these equations in matrix form:
 
@@ -90,30 +89,30 @@ $$
     0 & \dots & 0 & 0 & 0 & 2 & 7
 \end{bmatrix}
 \begin{bmatrix}
-    P_{0,0} \\
-    P_{1,0} \\
-    P_{2,0} \\
+    c_{0,0} \\
+    c_{1,0} \\
+    c_{2,0} \\
     \vdots \\
-    P_{n-3,0} \\
-    P_{n-2,0} \\
-    P_{n-1,0}
+    c_{n-3,0} \\
+    c_{n-2,0} \\
+    c_{n-1,0}
 \end{bmatrix} =
 \begin{bmatrix}
-    K_0 + 2K_1 \\
-    2(2K_{1} + K_{2}) \\
-    2(2K_{2} + K_{3}) \\
+    k_0 + 2k_1 \\
+    2(2k_{1} + k_{2}) \\
+    2(2k_{2} + k_{3}) \\
     \vdots \\
-    2(2K_{n-3} + K_{n-2}) \\
-    2(2K_{n-2} + K_{n-1}) \\
-    8K_{n-1} + K_{n}
+    2(2k_{n-3} + k_{n-2}) \\
+    2(2k_{n-2} + k_{n-1}) \\
+    8k_{n-1} + k_{n}
 \end{bmatrix}
 $$
 
-This tridiagonal system can be solved in linear time using Thomas' Algorithm[^3], which in this case is guaranteed to be stable since the tridiagonal matrix is diagonally dominant. Once all $P_{i,0}$ are calculated, the remaining control points $\lbrace P_{i,1} : i \in 0,\ldots,n-1 \rbrace$ are given by the following formulae:
+This tridiagonal system can be solved in linear time using [Thomas' Algorithm](http://en.wikipedia.org/wiki/Tridiagonal_matrix_algorithm), which in this case is guaranteed to be stable since the tridiagonal matrix is diagonally dominant. Once all $c_{i,0}$ are calculated, the remaining control points $\lbrace c_{i,1} : i \in 0,\ldots,n-1 \rbrace$ are given by the following formulae:
 
-$$ P_{i,1} = 2K_{i+1} - P_{i+1,0} \text{ for } i \in \lbrace 0,\ldots,n-2 \rbrace, $$
+$$ c_{i,1} = 2k_{i+1} - c_{i+1,0} \text{ for } i \in \lbrace 0,\ldots,n-2 \rbrace, $$
 
-$$ P_{n-1,1} = \frac{1}{2}\left[ K_n + P_{n-1,0} \right]. $$
+$$ c_{n-1,1} = \frac{1}{2}\left[ k_n + c_{n-1,0} \right]. $$
 
 ### Implementation
 
@@ -177,7 +176,7 @@ public class PolyBezierPathUtil {
     final EPointF[] newTarget = new EPointF[n];
     final Float[] newUpperDiag = new Float[n - 1];
 
-    // forward sweep for first control points P_i,0:
+    // forward sweep for first control points c_i,0:
     newUpperDiag[0] = upperDiag[0] / mainDiag[0];
     newTarget[0] = target[0].scaleBy(1 / mainDiag[0]);
 
@@ -194,14 +193,14 @@ public class PolyBezierPathUtil {
           (target[i].minus(newTarget[i - 1].scaleBy(lowerDiag[i - 1]))).scaleBy(targetScale);
     }
 
-    // backward sweep for first control points P_i,0:
+    // backward sweep for first control points c_i,0:
     result[n - 1] = newTarget[n - 1];
 
     for (int i = n - 2; i >= 0; i--) {
       result[i] = newTarget[i].minus(newUpperDiag[i], result[i + 1]);
     }
 
-    // calculate second control points P_i,1:
+    // calculate second control points c_i,1:
     for (int i = 0; i < n - 1; i++) {
       result[n + i] = knots.get(i + 1).scaleBy(2).minus(result[i + 1]);
     }
@@ -283,10 +282,57 @@ public class PolyBezierPathUtil {
 }
 {% endhighlight %}
 
+`EPointF` is a lightweight represention of points in the plane that provides some [componentwise operations](http://en.wikipedia.org/wiki/Pointwise#Componentwise_operations) for convenience:
+
+{% highlight java %}
+package com.example;
+
+/**
+ * API inspired by the Apache Commons Math Vector2D class.
+ */
+public class EPointF {
+
+  private final float x;
+  private final float y;
+
+  public EPointF(final float x, final float y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  public float getX() {
+    return x;
+  }
+
+  public float getY() {
+    return y;
+  }
+
+  public EPointF plus(float factor, EPointF ePointF) {
+    return new EPointF(x + factor * ePointF.x, y + factor * ePointF.y);
+  }
+  
+  public EPointF plus(EPointF ePointF) {
+    return plus(1.0f, ePointF);
+  }
+
+  public EPointF minus(float factor, EPointF ePointF) {
+    return new EPointF(x - factor * ePointF.x, y - factor * ePointF.y);
+  }
+  
+  public EPointF minus(EPointF ePointF) {
+    return minus(1.0f, ePointF);
+  }
+
+  public EPointF scaleBy(float factor) {
+    return new EPointF(factor * x, factor * y);
+  }
+
+}
+{% endhighlight %}
+
 ### Further reading
 
-[^1]:http://android-developers.blogspot.com/2015/04/android-support-library-221.html
+[^1]:The general (parametric) form of a cubic B&eacute;zier curve can be found in [the Wikipedia entry on B&eacute;zier Curves](http://en.wikipedia.org/wiki/B%C3%A9zier_curve#Cubic_B.C3.A9zier_curves).
 
-[^2]:The general (parametric) form of a cubic B&eacute;zier curve can be found in [the Wikipedia entry on B&eacute;zier Curves](http://en.wikipedia.org/wiki/B%C3%A9zier_curve#Cubic_B.C3.A9zier_curves).
-
-[^3]:Thomas' algorithm is described in [the Wikipedia entry on the Tridiagonal Matrix Algorithm](http://en.wikipedia.org/wiki/Tridiagonal_matrix_algorithm).
+[^2]:The docs for the non-compat [PathInterpolator](https://developer.android.com/reference/android/view/animation/PathInterpolator.html) confirm this equivalence, albeit in a much more verbose manner.
