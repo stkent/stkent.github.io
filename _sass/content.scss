@@ -89,11 +89,13 @@ img {
   max-width: 75%;
 }
 
+a {
+    transition: 0.3s;
+}
+
 .main-content {
   a {
     @extend %noselect;
-
-    transition: 0.3s;
 
     &:link, &:visited, &:hover, &:active {
       color: $bright_green;
