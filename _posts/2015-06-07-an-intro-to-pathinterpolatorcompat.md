@@ -14,7 +14,7 @@ As the name suggests, `PathInterpolatorCompat` is a utility for creating [`Path`
 * recap `Path` basics;
 * understand which Paths can be used to create interpolators;
 * understand the role of `PathInterpolatorCompat` in the Android ecosystem;
-* build some `Path`-based interpolators!
+* build a `Path`-based interpolator!
 
 ### Paths
 
@@ -186,7 +186,7 @@ Our aim will be to construct a zig-zag interpolator whose interpolated value bou
 	<img src="/assets/images/an-intro-to-path-interpolator-compat-step-graph.png" width="40%" />
 </div>
 
-I'm not saying this is the most _useful_ interpolator ever; I designed it to convince you that there exist interpolators that are more naturally represented by composite paths than by a single algebraic expression. We'll discuss methods for building more practical (and more general) `Path`-based interpolators in a future blog post.
+I'm not saying this is the most _useful_ interpolator ever; I designed it to convince you that there exist interpolators that are more naturally represented by composite paths than by a single algebraic expression. I'll discuss methods for building more practical (and more general) `Path`-based interpolators in a future blog post.
 
 Here's a `Path`-based representation of the class of interpolators described above:
 
@@ -194,7 +194,7 @@ Here's a `Path`-based representation of the class of interpolators described abo
 final Path path = new Path();
 final double n = 5;
 
-for (int i = 0; i < n; i++) {
+for (int i = 1; i <= n; i++) {
     path.lineTo(i / n, i % 2);
 }
 
