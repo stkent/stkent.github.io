@@ -5,9 +5,16 @@ title: Posts
 ---
 
 {% for post in paginator.posts %}
-    <summary>
-        {% include post_summary.html url=post.url title=post.title summary=post.summary author=post.author date=post.date %}
-        <hr />
+  <summary>
+    <h2>
+      {{ post.title }}
+    </h2>
+    {% include post_metadata.html date=post.date %}
+
+    <p>{{ post.summary }}</p>
+
+    <a href="{{ post.url }}" class="btn">Continue Reading</a>
+    <hr />
     </summary>
 {% endfor %}
 
