@@ -1,0 +1,9 @@
+<h2>
+  {{ include.title }}
+</h2>
+
+{% include post_metadata.html date=include.date %}
+
+<p>{{ include.summary }}</p>
+
+<a href="{{ include.url }}" class="btn">Continue Reading</a>
