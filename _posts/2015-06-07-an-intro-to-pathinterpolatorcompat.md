@@ -2,7 +2,7 @@
 layout: post
 title: An Intro to PathInterpolatorCompat
 author: Stuart Kent
-tags: android, interpolation
+tags: android, animation, math
 summary: Version 22.1 of the v4 support library added several new Interpolator classes to help developers infuse their applications with Authentic Motion. Today, we'll begin exploring the highly-flexible PathInterpolatorCompat class.
 
 ---

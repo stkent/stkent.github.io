@@ -9,7 +9,7 @@ title: Posts
     <h2>
       {{ post.title }}
     </h2>
-    {% include post_metadata.html date=post.date %}
+    {% include post_metadata.html date=post.date tags=post.tags %}
 
     <p>{{ post.summary }}</p>
 

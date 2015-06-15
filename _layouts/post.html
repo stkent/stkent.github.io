@@ -4,7 +4,7 @@ layout: default
 
 <article>
     <h2>{{ page.title }}</h2>
-    {% include post_metadata.html date=page.date %}
+    {% include post_metadata.html date=page.date tags=page.tags %}
     {{ content }}
 </article>
 
