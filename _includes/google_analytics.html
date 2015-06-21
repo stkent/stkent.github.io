@@ -5,6 +5,8 @@
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
   ga('create', 'UA-64321440-1', 'auto');
-  ga('send', 'pageview');
+  ga('send', 'pageview', {
+  'title': '{{ page.title }}'
+});
 
 </script>
