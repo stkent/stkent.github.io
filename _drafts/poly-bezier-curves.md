@@ -1,32 +1,40 @@
 ---
 layout: post
-title: Building Twice-Differentiable Poly-B&eacute;zier Curves
+title: Building Smooth Paths using B&eacute;zier Curves
 author: Stuart Kent
-tags: android, interpolation, math
-summary: When patching together a finite number of cubic B&eacute;zier curves to form a single spline (subject to natural boundary conditions), the correct choice of control points will produce a composite curve that is everywhere twice-differentiable. In this post, we derive the system of equations that can be used to compute these control points.
-
+tags: android, animation, math
+summary:
 ---
 
+[Last post]({% post_url 2015-06-07-an-intro-to-pathinterpolatorcompat %}), we built a super-simple `Path`-based interpolator using straight line segments. To produce smoother interpolators (typically preferred for animating motion), we'll need correspondingly smooth generating Paths.
 
+To avoid today's post getting too long, I've chosen to focus on calculating smooth Paths only. We'll relate our results back to `Path`-based interpolators in the next post. So, our goal is simply the following:
 
+* given a sequence of points in the cartesian plane, calculate a smooth `Path` passing through all points in order.
 
-![Too many choices!](/path/to/img.jpg)
+### Prerequisites
 
-Since animators are often used to describe motion,
+Our Paths will be constructed by patching together multiple cubic B&eacute;zier curves. This amounts to calling `Path.cubicTo(...)` multiple times with appropriate knots (our input sequence) and control points (chosen to make our composite curve smooth at the joins). I'm not going to be covering B&eacute;zier curve basics; if you need a refresher, I recommend the following resources:
+
+* [Wikipedia article on B&eacute;zier curves](https://en.wikipedia.org/wiki/B%C3%A9zier_curve)
+* [Wikipedia article on B&eacute;zier curves [PDF]](https://en.wikipedia.org/wiki/B%C3%A9zier_curve)
+* [Wikipedia article on B&eacute;zier curves [PDF]](https://en.wikipedia.org/wiki/B%C3%A9zier_curve)
+
+The derivation of the system of linear equations governing control point locations involves some linear algebra and one-dimensional differentiation.
 
 ### Notation
 
 Let $\lbrace k_i \in \mathbb{R}^m : i \in 0,\ldots,n \rbrace$ represent a collection of $n+1$ _knots_.
 
-Let $\Gamma_i$ represent any cubic B&eacute;zier curve connecting $k_i$ to $k_{i+1}$ for $i \in 0,\ldots,n-1$. Each $\Gamma_i$ may then be represented by a parametric equation of the form
+Let $\Gamma_i$ represent any cubic B&eacute;zier curve connecting $k_i$ to $k_{i+1}$ for $i \in 0,\ldots,n-1$. Each $\Gamma_i$ may then be represented by a parametric equation of the form[^1]
 
 $$ \Gamma_i(t) = (1-t)^3 k_i + 3(1-t)^2 t c_{i,0} + 3(1-t) t^2 c_{i,1} + t^3 k_{i+1} $$
 
 where $t$ ranges between $0$ and $1$, and $c_{i,0} \in \mathbb{R}^m $ and $c_{i,1} \in \mathbb{R}^m $ are intermediate _control points_ that determine the curvature of $\Gamma_i$.
 
-### Goal
+### Formal Goal
 
-For any given collection of knots, we aim to compute control points that guarantee the composite curve $ \Gamma $ formed by connecting all the individual B&eacute;zier curves satisfies the following conditions:
+For any given collection of knots, we aim to compute control points that guarantee the composite curve $\Gamma$ formed by connecting all the individual B&eacute;zier curves satisfies the following conditions:
 
 - $ \Gamma $ is twice-differentiable everywhere;
 
@@ -115,6 +123,59 @@ $$ c_{i,1} = 2k_{i+1} - c_{i+1,0} \text{ for } i \in \lbrace 0,\ldots,n-2 \rbrac
 $$ c_{n-1,1} = \frac{1}{2}\left[ k_n + c_{n-1,0} \right]. $$
 
 ### Implementation
+
+The following Android/Java code uses Thomas' Algorithm to compute appropriate control points and accomplish our original goal:
+
+> given a sequence of points in the cartesian plane, calculate a smooth `Path` passing through all points in order.
+
+I use an enhanced point class `EPointF` that provides some [componentwise operations](http://en.wikipedia.org/wiki/Pointwise#Componentwise_operations) for convenience. Note that the code was written with readability, rather than performance, in mind.
+
+{% highlight java %}
+package com.example;
+
+/**
+ * API inspired by the Apache Commons Math Vector2D class.
+ */
+public class EPointF {
+
+  private final float x;
+  private final float y;
+
+  public EPointF(final float x, final float y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  public float getX() {
+    return x;
+  }
+
+  public float getY() {
+    return y;
+  }
+
+  public EPointF plus(float factor, EPointF ePointF) {
+    return new EPointF(x + factor * ePointF.x, y + factor * ePointF.y);
+  }
+
+  public EPointF plus(EPointF ePointF) {
+    return plus(1.0f, ePointF);
+  }
+
+  public EPointF minus(float factor, EPointF ePointF) {
+    return new EPointF(x - factor * ePointF.x, y - factor * ePointF.y);
+  }
+
+  public EPointF minus(EPointF ePointF) {
+    return minus(1.0f, ePointF);
+  }
+
+  public EPointF scaleBy(float factor) {
+    return new EPointF(factor * x, factor * y);
+  }
+
+}
+{% endhighlight %}
 
 {% highlight java %}
 package com.example;
@@ -282,55 +343,6 @@ public class PolyBezierPathUtil {
 }
 {% endhighlight %}
 
-`EPointF` is a lightweight represention of points in the plane that provides some [componentwise operations](http://en.wikipedia.org/wiki/Pointwise#Componentwise_operations) for convenience:
-
-{% highlight java %}
-package com.example;
-
-/**
- * API inspired by the Apache Commons Math Vector2D class.
- */
-public class EPointF {
-
-  private final float x;
-  private final float y;
-
-  public EPointF(final float x, final float y) {
-    this.x = x;
-    this.y = y;
-  }
-
-  public float getX() {
-    return x;
-  }
-
-  public float getY() {
-    return y;
-  }
-
-  public EPointF plus(float factor, EPointF ePointF) {
-    return new EPointF(x + factor * ePointF.x, y + factor * ePointF.y);
-  }
-
-  public EPointF plus(EPointF ePointF) {
-    return plus(1.0f, ePointF);
-  }
-
-  public EPointF minus(float factor, EPointF ePointF) {
-    return new EPointF(x - factor * ePointF.x, y - factor * ePointF.y);
-  }
-
-  public EPointF minus(EPointF ePointF) {
-    return minus(1.0f, ePointF);
-  }
-
-  public EPointF scaleBy(float factor) {
-    return new EPointF(factor * x, factor * y);
-  }
-
-}
-{% endhighlight %}
-
-### Further reading
+### Results
 
 [^1]:The general (parametric) form of a cubic B&eacute;zier curve can be found in [the Wikipedia entry on B&eacute;zier Curves](http://en.wikipedia.org/wiki/B%C3%A9zier_curve#Cubic_B.C3.A9zier_curves).
