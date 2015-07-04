@@ -34,8 +34,8 @@ We instead need to build our `Path` from components with a greater number of deg
 
 Most of you will have played with B&eacute;zier curves before in consumer graphics programs. They are usually constructed in two steps:
 
-1. fix the locations of the two end points ($P_0$ and $P_3$ in the diagram below);
-2. position two _control points_ ($P_1$ and $P_2$ in the diagram below) that completely determine the shape of the curve connecting the two end points.
+1. fix the locations of the two end points ($P\_0$ and $P\_3$ in the diagram below);
+2. position two _control points_ ($P\_1$ and $P\_2$ in the diagram below) that completely determine the shape of the curve connecting the two end points.
 
 <div class="image-container">
 	<img src="/assets/images/building-smooth-paths-using-bezier-curves-wiki.png" width="50%" />
@@ -59,23 +59,23 @@ Most of the rest of this post is dedicated to figuring out how to choose the 'ri
 
 ### Notation
 
-Let $\lbrace k_i \in \mathbb{R}^m : i \in 0,\ldots,n \rbrace$ represent a collection of $n+1$ _knots_.
+Let $\lbrace k\_i \in \mathbb{R}^m : i \in 0,\ldots,n \rbrace$ represent a collection of $n+1$ _knots_.
 
-Let $\Gamma_i$ represent any cubic B&eacute;zier curve connecting $k_i$ to $k_{i+1}$ for $i \in 0,\ldots,n-1$. Each $\Gamma_i$ may then be represented by a parametric equation of the form
+Let $\Gamma\_i$ represent any cubic B&eacute;zier curve connecting $k\_i$ to $k\_{i+1}$ for $i \in 0,\ldots,n-1$. Each $\Gamma\_i$ may then be represented by a parametric equation of the form
 
-$$ \Gamma_i(t) = (1-t)^3 k_i + 3(1-t)^2 t c_{i,0} + 3(1-t) t^2 c_{i,1} + t^3 k_{i+1} $$
+$$ \Gamma\_i(t) = (1-t)^3 k\_i + 3(1-t)^2 t c\_{i,0} + 3(1-t) t^2 c\_{i,1} + t^3 k\_{i+1} $$
 
-where $t$ ranges between $0$ and $1$, and $c_{i,0} \in \mathbb{R}^m$ and $c_{i,1} \in \mathbb{R}^m$ are the intermediate control points that determine the curvature of $\Gamma_i$.
+where $t$ ranges between $0$ and $1$, and $c\_{i,0} \in \mathbb{R}^m$ and $c\_{i,1} \in \mathbb{R}^m$ are the intermediate control points that determine the curvature of $\Gamma\_i$.
 
 ### Formal Goal
 
-For any given collection of knots, we aim to compute control points that guarantee the composite curve $\Gamma$ formed by connecting all the individual B&eacute;zier curves $\Gamma_i$ satisfies the following conditions:
+For any given collection of knots, we aim to compute control points that guarantee the composite curve $\Gamma$ formed by connecting all the individual B&eacute;zier curves $\Gamma\_i$ satisfies the following conditions:
 
 - $ \Gamma $ is twice-differentiable everywhere;
 
 - $ \Gamma $ satisfies natural boundary conditions (i.e. $\Gamma'' = 0$ at each end).
 
-Each $ \Gamma_i $ is clearly $ C^\infty $ away from the endpoints $ k_i $ and $ k_{i+1} $, so the first condition above is equivalent to requiring that $ \Gamma $ be twice-differentiable at every knot.
+Each $\Gamma\_i$ is clearly $ C^\infty $ away from the endpoints $k\_i$ and $k\_{i+1}$, so the first condition above is equivalent to requiring that $\Gamma$ be twice-differentiable at every knot.
 
 The second condition is applied to fully specify the problem, leading to a unique solution and making calculations simpler.
 
@@ -83,43 +83,43 @@ The second condition is applied to fully specify the problem, leading to a uniqu
 
 Note that
 
-$$ \Gamma_i^{\prime}(t) = 3 \left[ - (1-t)^2 k_i + (3t-1)(t-1) c_{i,0} - t(3t-2) c_{i,1} + t^2 k_{i+1} \right] $$
+$$ \Gamma\_i^{\prime}(t) = 3 \left[ - (1-t)^2 k\_i + (3t-1)(t-1) c\_{i,0} - t(3t-2) c\_{i,1} + t^2 k\_{i+1} \right] $$
 
 and
 
-$$ \Gamma_i^{\prime\prime}(t) = 6 \left[ (1-t) k_i + (3t-2) c_{i,0} - (3t-1) c_{i,1} + t k_{i+1} \right]. $$
+$$ \Gamma_i^{\prime\prime}(t) = 6 \left[ (1-t) k\_i + (3t-2) c\_{i,0} - (3t-1) c\_{i,1} + t k\_{i+1} \right]. $$
 
 For $\Gamma$ to be $C^2$ at each interior knot, we require that
 
-$$ \left.\Gamma_{i-1}^{\prime}\right\vert_{k_{i}} = \left.\Gamma_{i}^{\prime}\right\vert_{k_{i}} \hspace{0.2in} \text{ and } \hspace{0.2in} \left.\Gamma_{i-1}^{\prime\prime}\right\vert_{k_{i}} = \left.\Gamma_{i}^{\prime\prime}\right\vert_{k_{i}} $$
+$$ \left.\Gamma\_{i-1}^{\prime}\right\vert\_{k\_{i}} = \left.\Gamma\_{i}^{\prime}\right\vert\_{k\_{i}} \hspace{0.2in} \text{ and } \hspace{0.2in} \left.\Gamma\_{i-1}^{\prime\prime}\right\vert\_{k\_{i}} = \left.\Gamma\_{i}^{\prime\prime}\right\vert\_{k_{i}} $$
 
-for $ i \in \lbrace 1,\ldots,n-1 \rbrace $. Substituting the derivative expressions computed above, we see that these equalities are equivalent to choosing control points that satisfy
+for $i \in \lbrace 1,\ldots,n-1 \rbrace$. Substituting the derivative expressions computed above, we see that these equalities are equivalent to choosing control points that satisfy
 
-$$ c_{i-1,1} + c_{i,0} = 2k_{i} \text{ for } i \in \lbrace 1,\ldots,n-1 \rbrace $$
+$$ c\_{i-1,1} + c\_{i,0} = 2k\_{i} \text{ for } i \in \lbrace 1,\ldots,n-1 \rbrace $$
 
 and
 
-$$ c_{i-1,0} - 2c_{i-1,1} = c_{i,1} - 2c_{i,0} \text{ for } i \in \lbrace 1,\ldots,n-1 \rbrace. $$
+$$ c\_{i-1,0} - 2c\_{i-1,1} = c\_{i,1} - 2c\_{i,0} \text{ for } i \in \lbrace 1,\ldots,n-1 \rbrace. $$
 
 So far, we have $2(n-1)$ constraints for $2n$ control points. The final constraints that will uniquely determine the locations of all control points are the boundary conditions
 
-$$ \left.\Gamma_0^{\prime\prime}\right\vert_{k_0} = 0 \hspace{0.2in} \text{ and } \hspace{0.2in} \left.\Gamma_{n-1}^{\prime\prime}\right\vert_{k_n} = 0. $$
+$$ \left.\Gamma\_0^{\prime\prime}\right\vert\_{k\_0} = 0 \hspace{0.2in} \text{ and } \hspace{0.2in} \left.\Gamma\_{n-1}^{\prime\prime}\right\vert\_{k\_n} = 0. $$
 
 Equivalently,
 
-$$ k_0 - 2c_{0,0} + c_{0,1} = 0 $$
+$$ k\_0 - 2c\_{0,0} + c\_{0,1} = 0 $$
 
 and
 
-$$ c_{n-1,0} - 2c_{n-1,1} + k_n = 0. $$
+$$ c\_{n-1,0} - 2c\_{n-1,1} + k\_n = 0. $$
 
-Eliminating $c_{i,1}$ from all these equations gives a system of $n$ equations for $\lbrace c_{i,0} : i \in 0,\ldots,n-1 \rbrace$:
+Eliminating $c\_{i,1}$ from all these equations gives a system of $n$ equations for $\lbrace c\_{i,0} : i \in 0,\ldots,n-1 \rbrace$:
 
-$$ c_{i-1,0} + 4 c_{i,0} + c_{i+1,0} = 2(2k_{i} + k_{i+1}) \text{ for } i \in \lbrace 1,\ldots,n-2 \rbrace, $$
+$$ c\_{i-1,0} + 4 c\_{i,0} + c\_{i+1,0} = 2(2k\_{i} + k\_{i+1}) \text{ for } i \in \lbrace 1,\ldots,n-2 \rbrace, $$
 
-$$ 2c_{0,0} + c_{1,0} = k_0 + 2k_1, $$
+$$ 2c\_{0,0} + c\_{1,0} = k\_0 + 2k\_1, $$
 
-$$ 2c_{n-2,0} + 7c_{n-1,0} = 8 k_{n-1} + k_n $$
+$$ 2c\_{n-2,0} + 7c\_{n-1,0} = 8 k\_{n-1} + k\_n $$
 
 Writing these equations in matrix form:
 
@@ -134,30 +134,30 @@ $$
     0 & \dots & 0 & 0 & 0 & 2 & 7
 \end{bmatrix}
 \begin{bmatrix}
-    c_{0,0} \\
-    c_{1,0} \\
-    c_{2,0} \\
+    c\_{0,0} \\
+    c\_{1,0} \\
+    c\_{2,0} \\
     \vdots \\
-    c_{n-3,0} \\
-    c_{n-2,0} \\
-    c_{n-1,0}
+    c\_{n-3,0} \\
+    c\_{n-2,0} \\
+    c\_{n-1,0}
 \end{bmatrix} =
 \begin{bmatrix}
-    k_0 + 2k_1 \\
-    2(2k_{1} + k_{2}) \\
-    2(2k_{2} + k_{3}) \\
+    k\_0 + 2k\_1 \\
+    2(2k\_{1} + k\_{2}) \\
+    2(2k\_{2} + k\_{3}) \\
     \vdots \\
-    2(2k_{n-3} + k_{n-2}) \\
-    2(2k_{n-2} + k_{n-1}) \\
-    8k_{n-1} + k_{n}
+    2(2k\_{n-3} + k\_{n-2}) \\
+    2(2k\_{n-2} + k\_{n-1}) \\
+    8k\_{n-1} + k\_{n}
 \end{bmatrix}
 $$
 
-This tridiagonal system can be solved in linear time using [Thomas' Algorithm](http://en.wikipedia.org/wiki/Tridiagonal_matrix_algorithm), which in this case is guaranteed to be stable since the tridiagonal matrix is diagonally dominant. Once all $c_{i,0}$ are calculated, the remaining control points $\lbrace c_{i,1} : i \in 0,\ldots,n-1 \rbrace$ are given by the following formulae:
+This tridiagonal system can be solved in linear time using [Thomas' Algorithm](http://en.wikipedia.org/wiki/Tridiagonal_matrix_algorithm), which in this case is guaranteed to be stable since the tridiagonal matrix is diagonally dominant. Once all $c\_{i,0}$ are calculated, the remaining control points $\lbrace c\_{i,1} : i \in 0,\ldots,n-1 \rbrace$ are given by the following formulae:
 
-$$ c_{i,1} = 2k_{i+1} - c_{i+1,0} \text{ for } i \in \lbrace 0,\ldots,n-2 \rbrace, $$
+$$ c\_{i,1} = 2k\_{i+1} - c\_{i+1,0} \text{ for } i \in \lbrace 0,\ldots,n-2 \rbrace, $$
 
-$$ c_{n-1,1} = \frac{1}{2}\left[ k_n + c_{n-1,0} \right]. $$
+$$ c\_{n-1,1} = \frac{1}{2}\left[ k\_n + c\_{n-1,0} \right]. $$
 
 ### Implementation
 
