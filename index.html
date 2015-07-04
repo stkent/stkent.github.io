@@ -11,7 +11,7 @@ title: Posts
     </h2>
     {% include post_metadata.html date=post.date tags=post.tags %}
 
-    <p>{{ post.summary }}</p>
+    <p>{{ post.excerpt }}</p>
 
     <a href="{{ post.url }}" class="btn">Continue Reading</a>
     <hr />

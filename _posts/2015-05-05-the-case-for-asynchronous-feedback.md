@@ -3,11 +3,12 @@ layout: post
 title: The Case For Asynchronous Feedback
 author: Stuart Kent
 tags: feedback
-summary: Giving and receiving feedback is vital to professional (and sometimes personal) growth. Despite this, the potential for feedback to be seen as critical or confrontational means it is tempting to delay or avoid delivering it. Kicking the conversation off via an asynchronous communication channel can help.
 
 ---
 
 Giving and receiving feedback is vital to professional (and sometimes personal) growth. Despite this, the potential for feedback to be seen as critical or confrontational means it is tempting to delay or avoid delivering it. Kicking the conversation off via an asynchronous communication channel can help.
+
+<!--more-->
 
 My team just began trialling [sayat.me](http://sayat.me/)[^1] as a feedback-facilitating service, which prompted me to think more about this topic. The opinions listed below are all influenced by my own experiences, and as such are unlikely to be free of bias (i.e. YMMV). Discussion, debate, and (naturally) feedback on the perspectives shared below are welcome - hit me up in the comments section.
 

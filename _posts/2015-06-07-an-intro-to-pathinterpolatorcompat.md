@@ -3,11 +3,12 @@ layout: post
 title: An Intro to PathInterpolatorCompat
 author: Stuart Kent
 tags: android, animation, math
-summary: Version 22.1 of the v4 support library added several new Interpolator classes to help developers infuse their applications with Authentic Motion. Today, we'll begin exploring the highly-flexible PathInterpolatorCompat class.
 
 ---
 
 Version 22.1 of the v4 support library added [several new Interpolator classes](http://android-developers.blogspot.com/2015/04/android-support-library-221.html) to help developers infuse their applications with [Authentic Motion](http://www.google.com/design/spec/animation/authentic-motion.html). Today, we'll begin exploring the highly-flexible [`PathInterpolatorCompat`](http://developer.android.com/reference/android/support/v4/view/animation/PathInterpolatorCompat.html) class.
+
+<!--more-->
 
 As the name suggests, `PathInterpolatorCompat` is a utility for creating [`Path`](http://developer.android.com/reference/android/graphics/Path.html)-based interpolators. I plan to write several future posts that will dive much deeper into some `Path` and `PathInterpolatorCompat` concepts, so the goals for this first post are pretty straightforward:
 

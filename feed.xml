@@ -12,8 +12,8 @@
         {% if post.author.name %}
           <dc:creator>{{ post.author.name | xml_escape }}</dc:creator>
         {% endif %}
-        {% if post.summary %}
-          <description>{{ post.summary | xml_escape }}</description>
+        {% if post.excerpt %}
+          <description>{{ post.excerpt | xml_escape }}</description>
         {% else %}
           <description>{{ post.content | xml_escape }}</description>
         {% endif %}
