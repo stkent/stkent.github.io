@@ -8,7 +8,7 @@ title: About
 
 ### Today
 
-I am an Android Developer at Detroit Labs, currently working on the [DTE Energy app]({{ site.baseurl }}/apps#dte-energy). I began developing software professionally in 2014. Opinions expressed on this website are my own, as are any errors. If you spot a mistake, please [let me know](mailto:skent.dev@gmail.com) - I hope to use this blog as a vehicle for for both teaching _and_ learning :-)
+I am a software developer at Detroit Labs, currently working on iOS and Android applications. I began developing software professionally in 2014. Opinions expressed on this website are my own, as are any errors. If you spot a mistake, please [let me know](mailto:skent.dev@gmail.com) - I hope to use this blog as a vehicle for for both teaching _and_ learning :-)
 
 If you enjoy this site, you may also be interested in checking out my:
 
@@ -24,7 +24,6 @@ Before joining Detroit Labs, I earned a Ph.D. in Applied Mathematics from the Un
 
 My current learning yearnings include but are not limited to:
 
-* Getting to grips with [Swift and iOS development](https://itunes.apple.com/us/course/developing-ios-8-apps-swift/id961180099);
 * Diving much deeper into [computer systems](http://www.amazon.com/Computer-Systems-Programmers-Perspective-3rd/dp/013409266X/);
 * Becoming *design-literate*, starting with [these](http://www.amazon.com/Design-Everyday-Things-Revised-Expanded/dp/0465050654/) [books](http://www.amazon.com/Universal-Principles-Design-Revised-Updated/dp/1592535879/) and [Sketch](http://bohemiancoding.com/sketch/);
 * Improving my understanding of [category theory](http://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/) and its relationship with computing languages;
