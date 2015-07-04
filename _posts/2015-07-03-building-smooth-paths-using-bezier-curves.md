@@ -61,7 +61,7 @@ Most of the rest of this post is dedicated to figuring out how to choose the 'ri
 
 ### Notation
 
-Let $\lbrace k_i \in \mathbb{R}^m : i \in 0,\ldots,n \rbrace$ represent a collection of $n+1$ _knots_.
+Let $\lbrace k_i \in \mathbb{R}^m : i \in 0,\ldots,n \rbrace$ represent a collection of $n+1$ knots.
 
 Let $\Gamma_i$ represent any cubic B&eacute;zier curve connecting $k_i$ to $k_{i+1}$ for $i \in 0,\ldots,n-1$. Each $\Gamma_i$ may then be represented by a parametric equation of the form
 
