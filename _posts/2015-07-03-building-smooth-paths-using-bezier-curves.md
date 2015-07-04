@@ -3,14 +3,12 @@ layout: post
 title: Building Smooth Paths using B&eacute;zier Curves
 author: Stuart Kent
 tags: android, animation, math
-
+summary:
 ---
 
 [Last post]({% post_url 2015-06-07-an-intro-to-pathinterpolatorcompat %}), we built a super-simple `Path`-based interpolator using straight line segments. To produce smoother interpolators, without corners - typically preferred for animating motion - we'll need correspondingly smooth generating Paths. Our primary goal in this post, then, will be:
 
 * given a sequence of $n$ points in the cartesian plane, calculate a smooth `Path` passing through all points in order.
-
-<!--more-->
 
 We'll start with the simplest possible case, and generalize from there.
 
@@ -67,7 +65,7 @@ Let $\Gamma_i$ represent any cubic B&eacute;zier curve connecting $k_i$ to $k_{i
 
 $$ \Gamma_i(t) = (1-t)^3 k_i + 3(1-t)^2 t c_{i,0} + 3(1-t) t^2 c_{i,1} + t^3 k_{i+1} $$
 
-where $t$ ranges between $0$ and $1$, and $c_{i,0} \in \mathbb{R}^m $ and $c_{i,1} \in \mathbb{R}^m $ are the intermediate control points that determine the curvature of $\Gamma_i$.
+where $t$ ranges between $0$ and $1$, and $c_{i,0} \in \mathbb{R}^m$ and $c_{i,1} \in \mathbb{R}^m$ are the intermediate control points that determine the curvature of $\Gamma_i$.
 
 ### Formal Goal
 
@@ -115,7 +113,7 @@ and
 
 $$ c_{n-1,0} - 2c_{n-1,1} + k_n = 0. $$
 
-Eliminating $c_{i,1}$ from all these equations gives a system of $n$ equations for $ \lbrace c_{i,0} : i \in 0,\ldots,n-1 \rbrace $:
+Eliminating $c_{i,1}$ from all these equations gives a system of $n$ equations for $\lbrace c_{i,0} : i \in 0,\ldots,n-1 \rbrace$:
 
 $$ c_{i-1,0} + 4 c_{i,0} + c_{i+1,0} = 2(2k_{i} + k_{i+1}) \text{ for } i \in \lbrace 1,\ldots,n-2 \rbrace, $$
 
