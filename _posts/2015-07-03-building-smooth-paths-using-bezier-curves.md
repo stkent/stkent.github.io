@@ -6,41 +6,78 @@ tags: android, animation, math
 summary:
 ---
 
-[Last post]({% post_url 2015-06-07-an-intro-to-pathinterpolatorcompat %}), we built a super-simple `Path`-based interpolator using straight line segments. To produce smoother interpolators (typically preferred for animating motion), we'll need correspondingly smooth generating Paths.
+[Last post]({% post_url 2015-06-07-an-intro-to-pathinterpolatorcompat %}), we built a super-simple `Path`-based interpolator using straight line segments. To produce smoother interpolators, without corners - typically preferred for animating motion - we'll need correspondingly smooth generating Paths. Our primary goal in this post, then, will be:
 
-To avoid today's post getting too long, I've chosen to focus on calculating smooth Paths only. We'll relate our results back to `Path`-based interpolators in the next post. So, our goal is simply the following:
+* given a sequence of $n$ points in the cartesian plane, calculate a smooth `Path` passing through all points in order.
 
-* given a sequence of points in the cartesian plane, calculate a smooth `Path` passing through all points in order.
+We'll start with the simplest possible case, and generalize from there.
 
-### Prerequisites
+### $n$ = 2
 
-Our Paths will be constructed by patching together multiple cubic B&eacute;zier curves. This amounts to calling `Path.cubicTo(...)` multiple times with appropriate knots (our input sequence) and control points (chosen to make our composite curve smooth at the joins). I'm not going to be covering B&eacute;zier curve basics; if you need a refresher, I recommend the following resources:
+This one's a gimme - we can use `Path.lineTo(...)` to connect the two given points with a straight line. While not very exciting, this curve does satisfy the smoothness condition since there are definitely no corners!
 
-* [Wikipedia article on B&eacute;zier curves](https://en.wikipedia.org/wiki/B%C3%A9zier_curve)
-* [Wikipedia article on B&eacute;zier curves [PDF]](https://en.wikipedia.org/wiki/B%C3%A9zier_curve)
-* [Wikipedia article on B&eacute;zier curves [PDF]](https://en.wikipedia.org/wiki/B%C3%A9zier_curve)
+<div class="image-container">
+	<img src="/assets/images/building-smooth-paths-using-bezier-curves-2-point.png" width="30%" />
+</div>
 
-The derivation of the system of linear equations governing control point locations involves some linear algebra and one-dimensional differentiation.
+### $n$ > 2
+
+When given more than two distinct points, it's no longer possible to connect them smoothly using straight lines only[^1]:
+
+<div class="image-container">
+	<img src="/assets/images/building-smooth-paths-using-bezier-curves-3-point-linear.png" width="30%" />
+</div>
+
+We instead need to build our `Path` from components with a greater number of degrees of freedom. In particular, we need to be able to specify both the end point positions **and** one or more derivatives of each component at those end points. That way, we can be sure that the composite curve created by joining together all our components will be smooth at the joins.
+
+#### Enter Cubic B&eacute;zier Curves
+
+Most of you will have played with B&eacute;zier curves before in consumer graphics programs. They are usually constructed in two steps:
+
+1. fix the locations of the two end points ($P_0$ and $P_3$ in the diagram below);
+2. position two _control points_ ($P_1$ and $P_2$ in the diagram below) that completely determine the shape of the curve connecting the two end points.
+
+<div class="image-container">
+	<img src="/assets/images/building-smooth-paths-using-bezier-curves-wiki.png" width="50%" />
+</div>
+
+We can append a single cubic B&eacute;zier curve to an existing `Path` using the  `Path.cubicTo(...)` method. But how do we make sure that we choose control points that yield a smooth composite curve? In other words, how do we ensure that our composite curve looks like this:
+
+<div class="image-container">
+	<img src="/assets/images/building-smooth-paths-using-bezier-curves-3-point-bezier-smooth.png" width="30%" />
+</div>
+
+and not like this:
+
+<div class="image-container">
+	<img src="/assets/images/building-smooth-paths-using-bezier-curves-3-point-bezier-corner.png" width="34%" />
+</div>
+
+#### Answer: _Math_
+
+Most of the rest of this post is dedicated to figuring out how to choose the 'right' control points for arbitrary given end points (aka _knots_ in B&eacute;zier curve lingo). It's not too hairy - there's a lot of algebra, sure, but because cubic B&eacute;zier curves can be represented as polynomials[^2], the numbers work out nicely :). The language is fairly formal so that I can refer back to the derivations with confidence in the future. If you're really not keen on math, you can skip ahead to the [results section](#results) now.
 
 ### Notation
 
 Let $\lbrace k_i \in \mathbb{R}^m : i \in 0,\ldots,n \rbrace$ represent a collection of $n+1$ _knots_.
 
-Let $\Gamma_i$ represent any cubic B&eacute;zier curve connecting $k_i$ to $k_{i+1}$ for $i \in 0,\ldots,n-1$. Each $\Gamma_i$ may then be represented by a parametric equation of the form[^1]
+Let $\Gamma_i$ represent any cubic B&eacute;zier curve connecting $k_i$ to $k_{i+1}$ for $i \in 0,\ldots,n-1$. Each $\Gamma_i$ may then be represented by a parametric equation of the form
 
 $$ \Gamma_i(t) = (1-t)^3 k_i + 3(1-t)^2 t c_{i,0} + 3(1-t) t^2 c_{i,1} + t^3 k_{i+1} $$
 
-where $t$ ranges between $0$ and $1$, and $c_{i,0} \in \mathbb{R}^m $ and $c_{i,1} \in \mathbb{R}^m $ are intermediate _control points_ that determine the curvature of $\Gamma_i$.
+where $t$ ranges between $0$ and $1$, and $c_{i,0} \in \mathbb{R}^m $ and $c_{i,1} \in \mathbb{R}^m $ are the intermediate control points that determine the curvature of $\Gamma_i$.
 
 ### Formal Goal
 
-For any given collection of knots, we aim to compute control points that guarantee the composite curve $\Gamma$ formed by connecting all the individual B&eacute;zier curves satisfies the following conditions:
+For any given collection of knots, we aim to compute control points that guarantee the composite curve $\Gamma$ formed by connecting all the individual B&eacute;zier curves $\Gamma_i$ satisfies the following conditions:
 
 - $ \Gamma $ is twice-differentiable everywhere;
 
 - $ \Gamma $ satisfies natural boundary conditions (i.e. $\Gamma'' = 0$ at each end).
 
 Each $ \Gamma_i $ is clearly $ C^\infty $ away from the endpoints $ k_i $ and $ k_{i+1} $, so the first condition above is equivalent to requiring that $ \Gamma $ be twice-differentiable at every knot.
+
+The second condition is applied to fully specify the problem, leading to a unique solution and making calculations simpler.
 
 ### Derivation
 
@@ -126,63 +163,14 @@ $$ c_{n-1,1} = \frac{1}{2}\left[ k_n + c_{n-1,0} \right]. $$
 
 The following Android/Java code uses Thomas' Algorithm to compute appropriate control points and accomplish our original goal:
 
-> given a sequence of points in the cartesian plane, calculate a smooth `Path` passing through all points in order.
+> given a sequence of $n$ points in the cartesian plane, calculate a smooth `Path` passing through all points in order.
 
-I use an enhanced point class `EPointF` that provides some [componentwise operations](http://en.wikipedia.org/wiki/Pointwise#Componentwise_operations) for convenience. Note that the code was written with readability, rather than performance, in mind.
-
-{% highlight java %}
-package com.example;
-
-/**
- * API inspired by the Apache Commons Math Vector2D class.
- */
-public class EPointF {
-
-  private final float x;
-  private final float y;
-
-  public EPointF(final float x, final float y) {
-    this.x = x;
-    this.y = y;
-  }
-
-  public float getX() {
-    return x;
-  }
-
-  public float getY() {
-    return y;
-  }
-
-  public EPointF plus(float factor, EPointF ePointF) {
-    return new EPointF(x + factor * ePointF.x, y + factor * ePointF.y);
-  }
-
-  public EPointF plus(EPointF ePointF) {
-    return plus(1.0f, ePointF);
-  }
-
-  public EPointF minus(float factor, EPointF ePointF) {
-    return new EPointF(x - factor * ePointF.x, y - factor * ePointF.y);
-  }
-
-  public EPointF minus(EPointF ePointF) {
-    return minus(1.0f, ePointF);
-  }
-
-  public EPointF scaleBy(float factor) {
-    return new EPointF(factor * x, factor * y);
-  }
-
-}
-{% endhighlight %}
+Note that the code was written with readability, rather than performance, in mind. `EPointF` is a simple 2D point representation that provides some convenient [componentwise operations](http://en.wikipedia.org/wiki/Pointwise#Componentwise_operations); the definition is given below the main block of code.
 
 {% highlight java %}
 package com.example;
 
 import android.graphics.Path;
-
-import com.example.EPointF;
 
 import java.util.Collection;
 import java.util.List;
@@ -206,7 +194,7 @@ public class PolyBezierPathUtil {
     polyBezierPath.moveTo(firstKnot.getX(), firstKnot.getY());
 
     /*
-     * variable representing the number of Bezier curves we will patch
+     * variable representing the number of Bezier curves we will join
      * together
      */
     final int n = knots.size() - 1;
@@ -237,7 +225,7 @@ public class PolyBezierPathUtil {
     final EPointF[] newTarget = new EPointF[n];
     final Float[] newUpperDiag = new Float[n - 1];
 
-    // forward sweep for first control points c_i,0:
+    // forward sweep for control points c_i,0:
     newUpperDiag[0] = upperDiag[0] / mainDiag[0];
     newTarget[0] = target[0].scaleBy(1 / mainDiag[0]);
 
@@ -254,14 +242,14 @@ public class PolyBezierPathUtil {
           (target[i].minus(newTarget[i - 1].scaleBy(lowerDiag[i - 1]))).scaleBy(targetScale);
     }
 
-    // backward sweep for first control points c_i,0:
+    // backward sweep for control points c_i,0:
     result[n - 1] = newTarget[n - 1];
 
     for (int i = n - 2; i >= 0; i--) {
       result[i] = newTarget[i].minus(newUpperDiag[i], result[i + 1]);
     }
 
-    // calculate second control points c_i,1:
+    // calculate remaining control points c_i,1 directly:
     for (int i = 0; i < n - 1; i++) {
       result[n + i] = knots.get(i + 1).scaleBy(2).minus(result[i + 1]);
     }
@@ -343,6 +331,69 @@ public class PolyBezierPathUtil {
 }
 {% endhighlight %}
 
+{% highlight java %}
+package com.example;
+
+/**
+ * API inspired by the Apache Commons Math Vector2D class.
+ */
+public class EPointF {
+
+  private final float x;
+  private final float y;
+
+  public EPointF(final float x, final float y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  public float getX() {
+    return x;
+  }
+
+  public float getY() {
+    return y;
+  }
+
+  public EPointF plus(float factor, EPointF ePointF) {
+    return new EPointF(x + factor * ePointF.x, y + factor * ePointF.y);
+  }
+
+  public EPointF plus(EPointF ePointF) {
+    return plus(1.0f, ePointF);
+  }
+
+  public EPointF minus(float factor, EPointF ePointF) {
+    return new EPointF(x - factor * ePointF.x, y - factor * ePointF.y);
+  }
+
+  public EPointF minus(EPointF ePointF) {
+    return minus(1.0f, ePointF);
+  }
+
+  public EPointF scaleBy(float factor) {
+    return new EPointF(factor * x, factor * y);
+  }
+
+}
+{% endhighlight %}
+
 ### Results
 
-[^1]:The general (parametric) form of a cubic B&eacute;zier curve can be found in [the Wikipedia entry on B&eacute;zier Curves](http://en.wikipedia.org/wiki/B%C3%A9zier_curve#Cubic_B.C3.A9zier_curves).
+To test this implementation, I generated random points inside the square $[0,1]\times[0,1]$ and plotted the corresponding path returned by `PolyBezierPathUtil. computePathThroughKnots(...)`. Here are a couple of examples with $n$ = 6 to convince you that everything works as expected:
+
+<div class="image-container">
+	<img src="/assets/images/building-smooth-paths-using-bezier-curves-6-point-1.png" width="30%" />
+	<img src="/assets/images/building-smooth-paths-using-bezier-curves-6-point-2.png" width="30%" />
+</div>
+
+The calculations and code in this post are not particularly groundbreaking. However, both are necessary foundations for the next post in this series, in which we will use the smooth Paths calculated above to make some slick custom interpolators. Stay tuned...
+
+### Further Reading
+
+A pleasing geometrical presentation of composite B&eacute;zier curves is provided by [these lecture notes](/assets/pdfs/UCLA-Math-149-Mathematics-of-Computer-Graphics-lecture-notes.pdf) from UCLA's Math 149: Mathematics of Computer Graphics course.
+
+For an interesting application of B&eacute;zier curves, see the following technical articles on Square's blog: [Smooth Signatures](https://corner.squareup.com/2010/07/smooth-signatures.html) and [Smoother Signatures](https://corner.squareup.com/2012/07/smoother-signatures.html). I just noticed that the latter post references the UCLA lecture notes I linked above - great minds, etc. Given that written letters often contain sharp corners, I would be interested to know whether Square's algorithms could generate even better signatures if they were to switch back from cubic interpolation to linear interpolation near high-curvature regions. Perhaps something I will investigate in the future!
+
+[^1]:Excepting the degenerate case in which the $n$ > 2 provided points are colinear.
+[^2]:The general (parametric) form of a cubic B&eacute;zier curve can be found in [the Wikipedia entry on B&eacute;zier Curves](http://en.wikipedia.org/wiki/B%C3%A9zier_curve#Cubic_B.C3.A9zier_curves).
