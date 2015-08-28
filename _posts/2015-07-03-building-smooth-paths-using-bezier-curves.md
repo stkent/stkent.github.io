@@ -3,7 +3,7 @@ layout: post
 title: Building Smooth Paths using B&eacute;zier Curves
 author: Stuart Kent
 tags: android, animation, math
-summary:
+
 ---
 
 [Last post]({% post_url 2015-06-07-an-intro-to-pathinterpolatorcompat %}), we built a super-simple `Path`-based interpolator using straight line segments. To produce smoother interpolators, without corners - typically preferred for animating motion - we'll need correspondingly smooth generating Paths. Our primary goal in this post, then, will be:
