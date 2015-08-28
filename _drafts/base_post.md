@@ -1,10 +1,13 @@
 ---
 layout: post
 title: Base Post
-author: Firsty McSurname
+author: Stuart Kent
 tags: tag1, tag2
-summary: This is a single paragraph describing the post.
 
 ---
 
-This is the content of the post. It's formatted from markdown into html.
+This is the first part of the post (= the summary). It's formatted from markdown into html.
+
+<!--more-->
+
+This is the rest of the post.
