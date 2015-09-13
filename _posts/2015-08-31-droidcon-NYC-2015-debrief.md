@@ -30,7 +30,7 @@ As icing on the cake, Jake [released Retrofit 2.0.0-beta1](https://github.com/sq
 	<img src="/assets/images/droidcon-nyc-2015-debrief-jake-wharton.jpg" width="50%" />
 </div>
 
-#### Gradle: From User to Addict - [Jake Ouellette](https://twitter.com/jakeout) ([Slides]() / [Video]())
+#### Gradle: From User to Addict - [Jake Ouellette](https://twitter.com/jakeout) ([Slides]() / [Video](https://www.youtube.com/watch?v=-C7TtnPJ7ms))
 
 This talk was thrilling - fast-paced and packed with great information. If you are looking to become more experienced with Gradle, I'd recommend this talk as a follow-up to Dan Lew's excellent introductory video. Dan focused more on basic Groovy syntax and Gradle task sequencing, and Jake extends these ideas with detailed discussions of Groovy's unusual scope resolution and Gradle task sequencing nuances. Fair warning: you'll definitely need to pause and rewind in a couple spots to give yourself time to properly parse what Jake says.
 
