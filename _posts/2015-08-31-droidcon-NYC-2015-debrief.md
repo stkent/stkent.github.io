@@ -2,7 +2,7 @@
 layout: post
 title: Droidcon NYC 2015 Debrief
 author: Stuart Kent
-tags: android, conference
+tags: android, conference, slides, videos
 
 ---
 
