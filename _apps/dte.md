@@ -9,10 +9,8 @@ relative_img_urls:
 
 ---
 
-Outage reporting and account management app for [DTE Energy](http://www.dteenergy.com), a Fortune 500 company serving over 2 million customers. Android app has 100,000+ installs. My major contributions have covered:
+Outage reporting and account management app for [DTE Energy](http://www.dteenergy.com), a Fortune 500 company serving over 2 million customers. 100,000+ installs. Major contributions:
 
-* authenticated account access and payment processing;
-* payment program enrollment and graphical tracking;
+* authenticated account access and tracking graphs;
+* payment submissions and program enrollment;
 * outage and downed wire reporting.
-
-Tech stack: Android Annotations + RxJava (code), Google Tag Manager (analytics), Jenkins CI (build), Crashlytics Beta (distribution).
