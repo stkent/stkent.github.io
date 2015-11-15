@@ -1,6 +1,6 @@
 ---
 title: Landmarked
-platform: Android
+platform: Android 4.1+
 date_range: March 2014 - present
 store_url: https://play.google.com/store/apps/details?id=com.detroitlabs.landmarked&hl=en
 relative_img_urls:
