@@ -16,13 +16,14 @@ $nav_padding: 16px;
   background-color: $header_bg;
   font-family: $title_font;
   font-weight: 400;
-  padding: $nav_padding;
+  padding: 24px;
   line-height: 1;
 }
 
 .page-title {
   display: inline;
-  font-size: 28px;
+  font-size: 36px;
+  font-weight: 300;
 }
 
 header {

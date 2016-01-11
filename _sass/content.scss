@@ -18,8 +18,8 @@ html {
 body {
   border-top: 4px solid $bright_green;
   font-family: $content_font;
-  font-weight: 400;
-  font-size: 17px;
+  font-weight: 300;
+  font-size: 18px;
   color: $dark_green;
 }
 
@@ -42,19 +42,13 @@ h2 {
   margin: 1.5*$vertical-block-separation 0 0.25*$vertical-block-separation 0;
   font-size: 36px;
   font-family: $title_font;
-  font-weight: normal;
+  font-weight: 400;
 }
 
 h3 {
   margin: 1.25*$vertical-block-separation 0 0.25*$vertical-block-separation 0;
   @extend h2;
-  font-size: 30px;
-}
-
-h4 {
-  margin: $vertical-block-separation 0 0.25*$vertical-block-separation 0;
-  @extend h2;
-  font-size: 22px;
+  font-size: 24px;
 }
 
 hr {
@@ -100,6 +94,7 @@ a {
     &:link, &:visited, &:hover, &:active {
       color: $bright_green;
       text-decoration: none;
+      font-weight: 400;
     }
 
     &:hover {

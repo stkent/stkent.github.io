@@ -10,7 +10,7 @@ It was great to see so many prominent members of the Android community attending
 
 <!--more-->
 
-#### Simple HTTP with Retrofit 2 - [Jake Wharton](https://twitter.com/JakeWharton) ([Slides](https://speakerdeck.com/jakewharton/simple-http-with-retrofit-2-droidcon-nyc-2015) / [Video](https://www.youtube.com/watch?v=KIAoQbAu3eA))
+### Simple HTTP with Retrofit 2 - [Jake Wharton](https://twitter.com/JakeWharton) ([Slides](https://speakerdeck.com/jakewharton/simple-http-with-retrofit-2-droidcon-nyc-2015) / [Video](https://www.youtube.com/watch?v=KIAoQbAu3eA))
 
 Though this talk didn't contain many surprises if you've been following the [proposed Retrofit 2 spec](https://github.com/square/retrofit/issues/297) and [recent progress](https://github.com/square/retrofit/pull/845), Jake presented an exceptionally clear discussion of both the limitations of Retrofit 1, and their solutions as implemented in Retrofit 2. At a high level, the most significant changes may be summarized as follows:
 
@@ -28,11 +28,11 @@ As icing on the cake, Jake [released Retrofit 2.0.0-beta1](https://github.com/sq
 	<img src="/assets/images/droidcon-nyc-2015-debrief-jake-wharton.jpg" width="50%" />
 </div>
 
-#### Gradle: From User to Addict - [Jake Ouellette](https://twitter.com/jakeout) ([Slides]() / [Video](https://www.youtube.com/watch?v=-C7TtnPJ7ms))
+### Gradle: From User to Addict - [Jake Ouellette](https://twitter.com/jakeout) ([Slides]() / [Video](https://www.youtube.com/watch?v=-C7TtnPJ7ms))
 
 This talk was thrilling - fast-paced and packed with great information. If you are looking to become more experienced with Gradle, I'd recommend this talk as a follow-up to Dan Lew's [excellent introductory video](https://www.youtube.com/watch?v=fHhf1xG0pIA). Dan focused more on basic Groovy syntax and Gradle task sequencing, and Jake extends these ideas with detailed discussions of Groovy's unusual scope resolution and Gradle task sequencing nuances. Fair warning: you'll definitely need to pause and rewind in a couple spots to give yourself time to properly parse what Jake says.
 
-#### Data Binding Techniques - [Jacob Tabak](https://twitter.com/JacobTabak) ([Slides](https://speakerdeck.com/jacobtabak/data-binding-techniques-at-droidcon-nyc-2015) / [Video](https://www.youtube.com/watch?v=WdUbXWztKNY))
+### Data Binding Techniques - [Jacob Tabak](https://twitter.com/JacobTabak) ([Slides](https://speakerdeck.com/jacobtabak/data-binding-techniques-at-droidcon-nyc-2015) / [Video](https://www.youtube.com/watch?v=WdUbXWztKNY))
 
 Most of the usage information presented here was familiar from Google I/O videos. However, Jacob provided some interesting context around data binding in general, and Google's implementation of data binding in particular:
 
@@ -46,7 +46,7 @@ Despite vaguely knowing about almost all of the presented material already, I le
 	<img src="/assets/images/droidcon-nyc-2015-debrief-binding-adapter.png" width="75%" />
 </div>
 
-#### Using Styles and Themes Without Going Crazy - [Dan Lew](https://twitter.com/danlew42) ([Slides](https://speakerdeck.com/dlew/using-styles-and-themes-without-going-crazy-1) / [Video](https://www.youtube.com/watch?v=Jr8hJdVGHAk))
+### Using Styles and Themes Without Going Crazy - [Dan Lew](https://twitter.com/danlew42) ([Slides](https://speakerdeck.com/dlew/using-styles-and-themes-without-going-crazy-1) / [Video](https://www.youtube.com/watch?v=Jr8hJdVGHAk))
 
 The beginning of this talk seemed somewhat familiar, and some rapid Googling turned up Dan's [late-2014 article](http://blog.danlew.net/2014/11/19/styles-on-android/) on the same topic. I read that article when it was published, and remember being excited that someone had finally formalized my half-formed thoughts regarding semantically-identical vs visually-identical view styling.
 
@@ -60,13 +60,13 @@ This talk expands upon that original post, and includes
 	<img src="/assets/images/droidcon-nyc-2015-debrief-just-deduce-it.jpg" width="50%" />
 </div>
 
-#### Why, Hello There, Camera 2 API - [Huyen Dao](https://twitter.com/queencodemonkey) ([Slides](https://speakerdeck.com/randomlytyping/android-camera-2-api) / [Video](https://www.youtube.com/watch?v=BLScKJkOpy8))
+### Why, Hello There, Camera 2 API - [Huyen Dao](https://twitter.com/queencodemonkey) ([Slides](https://speakerdeck.com/randomlytyping/android-camera-2-api) / [Video](https://www.youtube.com/watch?v=BLScKJkOpy8))
 
 The new Camera 2 API is a radical departure from the original Camera API. Initially, the magnitude of this change can seem surprisingly. The new API is a little more powerful (still shot burst mode is easier to implement, for example), but it's far from obvious that this increased flexibility necessitated a total API overhaul. Huyen's talk focused on the conceptual shift in low-level camera architecture introduced in version 3 of Android's camera Hardware Abstraction Layer - in particular, the change in how requests for camera data are represented - and explained how we can interpret the changes in the high-level Camera 2 API in terms of these low-level details.
 
 A great example of a talk that promotes understanding, rather than mere knowledge, of an API; the why, not just the what.
 
-#### Android is the World Phone - [Corey Leigh Latislaw](https://twitter.com/corey_latislaw) ([Slides](https://speakerdeck.com/colabug/android-is-the-world-phone) / [Video](https://www.youtube.com/watch?v=sYUHdPXR8MM))
+### Android is the World Phone - [Corey Leigh Latislaw](https://twitter.com/corey_latislaw) ([Slides](https://speakerdeck.com/colabug/android-is-the-world-phone) / [Video](https://www.youtube.com/watch?v=sYUHdPXR8MM))
 
 Corey described the challenges developers face when building apps for customers in emerging and developing markets. Unlike most of the talks I've seen on this topic, Corey's managed to address both philosophical and practical issues. Especially thought-provoking were the literacy statistics for these populations - could you build an app that is intuitive enough to be used by someone who cannot read?
 
