@@ -158,6 +158,6 @@ which produces the output files shown below (viewed within Android Studio):
 	<img src="/assets/images/javadoc-tool-cli-output.png" />
 </div>
 
-This is identical to the output of the Gradle task itself, minus the temporary javadoc.options file! Which is neat, because it means we can leverage all the existing `javadoc` tool documentation to help us overcome some of the challenges we'll be facing in next post, when we integrate Android SDK components and third-party dependencies with our sample project.
+This is identical to the output of the Gradle task itself, minus the temporary javadoc.options file! Which is neat, because it means we can leverage all the existing `javadoc` tool documentation to help us overcome some of the challenges we'll be facing in the next post, in which we add classes from the Android framework and third-party dependencies to our sample project.
 
 The code for this post is available [here](https://github.com/stkent/javadoc-tests/tree/460d0cf6b4f8c4caa481b162261ca413b098b6db).
