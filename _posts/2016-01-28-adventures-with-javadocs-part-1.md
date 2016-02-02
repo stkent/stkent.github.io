@@ -37,7 +37,7 @@ android {
     }
 }
 
-task docTask(type: Javadoc) {
+task docs(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
 }
 {% endhighlight %}
@@ -82,10 +82,10 @@ public class TestClassTwo {
 }
 {% endhighlight %}
 
-and generate Javadocs by executing our new `docTask` task:
+and generate Javadocs by executing our new `docs` task:
 
 {% highlight bash %}
-./gradlew library:clean library:docTask
+./gradlew library:clean library:docs
 {% endhighlight %}
 
 which produces the following output files:
@@ -94,7 +94,7 @@ which produces the following output files:
 	<img src="/assets/images/javadoc-tool-task-output.png" />
 </div>
 
-Note in particular that the directory structure of the generated website matches the package structure of the original source files. For example, the class `TestClassOne` is part of the `com.github.stkent.javadoctests.package1` package, and its corresponding documentation page is inside the `com/github/stkent/javadoctests/package1` subdirectory of the generated website.
+Note in particular that the directory structure of the generated website matches the package structure of the original source files. For example, the class `TestClassOne` is part of the `com.github.stkent.javadoctests.package1` package, and its corresponding documentation page is inside the com/github/stkent/javadoctests/package1 subdirectory of the generated website.
 
 ## Generated Documentation
 
@@ -118,7 +118,7 @@ The `TestClassTwo` constructor signature includes a hyperlink to the generated d
 import com.github.stkent.javadoctests.package1.TestClassOne;
 {% endhighlight %}
 
-On the other hand, because the Java `String` type is not part of the source we provided to the `docTask` task, the `javadoc` tool has no way of determining an equivalent hyperlink target to use for the `TestClassOne` constructor parameter type.
+On the other hand, because the Java `String` type is not part of the source we provided to the `docs` task, the `javadoc` tool has no way of determining an equivalent hyperlink target to use for the `TestClassOne` constructor parameter type.
 
 ## Under The Hood
 
