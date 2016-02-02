@@ -3,9 +3,13 @@ layout: default
 ---
 
 <article>
-    <h2>{{ page.title }}</h2>
-    {% include post_metadata.html date=page.date tags=page.tags %}
+    <header>
+        <h2>{{ page.title }}</h2>
+        {% include post_metadata.html date=page.date tags=page.tags %}
+    </header>
+
     {{ content }}
+
 </article>
 
 {% if page.comments %}
