@@ -30,7 +30,7 @@ main {
 }
 
 p, pre, blockquote, ul, ol, img {
-  margin: 2*$vertical-block-separation/3 0;
+  margin: $vertical-block-separation/2 0;
   line-height: $content-line-height-multiple;
 }
 
@@ -121,8 +121,8 @@ table td, table th {
 ------------------------------------------------------------------------------*/
 
 article {
-  & p, & pre, & ul, & ol, & img {
-  margin-bottom: $vertical-block-separation;
+  & p, & pre, & ul, & li, & ol, & img {
+    margin-bottom: $vertical-block-separation;
   }
 }
 
