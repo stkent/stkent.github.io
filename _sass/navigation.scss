@@ -2,10 +2,10 @@
   SASS variables
 ------------------------------------------------------------------------------*/
 
-$nav_padding: 24px;
+$standard_nav_item_margin: 24px;
 
 /*------------------------------------------------------------------------------
-  Main navigation
+  Main site navigation
 ------------------------------------------------------------------------------*/
 
 .full-width-navigation-container {
@@ -13,11 +13,7 @@ $nav_padding: 24px;
   left: 0;
   right: 0;
   background-color: $header_bg;
-  font-family: $title_font;
-  color: $white;
-  font-weight: 400;
-  padding: $nav_padding;
-  line-height: 1;
+  padding: $standard_nav_item_margin;
 }
 
 .page-title {
@@ -28,6 +24,10 @@ $nav_padding: 24px;
 
 .content-width-navigation-container {
   @extend %noselect;
+
+  font-family: $title_font;
+  font-weight: 400;
+  color: $white;
 
   max-width: $content_width;
   margin: 0 auto;
@@ -44,7 +44,7 @@ nav {
   margin: 0;
 
   li {
-    margin: 0 0 0 $nav_padding;
+    margin: 0 0 0 $standard_nav_item_margin;
     display: inline;
   }
 
@@ -65,12 +65,12 @@ nav {
 and (max-width: $medium_screen_width)
 and (min-width: $small_screen_width) {
 
-  header {
+  .content-width-navigation-container {
     flex-direction: column;
   }
 
   nav {
-    margin: $nav_padding 0 0 0;
+    margin: $standard_nav_item_margin 0 0 0;
 
     li {
       margin: 0 16px;
@@ -83,7 +83,7 @@ and (min-width: $small_screen_width) {
 @media all
 and (max-width: $small_screen_width) {
 
-  header {
+  .content-width-navigation-container {
     flex-direction: column;
   }
 
@@ -92,7 +92,7 @@ and (max-width: $small_screen_width) {
 
     li {
       display: block;
-      margin: $nav_padding 0 0 0;
+      margin: $standard_nav_item_margin 0 0 0;
       text-align: center;
     }
   }
