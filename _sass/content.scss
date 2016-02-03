@@ -27,6 +27,20 @@ main {
   margin: 1.5*$vertical-block-separation auto;
   max-width: $content_width;
   padding: 0 $content_padding;
+
+  a {
+    @extend %noselect;
+
+    &:link, &:visited, &:hover, &:active {
+      color: $bright_green;
+      text-decoration: none;
+      font-weight: 400;
+    }
+
+    &:hover {
+      color: $dark_green;
+    }
+  }
 }
 
 p, pre, blockquote, ul, ol, img {
@@ -85,22 +99,6 @@ img {
 
 a {
     transition: 0.3s;
-}
-
-.main-content {
-  a {
-    @extend %noselect;
-
-    &:link, &:visited, &:hover, &:active {
-      color: $bright_green;
-      text-decoration: none;
-      font-weight: 400;
-    }
-
-    &:hover {
-      color: $dark_green;
-    }
-  }
 }
 
 table {
