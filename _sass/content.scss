@@ -13,11 +13,11 @@ $horizontal-divider-height: 1px;
 
 html {
   overflow-y: scroll;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
   border-top: 4px solid $bright_green;
-  font-family: $content_font;
   font-weight: 300;
   font-size: 18px;
   color: $dark_green;
@@ -55,7 +55,6 @@ li {
 h2 {
   margin: 1.5*$vertical-block-separation 0 0.25*$vertical-block-separation 0;
   font-size: 36px;
-  font-family: $title_font;
   font-weight: 400;
 }
 
@@ -75,7 +74,6 @@ hr {
 }
 
 blockquote {
-  font-family: $title_font;
   font-style: italic;
   margin: $vertical-block-separation 16px;
   padding: 16px;
@@ -130,7 +128,6 @@ article p, article pre, article ul, article ol, article img {
 
 .metadata {
   color: #AAAAAA;
-  font-family: $title_font;
   line-height: $content-line-height-multiple;
   margin-bottom: $vertical-block-separation;
 }
@@ -147,7 +144,6 @@ a.btn {
   border-radius: 8px;
   background: $bright_green;
   display: inline-block;
-  font-family: $title_font;
   padding: 8px 16px;
   text-decoration: none;
 
