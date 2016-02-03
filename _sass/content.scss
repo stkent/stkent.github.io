@@ -120,7 +120,7 @@ table td, table th {
 
 article {
   & p, & pre, & ul, & ol, & img {
-  margin-bottom: $vertical-block-separation;
+    margin-bottom: $vertical-block-separation;
   }
 }
 
