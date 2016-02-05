@@ -94,5 +94,57 @@ In the previous post, we observed that constructor parameters were documented in
 The generated documentation for `TestClassThree` introduces a third variation:
 
 <ol start="3">
-  <li>as plain text, without a fully qualified class name, when the parameter type is not user-created _or_ auto-imported.</li>
+  <li>as plain text, without a fully qualified class name, when the parameter type is not user-created <em>or</em> auto-imported.</li>
 </ol>
+
+As per the last post, the lack of a hyperlink in format 3 is straightforward to understand - since the Android `Bundle` class is not part of the collection of source files for which we are generating documentation, there's no way the `javadoc` tool could know where to link to![^1] To help us understand the difference between formats 2 and 3, let's return to the `javadoc` documentation and try to understand the "package does not exist" and "symbol not found" errors we received above.
+
+## Class Classifications
+
+The `javadoc` documentation [introduces](http://docs.oracle.com/javase/6/docs/technotes/tools/windows/javadoc.html#terminology) the following terminology to describe the different roles that can be played by Java classes during a documentation-generating run:
+
+> **documented/included classes**
+The classes and interfaces for which detailed documentation is generated during a javadoc run.
+
+> **referenced classes**
+The classes and interfaces that are explicitly referred to in the definition (implementation) or doc comments of the documented classes and interfaces.
+
+`TestClassOne`, `TestClassTwo` and `TestClassThree` are clearly examples of documented classes. What about `java.lang.String` and `android.os.Bundle`? Both are "explicitly referred to in the definition (implementation) or doc comments of the documented classes and interfaces", so both are referenced classes. However, this additional commentary regarding referenced classes gives us a clue as to why `java.lang.String` and `android.os.Bundle` are handled differently by `javadoc`:
+
+> When the Javadoc tool is run, it should load into memory all of the referenced classes in javadoc's bootclasspath and classpath. [...] The Javadoc tool can derive enough information from the .class files to determine their existence and the fully-qualified names of their members.
+
+The path stored in bootclasspath represents the location of Java's Bootstrap classes (the classes that implement the [Java platform](https://en.wikipedia.org/wiki/Java_(software_platform)#Platform)). This has default value `$JAVA_HOME/jre/lib`, which contains (among other things) compiled class files that collectively form Java's standard library. In particular, the rt.jar JAR contains a compiled String.class file.[^2]
+
+The path stored in classpath represents the location of all referenced classes that are not part of the Java platform. By default, this is an empty path (i.e. no locations are searched to locate referenced classes).
+
+## Mystery Understood
+
+We now have enough information to understand the differences between constructor parameter formats 2 and 3. Recall that we are able to inspect the command-line options passed to the `javadoc` tool for each invocation of the `docs` task by peeking at the javadoc.options file. For the current codebase, this file has the following content:
+
+{% highlight text %}
+-d '/Users/stuart/dev/personal/libraries/JavadocTests/library/build/docs/javadoc'
+-doctitle 'library API'
+-quiet 
+-windowtitle 'library API'
+'/Users/stuart/dev/personal/libraries/JavadocTests/library/src/main/java/com/github/stkent/javadoctests/package1/TestClassOne.java'
+'/Users/stuart/dev/personal/libraries/JavadocTests/library/src/main/java/com/github/stkent/javadoctests/package2/TestClassTwo.java'
+'/Users/stuart/dev/personal/libraries/JavadocTests/library/src/main/java/com/github/stkent/javadoctests/package3/TestClassThree.java'
+{% endhighlight %}
+
+which indicates that we are utilizing the default bootclasspath and classpath values. Since `java.lang.String` is part of the Bootstrap classes, the `javadoc` tool is able to determine the fully-qualified class name and uses this in the documented method signature for `TestClassOne`:
+
+{% highlight java %}
+TestClassOne(java.lang.String string)
+{% endhighlight %}
+
+However, `android.os.Bundle` is _not_ part of the (Java) Bootstrap classes, so the `javadoc` tool cannot load the class into memory and determine its fully-qualified name. This leads to the warnings we saw in the output of our `docs` task, and to the format of the documented method signature for `TestClassThree`:
+
+{% highlight java %}
+TestClassThree(Bundle bundle)
+{% endhighlight %}
+
+## Mystery Solved
+
+
+[^1]: Note that it is possible to introduce links to the documentation hosted on d.android.com with a little more configuration work - we'll address this in the next post in the series!
+[^2]: You can verify this yourself by unarchiving the `$JAVA_HOME/jre/lib/rt.jar` JAR, and navigating to the `java/lang` subfolder!
