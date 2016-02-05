@@ -145,7 +145,7 @@ TestClassThree(Bundle bundle)
 
 ## Mystery Solved
 
-Now that we know why the error occurs, the solution is but a small step away. Our goal should be to modify the classpath used by the `javadoc` tool so that it includes the compiled Android framework classes. We can achieve this by modifying our task configuration as follows:
+Now that we know why the warnings occur, the solution is but a small step away. Our goal should be to modify the classpath used by the `javadoc` tool so that it includes the compiled Android framework classes. We can achieve this by modifying our task configuration as follows:
 
 {% highlight groovy %}
 task docs(type: Javadoc) {
