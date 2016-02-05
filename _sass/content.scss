@@ -13,11 +13,11 @@ $horizontal-divider-height: 1px;
 
 html {
   overflow-y: scroll;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
   border-top: 4px solid $bright_green;
-  font-family: $content_font;
   font-weight: 300;
   font-size: 18px;
   color: $dark_green;
@@ -27,6 +27,20 @@ main {
   margin: 1.5*$vertical-block-separation auto;
   max-width: $content_width;
   padding: 0 $content_padding;
+
+  a {
+    @extend %noselect;
+
+    &:link, &:visited, &:hover, &:active {
+      color: $bright_green;
+      text-decoration: none;
+      font-weight: 400;
+    }
+
+    &:hover {
+      color: $dark_green;
+    }
+  }
 }
 
 p, pre, blockquote, ul, ol, img {
@@ -41,7 +55,6 @@ li {
 h2 {
   margin: 1.5*$vertical-block-separation 0 0.25*$vertical-block-separation 0;
   font-size: 36px;
-  font-family: $title_font;
   font-weight: 400;
 }
 
@@ -61,7 +74,6 @@ hr {
 }
 
 blockquote {
-  font-family: $title_font;
   font-style: italic;
   margin: $vertical-block-separation 16px;
   padding: 16px;
@@ -85,22 +97,6 @@ img {
 
 a {
     transition: 0.3s;
-}
-
-.main-content {
-  a {
-    @extend %noselect;
-
-    &:link, &:visited, &:hover, &:active {
-      color: $bright_green;
-      text-decoration: none;
-      font-weight: 400;
-    }
-
-    &:hover {
-      color: $dark_green;
-    }
-  }
 }
 
 table {
@@ -132,7 +128,6 @@ article p, article pre, article ul, article ol, article img {
 
 .metadata {
   color: #AAAAAA;
-  font-family: $title_font;
   line-height: $content-line-height-multiple;
   margin-bottom: $vertical-block-separation;
 }
@@ -149,7 +144,6 @@ a.btn {
   border-radius: 8px;
   background: $bright_green;
   display: inline-block;
-  font-family: $title_font;
   padding: 8px 16px;
   text-decoration: none;
 

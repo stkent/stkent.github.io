@@ -1,25 +1,18 @@
-name:        Stuart Kent
-description: Stuart Kent
-url:         http://stkent.github.io
-markdown:    kramdown
-highligher:  true
-paginate:    5
-comments:    true
-kramdown:
-  input: GFM
+name:              Stuart Kent
+description:       Stuart Kent
+url:               http://stkent.github.io
+markdown:          kramdown
+paginate:          5
+comments:          true
 excerpt_separator: "<!--more-->"
-# sass:
-#   style: :compressed
+
+kramdown:
+  input:     GFM
+  hard_wrap: false
+
+sass:
+  style: :compressed
 
 collections:
 - apps
 - presentations
-
-defaults:
-  -
-    scope:
-      path: ""
-      type: "posts"
-    values:
-      comments: "true"
-      layout: "post"

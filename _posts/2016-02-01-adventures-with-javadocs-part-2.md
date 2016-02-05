@@ -7,7 +7,7 @@ comments: true
 
 ---
 
-This is the follow-up to [Adventures with Javadocs, part 1](). If you haven't already, please go read that - this post will build on the sample project constructed there. 
+This is the follow-up to [Adventures with Javadocs, part 1]({% post_url 2016-01-28-adventures-with-javadocs-part-1 %}). If you haven't already, please go read that - this post will build on the sample project constructed there, and explore the extra configuration needed to properly handle Android framework classes.
 
 <!--more-->
 
@@ -37,7 +37,7 @@ public class TestClassThree {
 No other changes have been made yet; in particular, our `docs` task is still configured as follows:
 
 {% highlight groovy %}
-task docTask(type: Javadoc) {
+task docs(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
 }
 {% endhighlight %}
@@ -48,7 +48,7 @@ Generating Javadocs by executing this task produces all output files described i
 	<img src="" />
 </div>
 
-However, the command-line output of the `docTask` Gradle task includes some new warnings we should understand and resolve:
+However, the command-line output of the `docs` Gradle task includes some new warnings we should understand and resolve:
 
 {% highlight text %}
 /Users/stuart/dev/personal/libraries/JavadocTests/library/src/main/java/com/github/stkent/javadoctests/package3/TestClassThree.java:3: error: package android.os does not exist
@@ -97,17 +97,15 @@ The generated documentation for `TestClassThree` introduces a third variation:
   <li>as plain text, without a fully qualified class name, when the parameter type is not user-created <em>or</em> auto-imported.</li>
 </ol>
 
-As per the last post, the lack of a hyperlink in format 3 is straightforward to understand - since the Android `Bundle` class is not part of the collection of source files for which we are generating documentation, there's no way the `javadoc` tool could know where to link to![^1] To help us understand the difference between formats 2 and 3, let's return to the `javadoc` documentation and try to understand the "package does not exist" and "symbol not found" errors we received above.
+As per the last post, the lack of a hyperlink in format 3 is straightforward to understand - since the Android `Bundle` class is not part of the collection of source files for which we are generating documentation, there's no way the `javadoc` tool could know where to link to![^1] To help us understand the difference between text formats 2 and 3, let's return to the `javadoc` documentation and try to understand the "package does not exist" and "symbol not found" errors we received above.
 
 ## Class Classifications
 
 The `javadoc` documentation [introduces](http://docs.oracle.com/javase/6/docs/technotes/tools/windows/javadoc.html#terminology) the following terminology to describe the different roles that can be played by Java classes during a documentation-generating run:
 
-> **documented/included classes**
-The classes and interfaces for which detailed documentation is generated during a javadoc run.
+> **documented/included classes:** The classes and interfaces for which detailed documentation is generated during a javadoc run.
 
-> **referenced classes**
-The classes and interfaces that are explicitly referred to in the definition (implementation) or doc comments of the documented classes and interfaces.
+> **referenced classes:** The classes and interfaces that are explicitly referred to in the definition (implementation) or doc comments of the documented classes and interfaces.
 
 `TestClassOne`, `TestClassTwo` and `TestClassThree` are clearly examples of documented classes. What about `java.lang.String` and `android.os.Bundle`? Both are "explicitly referred to in the definition (implementation) or doc comments of the documented classes and interfaces", so both are referenced classes. However, this additional commentary regarding referenced classes gives us a clue as to why `java.lang.String` and `android.os.Bundle` are handled differently by `javadoc`:
 
@@ -115,11 +113,11 @@ The classes and interfaces that are explicitly referred to in the definition (im
 
 The path stored in bootclasspath represents the location of Java's Bootstrap classes (the classes that implement the [Java platform](https://en.wikipedia.org/wiki/Java_(software_platform)#Platform)). This has default value `$JAVA_HOME/jre/lib`, which contains (among other things) compiled class files that collectively form Java's standard library. In particular, the rt.jar JAR contains a compiled String.class file.[^2]
 
-The path stored in classpath represents the location of all referenced classes that are not part of the Java platform. By default, this is an empty path (i.e. no locations are searched to locate referenced classes).
+The path stored in classpath represents the location of all referenced classes that are not part of the Java platform. By default, this is an empty path (i.e. no locations are searched to locate additional referenced classes).
 
 ## Mystery Understood
 
-We now have enough information to understand the differences between constructor parameter formats 2 and 3. Recall that we are able to inspect the command-line options passed to the `javadoc` tool for each invocation of the `docs` task by peeking at the javadoc.options file. For the current codebase, this file has the following content:
+We now have enough information to understand the differences between constructor parameter text formats 2 and 3. Recall that we are able to inspect the command-line options passed to the `javadoc` tool for each invocation of the `docs` task by peeking at the javadoc.options file. For the current codebase, this file has the following content:
 
 {% highlight text %}
 -d '/Users/stuart/dev/personal/libraries/JavadocTests/library/build/docs/javadoc'
@@ -137,7 +135,7 @@ which indicates that we are utilizing the default bootclasspath and classpath va
 TestClassOne(java.lang.String string)
 {% endhighlight %}
 
-However, `android.os.Bundle` is _not_ part of the (Java) Bootstrap classes, so the `javadoc` tool cannot load the class into memory and determine its fully-qualified name. This leads to the warnings we saw in the output of our `docs` task, and to the format of the documented method signature for `TestClassThree`:
+However, `android.os.Bundle` is _not_ part of the (Java) Bootstrap classes, so the `javadoc` tool cannot load the class into memory and determine its fully-qualified name. This leads to the warnings we saw in the output of our `docs` task, and to the text format of the documented method signature for `TestClassThree`:
 
 {% highlight java %}
 TestClassThree(Bundle bundle)
@@ -145,6 +143,24 @@ TestClassThree(Bundle bundle)
 
 ## Mystery Solved
 
+Now that we know why the error occurs, the solution is but a small step away. Our goal should be to modify the classpath used by the `javadoc` tool so that it includes the compiled Android framework classes. We can achieve this by modifying our task configuration as follows:
+
+{% highlight groovy %}
+task docs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath = files(((Object) android.bootClasspath.join(File.pathSeparator)))
+}
+{% endhighlight %}
+
+This addition uses the `bootClassPath` property that is conveniently exposed by the Android Gradle plugin to locate the appropriate Android classes. Re-running the `docs` task using this configuration results in no warnings, and a documented method signature for `TestClassThree` whose format now matches that of `TestClassOne`:
+
+{% highlight java %}
+TestClassThree(android.os.Bundle bundle)
+{% endhighlight %}
+
+## Next Time
+
+Up next: handling third-party dependencies!
 
 [^1]: Note that it is possible to introduce links to the documentation hosted on d.android.com with a little more configuration work - we'll address this in the next post in the series!
 [^2]: You can verify this yourself by unarchiving the `$JAVA_HOME/jre/lib/rt.jar` JAR, and navigating to the `java/lang` subfolder!
