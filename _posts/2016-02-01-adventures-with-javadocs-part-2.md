@@ -166,5 +166,5 @@ The code for this portion of the post is available [here](https://github.com/stk
 
 Up next: handling third-party dependencies!
 
-[^1]: Note that it is possible to introduce links to the documentation hosted on d.android.com with a little more configuration work - we'll address this in the next post in the series!
+[^1]: Note that it is possible to introduce links to the documentation hosted on d.android.com with a little more configuration work - we'll address this in a later post in the series!
 [^2]: You can verify this yourself by unarchiving the `$JAVA_HOME/jre/lib/rt.jar` JAR, and navigating to the `java/lang` subfolder!
