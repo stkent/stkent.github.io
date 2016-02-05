@@ -74,6 +74,8 @@ import android.os.Bundle;
 BUILD SUCCESSFUL
 {% endhighlight %}
 
+The code for this portion of the post is available [here](https://github.com/stkent/javadoc-tests/tree/9e9125850ba13b7988ac5105fe826cccd6a2f681).
+
 ## Generated Documentation
 
 Here's the summary generated for `TestClassThree`:
@@ -157,6 +159,8 @@ This addition uses the `bootClassPath` property that is conveniently exposed by 
 {% highlight java %}
 TestClassThree(android.os.Bundle bundle)
 {% endhighlight %}
+
+The code for this portion of the post is available [here](https://github.com/stkent/javadoc-tests/tree/806e5bfcad8000949bfa5158ecc9b0a90f6b377a).
 
 ## Next Time
 
