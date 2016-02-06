@@ -17,3 +17,5 @@ collections:
 - apps
 - libraries
 - presentations
+
+gems: [jekyll-paginate]
