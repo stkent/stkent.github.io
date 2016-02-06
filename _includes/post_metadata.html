@@ -1,4 +1,4 @@
 <div class='metadata'>
-    <i class="fa fa-tags"></i> {% for tag in include.tags %}{{ tag }} {% endfor %}&nbsp;
-    <i class="fa fa-calendar"></i> {{ include.date | date: "%B %-d, %Y" }}
+  <i class="fa fa-calendar"></i> {{ include.date | date: "%B %-d, %Y" }}&nbsp;
+  <i class="fa fa-tags"></i> {% for tag in include.tags %}{{ tag }} {% endfor %}
 </div>
