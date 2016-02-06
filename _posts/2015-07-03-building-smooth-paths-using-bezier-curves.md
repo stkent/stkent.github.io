@@ -71,9 +71,9 @@ where $t$ ranges between $0$ and $1$, and $c\_{i,0} \in \mathbb{R}^m$ and $c\_{i
 
 For any given collection of knots, we aim to compute control points that guarantee the composite curve $\Gamma$ formed by connecting all the individual B&eacute;zier curves $\Gamma_i$ satisfies the following conditions:
 
-- $ \Gamma $ is twice-differentiable everywhere;
+- $\Gamma$ is twice-differentiable everywhere;
 
-- $ \Gamma $ satisfies natural boundary conditions (i.e. $\Gamma'' = 0$ at each end).
+- $\Gamma$ satisfies natural boundary conditions (i.e. $\Gamma'' = 0$ at each end).
 
 Each $\Gamma_i$ is clearly $ C^\infty $ away from the endpoints $k_i$ and $k_{i+1}$, so the first condition above is equivalent to requiring that $\Gamma$ be twice-differentiable at every knot.
 
