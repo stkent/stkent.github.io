@@ -5,9 +5,9 @@ title: Posts
 ---
 
 {% for post in paginator.posts %}
-  <h2>
+  <h1>
     {{ post.title }}
-  </h2>
+  </h1>
   {% include post_metadata.html date=post.date tags=post.tags %}
 
   <p>{{ post.excerpt }}</p>

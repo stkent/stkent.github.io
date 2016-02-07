@@ -17,7 +17,7 @@ As the name suggests, `PathInterpolatorCompat` is a utility for creating [`Path`
 * understand the role of `PathInterpolatorCompat` in the Android ecosystem;
 * build a `Path`-based interpolator!
 
-## Paths
+# Paths
 
  If it's been a while since you worked with a `Path`, here's the snappy definition from the docs:
 
@@ -96,7 +96,7 @@ and the corresponding output:
 
 Hopefully it's clear that we can make super-general graphics using `Path`. However, this also means that we shouldn't expect to be able to convert _every_ `Path` into a valid interpolator. To figure out the appropriate constraints, let's take a peek at some Android source code.
 
-## Interpolators &harr; Functions
+# Interpolators &harr; Functions
 
 The (abbreviated) source code for the `TimeInterpolator` interface below explains that an Android interpolator is nothing more than a function mapping the closed interval $[0,1]$ to the real numbers $\mathbb{R}$:
 
@@ -118,7 +118,7 @@ public interface TimeInterpolator {
 
 Armed with this context, the [wordy restrictions](https://developer.android.com/reference/android/view/animation/PathInterpolator.html) placed on Paths passed as arguments to the `PathInterpolator(Path path)` and `PathInterpolatorCompat(Path path)` constructors become a little less mysterious - we just have to make sure our `Path` corresponds to the graph of some function $f$ satisfying $f(0) = 0$ and $f(1) = 1$.[^1]
 
-## Function Representations
+# Function Representations
 
 In general, a function $g(x)$ can be represented in one of three ways:
 
@@ -177,7 +177,7 @@ However, there are also some significant drawbacks:
 
 `PathInterpolatorCompat` addresses the limitations above by allowing us first to design our interpolator **graphically** (an intuitive method, since most interpolators are used to generate animations), and then to represent this interpolator in code using the ["natural language"](http://en.wikipedia.org/wiki/Natural_language_programming) methods provided by the `Path` class.
 
-## Using PathInterpolatorCompat
+# Using PathInterpolatorCompat
 
 Great; we've figured out why `PathInterpolatorCompat` exists and which Paths we can convert into interpolators! Let's give it a spin.
 
@@ -206,7 +206,7 @@ I like this. It's short and fairly readable.
 
 Imagine trying to create this same interpolator by explicitly implementing `getInterpolation` for a general odd $n$. I'd wager that (a) computing the appropriate expression(s) would take you a while, and (b) the resulting algebraic representation could either be compact, or readable, but not both. (Consider this an invitation to prove me wrong in the comments.)
 
-## What Next?
+# What Next?
 
 Go forth and explore `Path`-based interpolators! Hopefully this introduction has given you some inspiration. There are definitely many areas to investigate still, including:
 
@@ -218,7 +218,7 @@ Go forth and explore `Path`-based interpolators! Hopefully this introduction has
 
 I plan to address each of these topics in posts, and then tie them all together to form the basis of an overhauled Interpolator Maker. Stay tuned...
 
-## Further Reading
+# Further Reading
 
 The Android framework has some interesting internal interpolators. For a more complex algebraic interpolator based on fluid physics, check out `ViscousFluidInterpolator`, an inner class of [`android.widget.Scroller`](https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/core/java/android/widget/Scroller.java) used to animate flings.
 

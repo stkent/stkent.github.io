@@ -52,15 +52,15 @@ li {
   margin-left: 6%;
 }
 
-h2 {
+h1 {
   margin: 1.5*$vertical-block-separation 0 0.25*$vertical-block-separation 0;
   font-size: 36px;
   font-weight: 400;
 }
 
-h3 {
+h2 {
   margin: 1.25*$vertical-block-separation 0 0.25*$vertical-block-separation 0;
-  @extend h2;
+  @extend h1;
   font-size: 24px;
 }
 

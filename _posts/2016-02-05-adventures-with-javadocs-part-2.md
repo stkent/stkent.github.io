@@ -11,7 +11,7 @@ This is the follow-up to [Adventures with Javadocs, part 1]({% post_url 2016-01-
 
 <!--more-->
 
-## Introducing Android Framework Classes
+# Introducing Android Framework Classes
 
 Let's add a third test class to our project, again in a separate package:
 
@@ -76,7 +76,7 @@ BUILD SUCCESSFUL
 
 The code for this portion of the post is available [here](https://github.com/stkent/javadoc-tests/tree/9e9125850ba13b7988ac5105fe826cccd6a2f681).
 
-## Generated Documentation
+# Generated Documentation
 
 Here's the summary generated for `TestClassThree`:
 
@@ -101,7 +101,7 @@ The generated documentation for `TestClassThree` introduces a third variation:
 
 As per the last post, the lack of a hyperlink in format 3 is straightforward to understand - since the Android `Bundle` class is not part of the collection of source files for which we are generating documentation, there's no way the `javadoc` tool could know where to link to![^1] To help us understand the difference between text formats 2 and 3, let's return to the `javadoc` documentation and try to understand the "package does not exist" and "symbol not found" errors we received above.
 
-## Class Classifications
+# Class Classifications
 
 The `javadoc` documentation [introduces](http://docs.oracle.com/javase/6/docs/technotes/tools/windows/javadoc.html#terminology) the following terminology to describe the different roles that can be played by Java classes during a documentation-generating run:
 
@@ -117,7 +117,7 @@ The path stored in bootclasspath represents the location of Java's Bootstrap cla
 
 The path stored in classpath represents the location of all referenced classes that are not part of the Java platform. By default, this is an empty path (i.e. no locations are searched to locate additional referenced classes).
 
-## Mystery Understood
+# Mystery Understood
 
 We now have enough information to understand the differences between constructor parameter text formats 2 and 3. Recall that we are able to inspect the command-line options passed to the `javadoc` tool for each invocation of the `docs` task by peeking at the javadoc.options file. For the current codebase, this file has the following content:
 
@@ -143,7 +143,7 @@ However, `android.os.Bundle` is _not_ part of the (Java) Bootstrap classes, so t
 TestClassThree(Bundle bundle)
 {% endhighlight %}
 
-## Mystery Solved
+# Mystery Solved
 
 Now that we know why the warnings occur, the solution is but a small step away. Our goal should be to modify the classpath used by the `javadoc` tool so that it includes the compiled Android framework classes. We can achieve this by modifying our task configuration as follows:
 
@@ -162,7 +162,7 @@ TestClassThree(android.os.Bundle bundle)
 
 The code for this portion of the post is available [here](https://github.com/stkent/javadoc-tests/tree/806e5bfcad8000949bfa5158ecc9b0a90f6b377a).
 
-## Next Time
+# Next Time
 
 Up next: handling third-party dependencies!
 

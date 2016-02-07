@@ -14,7 +14,7 @@ tags: android, animation, math
 
 We'll start with the simplest possible case, and generalize from there.
 
-## $n$ = 2
+# $n$ = 2
 
 This one's a gimme - we can use `Path.lineTo(...)` to connect the two given points with a straight line. While not very exciting, this curve does satisfy the smoothness condition since there are definitely no corners!
 
@@ -22,7 +22,7 @@ This one's a gimme - we can use `Path.lineTo(...)` to connect the two given poin
 	<img src="/assets/images/building-smooth-paths-using-bezier-curves-2-point.png" width="30%" />
 </div>
 
-## $n$ > 2
+# $n$ > 2
 
 When given more than two distinct points, it's no longer possible to connect them smoothly using straight lines only[^1]:
 
@@ -32,7 +32,7 @@ When given more than two distinct points, it's no longer possible to connect the
 
 We instead need to build our `Path` from components with a greater number of degrees of freedom. In particular, we need to be able to specify both the end point positions **and** one or more derivatives of each component at those end points. That way, we can be sure that the composite curve created by joining together all our components will be smooth at the joins.
 
-### Enter Cubic B&eacute;zier Curves
+## Enter Cubic B&eacute;zier Curves
 
 Most of you will have played with B&eacute;zier curves before in consumer graphics programs. They are usually constructed in two steps:
 
@@ -57,7 +57,7 @@ and not like this:
 
 Most of the rest of this post is dedicated to figuring out how to choose the 'right' control points for arbitrary given end points (aka _knots_ in B&eacute;zier curve lingo). It's not too hairy - there's a lot of algebra, sure, but because cubic B&eacute;zier curves can be represented as polynomials[^2], the numbers work out nicely :). The language is fairly formal so that I can refer back to the derivations with confidence in the future. If you're really not keen on math, you can skip ahead to the [results section](#results) now.
 
-## Notation
+# Notation
 
 Let $\lbrace k_i \in \mathbb{R}^m : i \in 0,\ldots,n \rbrace$ represent a collection of $n+1$ knots.
 
@@ -67,7 +67,7 @@ $$ \Gamma_i(t) = (1-t)^3 k_i + 3(1-t)^2 t c_{i,0} + 3(1-t) t^2 c_{i,1} + t^3 k_{
 
 where $t$ ranges between $0$ and $1$, and $c\_{i,0} \in \mathbb{R}^m$ and $c\_{i,1} \in \mathbb{R}^m$ are the intermediate control points that determine the curvature of $\Gamma_i$.
 
-## Formal Goal
+# Formal Goal
 
 For any given collection of knots, we aim to compute control points that guarantee the composite curve $\Gamma$ formed by connecting all the individual B&eacute;zier curves $\Gamma_i$ satisfies the following conditions:
 
@@ -78,7 +78,7 @@ Each $\Gamma_i$ is clearly $ C^\infty $ away from the endpoints $k_i$ and $k_{i+
 
 The second condition is applied to fully specify the problem, leading to a unique solution and making calculations simpler.
 
-## Derivation
+# Derivation
 
 Note that
 
@@ -158,7 +158,7 @@ $$ c_{i,1} = 2k_{i+1} - c_{i+1,0} \text{ for } i \in \lbrace 0,\ldots,n-2 \rbrac
 
 $$ c_{n-1,1} = \frac{1}{2}\left[ k_n + c_{n-1,0} \right]. $$
 
-## Implementation
+# Implementation
 
 The following Android/Java code uses Thomas' Algorithm to compute appropriate control points and accomplish our original goal:
 
@@ -377,7 +377,7 @@ public class EPointF {
 }
 {% endhighlight %}
 
-## Results
+# Results
 
 To test this implementation, I generated random points inside the square $[0,1]\times[0,1]$ and plotted the corresponding path returned by `PolyBezierPathUtil. computePathThroughKnots(...)`. Here are a couple of examples with $n$ = 6 to convince you that everything works as expected:
 
@@ -388,7 +388,7 @@ To test this implementation, I generated random points inside the square $[0,1]\
 
 The calculations and code in this post are not particularly groundbreaking. However, both are necessary foundations for the next post in this series, in which we will use the smooth Paths calculated above to make some slick custom interpolators. Stay tuned...
 
-## Further Reading
+# Further Reading
 
 A pleasing geometrical presentation of composite B&eacute;zier curves is provided by [these lecture notes](/assets/pdfs/UCLA-Math-149-Mathematics-of-Computer-Graphics-lecture-notes.pdf) from UCLA's Math 149: Mathematics of Computer Graphics course.
 

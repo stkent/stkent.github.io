@@ -13,7 +13,7 @@ Part of publishing high-quality libraries is providing high-quality documentatio
 
 <!--more-->
 
-## Javadoc Task Type Basics
+# Javadoc Task Type Basics
 
 The Gradle Java plugin provides a [template Javadoc task](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.javadoc.Javadoc.html) with the following description:
 
@@ -96,7 +96,7 @@ which produces the following output files:
 
 Note in particular that the directory structure of the generated website matches the package structure of the original source files. For example, the class `TestClassOne` is part of the `com.github.stkent.javadoctests.package1` package, and its corresponding documentation page is inside the com/github/stkent/javadoctests/package1 subdirectory of the generated website.
 
-## Generated Documentation
+# Generated Documentation
 
 Before proceeding, I'd like to review a pair of sample pages from this output. This will provide some important context for the next post in this series.
 
@@ -120,7 +120,7 @@ import com.github.stkent.javadoctests.package1.TestClassOne;
 
 On the other hand, because the Java `String` type is not part of the source we provided to the `docs` task, the `javadoc` tool has no way of determining an equivalent hyperlink target to use for the `TestClassOne` constructor parameter type.
 
-## Under The Hood
+# Under The Hood
 
 Gradle's Javadoc task type acts as a wrapper around the command-line `javadoc` tool included with every JDK. To locate yours, run `which javadoc` from the command line (the path to this file should match your `JAVA_HOME` environment variable, if set):
 
