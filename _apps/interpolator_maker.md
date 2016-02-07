@@ -1,6 +1,6 @@
 ---
 title: Interpolator Maker
-platform: Android 4.1+
+platform: Android
 date_range: February 2014
 store_url: https://play.google.com/store/apps/details?id=com.detroitlabs.interpolatormaker&hl=en
 relative_img_urls:

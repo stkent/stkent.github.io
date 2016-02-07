@@ -1,6 +1,6 @@
 ---
 title: DTE Energy
-platform: Android 2.3.3+
+platform: Android
 date_range: March 2014 - July 2014
 store_url: https://play.google.com/store/apps/details?id=com.dteenergy.mydte&hl=en
 relative_img_urls:
