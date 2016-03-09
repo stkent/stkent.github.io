@@ -1,13 +1,11 @@
 name:              Stuart Kent
 description:       Stuart Kent
 url:               http://stkent.github.io
-markdown:          kramdown
 paginate:          5
 comments:          true
 excerpt_separator: "<!--more-->"
 
 kramdown:
-  input:     GFM
   hard_wrap: false
 
 sass:
