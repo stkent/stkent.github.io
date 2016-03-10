@@ -1,0 +1,13 @@
+<h1>
+  {{ include.title }}
+</h1>
+
+{% if include.metadata %}
+  <div class='metadata'>
+    {{ include.metadata }}
+  </div>
+{% endif %}
+
+{{ include.summary }}
+
+{% if include.slides_url %}<a href="{{ include.slides_url }}" class="btn">Slides</a>{% endif %}

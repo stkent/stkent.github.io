@@ -147,6 +147,9 @@ a.btn {
   padding: 8px 16px;
   text-decoration: none;
 
+  /* TODO: fix button styles, and remove this hack designed to make talk summary buttons look ok */
+  line-height: 1.0;
+
   &:link, &:visited, &:hover, &:active {
     color: $white;
   }
