@@ -2,7 +2,7 @@
 layout: post
 title: Self Conference 2016
 author: Stuart Kent
-tags: conferences
+tags: android, conferences, ios, video
 comments: true
 
 ---
