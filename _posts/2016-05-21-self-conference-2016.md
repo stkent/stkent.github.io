@@ -11,6 +11,8 @@ comments: true
 
 {% include youtube.html video_id="fKSqMsCTDiI" %}
 
+<!--more-->
+
 I also took this opportunity to upload all my previous tech talks to [Speaker Deck](https://speakerdeck.com/stkent), and to revamp my [Talks]({{ site.baseurl }}/talks) page to show:
 
 - an embedded video of the talk, if available;
