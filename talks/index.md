@@ -5,9 +5,9 @@ title: Talks
 ---
 
 {% for talk in site.talks %}
-  {% capture formatted_talk_date %}
+  {% capture talk_display_date %}
     <i class="fa fa-calendar"></i> {{ talk.date | date: "%B %Y" }}
   {% endcapture %}
-  {% include talk_summary.html title=talk.title summary=talk.content metadata=formatted_talk_date slides_url=talk.slides_url %}
+  {% include talk_summary.html talk=talk talk_display_date=talk_display_date %}
   <hr />
 {% endfor %}

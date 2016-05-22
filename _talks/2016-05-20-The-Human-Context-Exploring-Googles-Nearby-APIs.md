@@ -1,7 +1,8 @@
 ---
-title: "The Human Context&#58; Exploring Google's Nearby APIs"
+title: "The Human Context"
 date: May 2016
-slides_url: /assets/pdfs/2016_05_20-The_Human_Context_Exploring_Googles_Nearby_APIs-Self_Conference.pdf
+youtube_video_id: "fKSqMsCTDiI"
+speakerdeck_link_name: "the-human-context-exploring-googles-nearby-api"
 
 ---
 

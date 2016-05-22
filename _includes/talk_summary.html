@@ -1,13 +1,21 @@
 <h1>
-  {{ include.title }}
+  {{ include.talk.title }}
 </h1>
 
-{% if include.metadata %}
+{% if include.talk_display_date %}
   <div class='metadata'>
-    {{ include.metadata }}
+    {{ include.talk_display_date }}
   </div>
 {% endif %}
 
-{{ include.summary }}
+{% if include.talk.youtube_video_id %}
+  {% include youtube.html video_id=include.talk.youtube_video_id %}
+{% else %}
+  {% include speakerdeck.html data_id=include.talk.speakerdeck_data_id %}
+{% endif %}
 
-{% if include.slides_url %}<a href="{{ include.slides_url }}" class="btn">Slides</a>{% endif %}
+<a href="https://speakerdeck.com/stkent/{{ include.talk.speakerdeck_link_name }}" class="btn">View on Speaker Deck</a>
+
+{{ include.talk.content }}
+
+{% if include.talk.slides_url %}<a href="{{ include.slides_url }}" class="btn">Slides</a>{% endif %}
