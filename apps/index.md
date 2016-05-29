@@ -20,9 +20,3 @@ title: Apps
 {% endfor %}
 
 {% include jquery.html %}
-
-<script type = "text/javascript">
-   $(function(){
-      $("p").hide()
-   });
-</script>
