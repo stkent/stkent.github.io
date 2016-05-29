@@ -17,3 +17,5 @@ collections:
 - talks
 
 gems: [jekyll-paginate]
+
+jquery_version: "2.2.4"

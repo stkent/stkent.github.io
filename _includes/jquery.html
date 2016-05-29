@@ -1,0 +1,7 @@
+<script src="https://code.jquery.com/jquery-{{ site.jquery_version }}.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous">
+</script>
+<script type="text/javascript">
+  if (typeof jQuery == 'undefined') {
+      document.write(unescape("%3Cscript src='{{ site.baseurl }}/jquery/jquery-{{ site.jquery_version }}.min.js' %3E%3C/script%3E"));
+  }
+</script>

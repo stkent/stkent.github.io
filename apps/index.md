@@ -18,3 +18,11 @@ title: Apps
   </div>
   <hr />
 {% endfor %}
+
+{% include jquery.html %}
+
+<script type = "text/javascript">
+   $(function(){
+      $("p").hide()
+   });
+</script>
