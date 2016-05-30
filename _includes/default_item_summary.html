@@ -1,13 +1,11 @@
-<h1>
-  <a href="{{ include.url }}">
-    {{ include.title }}
-  </a>
-</h1>
-
-<div class='metadata'>
-  {{ include.metadata }}
+<div style="display: flex; flex-wrap: nowrap; align-items: center">
+  <img src="{{ include.relative_logo_url }}" width="25%" style="max-width: 125px" />
+  <div style="flex-grow: 1; margin-left: 16px">
+    <h1>{{ include.title }}</h1>
+    <div class='metadata'>
+      {{ include.metadata }}
+    </div>
+  </div>
 </div>
-
-<div class="primary-content">
-  {{ include.summary }}
-</div>
+{{ include.content }}
+<a href="{{ include.action_url }}" class="btn">{{ include.action_label }}</a>

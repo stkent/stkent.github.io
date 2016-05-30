@@ -4,17 +4,15 @@ title: Apps
 
 ---
 {% for app in site.apps %}
-<!-- TODO: refactor this into a separate include -->
-  <div style="display: flex; flex-wrap: nowrap; align-items: center">
-    <img src="{{ app.relative_logo_url }}" width="25%" style="max-width: 125px" />
-    <div style="flex-grow: 1; margin-left: 16px">
-      <h1>{{ app.title }} <i class="fa fa-android"></i></h1> <!-- TODO: icon should be conditional -->
-      <div class='metadata'>
-        <i class="fa fa-calendar"></i> {{ app.date_range }}<br />
-      </div>
-    </div>
-  </div>
-  {{ app.content }}
-  <a href="{{ app.store_url }}" class="btn">Store Page</a>
+  {% capture decorated_title %}{{ app.title }}{% if app.platform == "Android" %} <i class="fa fa-android"></i>{% endif %}{% endcapture %}
+  {% capture decorated_date_range %}<i class="fa fa-calendar"></i> {{ app.date_range }}{% endcapture %}
+
+  {% include default_item_summary.html
+    relative_logo_url=app.relative_logo_url
+    title=decorated_title
+    metadata=decorated_date_range
+    content=app.content
+    action_url=app.store_url
+    action_label="Store Page" %}
   <hr />
 {% endfor %}
