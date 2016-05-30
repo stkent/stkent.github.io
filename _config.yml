@@ -8,8 +8,8 @@ excerpt_separator: "<!--more-->"
 kramdown:
   hard_wrap: false
 
-sass:
-  style: :compressed
+# sass:
+#   style: :compressed
 
 collections:
 - apps

@@ -9,9 +9,9 @@ title: Posts
     {{ post.title }}
   </h1>
   {% include post_metadata.html date=post.date tags=post.tags %}
-
-  <p>{{ post.excerpt }}</p>
-
+  <div class="primary-content">
+    <p>{{ post.excerpt }}</p>
+  </div>
   <a href="{{ post.url }}" class="btn">Continue Reading</a>
   <hr />
 {% endfor %}

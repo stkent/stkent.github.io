@@ -53,15 +53,15 @@ li {
 }
 
 h1 {
-  margin: 1.5*$vertical-block-separation 0 0.25*$vertical-block-separation 0;
+  margin: 0;
   font-size: 36px;
   font-weight: 400;
 }
 
 h2 {
-  margin: 1.25*$vertical-block-separation 0 0.25*$vertical-block-separation 0;
-  @extend h1;
+  margin: 0;
   font-size: 24px;
+  font-weight: 400;
 }
 
 hr {
@@ -96,14 +96,14 @@ img {
 }
 
 a {
-    transition: 0.3s;
+  transition: 0.3s;
 }
 
 table {
   border-collapse: collapse;
   border-style: hidden;
-  margin-left:auto;
-  margin-right:auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 table td, table th {
@@ -120,40 +120,45 @@ table td, table th {
    with custom margin-bottom. */
 .video-container {
   margin: $vertical-block-separation 0;
-  position:relative;
-  padding-bottom:56.25%;
-  padding-top:30px;
-  height:0;
-  overflow:hidden;
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
 }
 
 /* From https://coolestguidesontheplanet.com/videodrome/youtube/ */
 .video-container iframe, .video-container object, .video-container embed {
   position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /*------------------------------------------------------------------------------
   Post content
 ------------------------------------------------------------------------------*/
 
-article {
+// TODO: rename this to something more representative
+.primary-content {
   & p, & pre, & ul, & ol, & img {
+    margin-top: $vertical-block-separation;
     margin-bottom: $vertical-block-separation;
   }
-}
 
-article p, article pre, article ul, article ol, article img {
-  margin-top: $vertical-block-separation;
+  & h1 {
+      margin: 1.5*$vertical-block-separation 0 0 0;
+  }
+
+  & h2 {
+      margin: 1.25*$vertical-block-separation 0 0 0;
+  }
 }
 
 .metadata {
   color: #AAAAAA;
   line-height: $content-line-height-multiple;
-  margin-bottom: $vertical-block-separation;
 }
 
 .separator {
