@@ -45,7 +45,7 @@ task docs(type: Javadoc) {
 Generating Javadocs by executing this task produces all output files described in the last post, as well as these by-now-predictable additions:
 
 <div class="image-container">
-	<img src="" />
+	<img src="/assets/images/javadoc-tool-task-extra-output-package3.png" />
 </div>
 
 However, the command-line output of the `docs` Gradle task includes some new warnings we should understand and resolve:
