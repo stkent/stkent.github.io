@@ -21,7 +21,7 @@ However, executing this function when using a device running Android Nougat resu
 
 # Background
 
-The output of the adb shell's screencap utility is known to be somewhat funky on older (read: pre-Nougat) versions of Android. In particular, "adb shell" performs an automatic [line feed (LF) to {carriage return (CR) + line feed (LF)}](http://stackoverflow.com/a/13593914/2911458) conversion. This can be observed by capturing a “naive” screenshot (no [perl sanitization]((http://blog.shvetsov.com/2013/02/grab-android-screenshot-to-computer-via.html))):
+The output of the adb shell's screencap utility is known to be somewhat funky on older (read: pre-Nougat) versions of Android. In particular, "adb shell" performs an automatic [line feed (LF) to {carriage return (CR) + line feed (LF)}](http://stackoverflow.com/a/13593914/2911458) conversion. This can be observed by capturing a “naive” screenshot (no [perl sanitization](http://blog.shvetsov.com/2013/02/grab-android-screenshot-to-computer-via.html)):
 
 {% highlight bash %}
 adb shell screencap -p > "screenshot.png"
