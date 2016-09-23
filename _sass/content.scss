@@ -13,13 +13,12 @@ $horizontal-divider-height: 1px;
 
 html {
   overflow-y: scroll;
-  font-family: "Roboto", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 body {
   border-top: 4px solid $bright_green;
-  font-weight: 300;
-  font-size: 18px;
+  font-size: 17px;
   color: $dark_green;
 }
 
@@ -34,7 +33,6 @@ main {
     &:link, &:visited, &:hover, &:active {
       color: $bright_green;
       text-decoration: none;
-      font-weight: 400;
     }
 
     &:hover {
@@ -55,13 +53,11 @@ li {
 h1 {
   margin: 0;
   font-size: 36px;
-  font-weight: 400;
 }
 
 h2 {
   margin: 0;
   font-size: 24px;
-  font-weight: 400;
 }
 
 hr {
