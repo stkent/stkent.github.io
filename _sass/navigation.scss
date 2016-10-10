@@ -20,6 +20,17 @@ $standard_nav_item_margin: 24px;
   display: inline;
   font-size: 36px;
   font-weight: 300;
+
+  a {
+    &:link, &:visited, &:hover, &:active {
+      color: $bright_green;
+      text-decoration: none;
+    }
+
+    &:hover {
+      color: $white;
+    }
+  }
 }
 
 .content-width-navigation-container {
