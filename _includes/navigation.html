@@ -1,9 +1,11 @@
+<div class="full-width-title-container">
+    <div class="content-width-title-container">
+        <div class="title">Stuart Kent</div><div class="subtitle">on Software</div>
+    </div>
+</div>
 <div class="full-width-navigation-container">
     <div class="content-width-navigation-container">
-        <div class="page-title">
-            {{ site.name }} &nbsp; <a href="https://stkent.github.io/feed.xml"><i class="fa fa-rss" aria-hidden="true"></i></a>
-        </div>
-        <nav>
+        <div class="primary-navigation">
             {% for navigation_entry in site.data.navigation %}
 
                 {% if page.title != navigation_entry.title %}
@@ -13,6 +15,13 @@
                 {% endif %}
 
             {% endfor %}
-        </nav>
+        </div>
+
+        <div class="secondary-navigation">
+            <li><a href="//twitter.com/skentphd"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="//stackoverflow.com/users/2911458/stkent?tab=profile"><i class="fa fa-stack-overflow" aria-hidden="true"></i></a></li>
+            <li><a href="//github.com/stkent"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+            <li><a href="{{ site.baseurl }}/feed.xml"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+        </div>
     </div>
 </div>
