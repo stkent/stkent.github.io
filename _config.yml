@@ -1,21 +1,41 @@
-name:              Stuart Kent on Software
-description:       Blog posts and projects, focused on Android and iOS apps.
-url:               http://www.stkent.com
-paginate:          5
-comments:          true
-excerpt_separator: "<!--more-->"
+# Build
 
+gems:
+  - jekyll-paginate
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+
+markdown: kramdown
 kramdown:
   hard_wrap: false
 
-# sass:
-#   style: :compressed
+jquery_version: "2.2.4"
+
+sass:
+  style: :compressed
+
+# Site
+
+title:       Stuart Kent on Software
+description: Blog posts and projects, focused on Android and iOS apps.
+url:         http://www.stkent.com
+baseurl:     ""
+
+# Author
+
+twitter_username:       skentphd
+github_username:        stkent
+stack_overflow_user_id: 2911458
+
+# Content
+
+paginate:          5
+comments:          true
+excerpt_separator: <!--more-->
 
 collections:
-- apps
-- libraries
-- talks
-
-gems: [jekyll-paginate]
-
-jquery_version: "2.2.4"
+  - apps
+  - libraries
+  - talks

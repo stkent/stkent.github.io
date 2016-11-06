@@ -18,10 +18,10 @@
         </div>
 
         <div class="secondary-navigation">
-            <li><a href="//twitter.com/skentphd"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-            <li><a href="//stackoverflow.com/users/2911458/stkent?tab=profile"><i class="fa fa-stack-overflow" aria-hidden="true"></i></a></li>
-            <li><a href="//github.com/stkent"><i class="fa fa-github" aria-hidden="true"></i></a></li>
-            <li><a href="{{ site.baseurl }}/feed.xml"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+            <li><a href="//twitter.com/{{ site.twitter_username }}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="//stackoverflow.com/users/{{ site.stack_overflow_user_id }}?tab=profile"><i class="fa fa-stack-overflow" aria-hidden="true"></i></a></li>
+            <li><a href="//github.com/{{ site.github_username }}"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+            <li><a href="{{ 'feed.xml' | relative_url }}"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
         </div>
     </div>
 </div>
