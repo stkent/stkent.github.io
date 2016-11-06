@@ -1,6 +1,6 @@
-name:              Stuart Kent
-description:       Stuart Kent
-url:               http://stkent.github.io
+name:              Stuart Kent on Software
+description:       Blog posts and projects, focused on Android and iOS apps.
+url:               http://www.stkent.com
 paginate:          5
 comments:          true
 excerpt_separator: "<!--more-->"
