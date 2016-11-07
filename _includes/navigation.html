@@ -8,10 +8,10 @@
         <div class="primary-navigation">
             {% for navigation_entry in site.data.navigation %}
 
-                {% if page.title != navigation_entry.title %}
-                    <li><a href="{{ navigation_entry.href }}">{{ navigation_entry.title }}</a></li>
-                {% else %}
+                {% if page.title == navigation_entry.title %}
                     <li>{{ navigation_entry.title }}</li>
+                {% else %}
+                    <li><a href="{{ navigation_entry.url }}">{{ navigation_entry.title }}</a></li>
                 {% endif %}
 
             {% endfor %}

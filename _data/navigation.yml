@@ -1,14 +1,14 @@
 - title: "Posts"
-  href: "/"
+  url: "/"
 
 - title: "Apps"
-  href: "/apps/"
+  url: "/apps/"
 
 - title: "Libraries"
-  href: "/libraries/"
+  url: "/libraries/"
 
 - title: "Talks"
-  href: "/talks/"
+  url: "//speakerdeck.com/stkent"
 
 - title: "About"
-  href: "/about/"
+  url: "/about/"
