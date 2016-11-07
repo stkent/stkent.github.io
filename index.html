@@ -12,7 +12,17 @@ title: Posts
   <div class="primary-content">
     <p>{{ post.excerpt }}</p>
   </div>
-  <a href="{{ post.url }}" class="btn">Continue Reading</a>
+
+  {% capture total_post_length %}
+    {{ post.content | number_of_words }}
+  {% endcapture %}
+  {% capture post_excerpt_length %}
+    {{ post.excerpt | number_of_words }}
+  {% endcapture %}
+
+  {% if post_excerpt_length != total_post_length %}
+    <a href="{{ post.url }}" class="btn">Continue Reading</a>
+  {% endif %}
   <hr />
 {% endfor %}
 
