@@ -4,14 +4,13 @@ gems:
   - jekyll-paginate
 
 exclude:
+  - README.md
   - Gemfile
   - Gemfile.lock
 
 markdown: kramdown
 kramdown:
   hard_wrap: false
-
-jquery_version: "2.2.4"
 
 sass:
   style: :compressed
