@@ -13,16 +13,7 @@ title: Posts
     <p>{{ post.excerpt }}</p>
   </div>
 
-  {% capture total_post_length %}
-    {{ post.content | number_of_words }}
-  {% endcapture %}
-  {% capture post_excerpt_length %}
-    {{ post.excerpt | number_of_words }}
-  {% endcapture %}
-
-  {% if post_excerpt_length != total_post_length %}
-    <a href="{{ post.url }}" class="btn">Continue Reading</a>
-  {% endif %}
+  <a href="{{ post.url }}" class="btn">Full Post</a>
   <hr />
 {% endfor %}
 
