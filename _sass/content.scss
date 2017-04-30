@@ -135,7 +135,6 @@ table td, table th {
   Post content
 ------------------------------------------------------------------------------*/
 
-// TODO: rename this to something more representative
 .primary-content {
   & p, & pre, & ul, & ol, & img {
     margin-top: $vertical-block-separation;
@@ -160,6 +159,12 @@ table td, table th {
   display: inline-block;
   min-width: 25px;
   text-align: center;
+}
+
+.post-excerpt {
+  .footnote, .footnotes {
+    display: none;
+  }
 }
 
 a.btn {
