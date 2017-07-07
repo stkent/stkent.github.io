@@ -18,7 +18,7 @@ sass:
 # Site
 
 title:       Stuart Kent on Software
-description: Blog posts and projects, focused on Android and iOS apps.
+description: Blog posts about Android+general software development
 url:         http://www.stkent.com
 baseurl:     ""
 
