@@ -33,8 +33,3 @@ stack_overflow_user_id: 2911458
 paginate:          5
 comments:          true
 excerpt_separator: <!--more-->
-
-collections:
-  - apps
-  - libraries
-  - talks
