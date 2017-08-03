@@ -18,7 +18,7 @@ sass:
 # Site
 
 title:       Stuart Kent on Software
-description: Blog posts about Android+general software development
+description: Perspectives from an Android dev
 url:         http://www.stkent.com
 baseurl:     ""
 
