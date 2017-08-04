@@ -17,10 +17,10 @@ sass:
 
 # Site
 
-title:       Stuart Kent on Software
-description: An Android dev's perspectives
-url:         http://www.stkent.com
-baseurl:     ""
+title:            Stuart Kent on Software
+feed_description: An Android Dev's Perspectives
+url:              http://www.stkent.com
+baseurl:          ""
 
 # Author
 
