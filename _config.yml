@@ -1,6 +1,6 @@
 # Build
 
-gems:
+plugins:
   - jekyll-paginate
 
 exclude:
