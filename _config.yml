@@ -2,6 +2,7 @@
 
 plugins:
   - jekyll-paginate
+  - jekyll-gist
 
 exclude:
   - README.md
