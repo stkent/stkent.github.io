@@ -2,7 +2,7 @@
 layout: post
 title: A Deadly Proof
 author: Stuart Kent
-tags: math
+tags: math, talk
 comments: true
 
 ---

@@ -2,7 +2,7 @@
 layout: post
 title: Feedback++
 author: Stuart Kent
-tags: feedback
+tags: feedback, talk
 comments: true
 
 ---
