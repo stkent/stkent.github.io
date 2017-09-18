@@ -13,7 +13,7 @@ This will probably end up being the longest version of the talk I give, which me
 
 {% include youtube.html video_id="jDykHjn-4Ng" %}
 
-[Slides](https://speakerdeck.com/stkent/ios-and-android-and-swift-and-kotlin-video)
+[Slides](https://speakerdeck.com/stkent/bluetooth-low-energy-on-android-top-tips-for-the-tricky-bits-video)
 
 The talk is accompanied by a [giant Gist](https://gist.github.com/stkent/a7f0d6b868e805da326b112d60a9f59b) that contains all the resources I referenced while building the app. This list is a lot more exhaustive than a talk could (or should) ever be! If you're getting into some serious Android Bluetooth Low Energy work, I recommend reading through these links carefully:
 
