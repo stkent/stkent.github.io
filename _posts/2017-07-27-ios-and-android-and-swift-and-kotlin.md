@@ -1,5 +1,4 @@
 ---
----
 layout: post
 title: iOS &amp; Android &amp; Swift &amp; Kotlin
 author: Stuart Kent
