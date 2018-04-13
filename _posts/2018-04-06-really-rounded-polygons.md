@@ -7,7 +7,7 @@ comments: true
 
 ---
 
-Nick Butcher recently demonstrated a `Path`-and-`CornerPathEffect`-based method for drawing regular polygons with rounded corners. My library [PolygonDrawingUtil](https://github.com/stkent/PolygonDrawingUtil) solves the same problem but produces noticeably different results:
+[Nick Butcher](https://twitter.com/crafty) recently [demonstrated](https://medium.com/google-developers/playing-with-paths-3fbc679a6f77) a `Path`-and-`CornerPathEffect`-based method for drawing regular polygons with rounded corners. My library [PolygonDrawingUtil](https://github.com/stkent/PolygonDrawingUtil) solves the same problem but produces noticeably different results:
 
 <a name="animation"></a> 
 
@@ -94,7 +94,7 @@ private void constructRoundedPolygonPath(
 
 # CornerPathEffect
 
-`PathEffect`s are used to modify how an existing `Path` is drawn. Applied via `Paint.setPathEffect`, they grant `Paint`s some "artistic license". For example, `CornerPathEffect` allows the `Paint` to draw rounded corners in place of any sharp corners. Users can specify a corner "radius" that influences the amount of rounding applied. Note that the `Path` itself is never altered by the application of a `PathEffect`.
+`PathEffect`s are used to modify how an existing `Path` is drawn. Applied via `Paint.setPathEffect`, they grant `Paint`s some “artistic license”. For example, `CornerPathEffect` allows the `Paint` to draw rounded corners in place of any sharp corners. Users can specify a corner “radius” that influences the amount of rounding applied. Note that the `Path` itself is never altered by the application of a `PathEffect`.
 
 `CornerPathEffect` draws rounded polygon `Path`s using two components: straight lines for sides, and quadratic B&eacute;zier curves for corners.
 
