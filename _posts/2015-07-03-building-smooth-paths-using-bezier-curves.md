@@ -1,6 +1,5 @@
 ---
-layout: post
-title: Building Smooth Paths using B&eacute;zier Curves
+title: Building Smooth Paths Using B&eacute;zier Curves
 author: Stuart Kent
 tags: android, animation, math
 needs_math: true
@@ -386,8 +385,6 @@ To test this implementation, I generated random points inside the square $[0,1]\
 	<img src="/assets/images/building-smooth-paths-using-bezier-curves-6-point-1.png" width="30%" />
 	<img src="/assets/images/building-smooth-paths-using-bezier-curves-6-point-2.png" width="30%" />
 </div>
-
-The calculations and code in this post are not particularly groundbreaking. However, both are necessary foundations for the next post in this series, in which we will use the smooth Paths calculated above to make some slick custom interpolators. Stay tuned...
 
 # Further Reading
 

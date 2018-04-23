@@ -1,9 +1,7 @@
 ---
-layout: post
-title: Feedback++
+title: (Talk) Feedback++
 author: Stuart Kent
 tags: feedback, talk
-comments: true
 
 ---
 

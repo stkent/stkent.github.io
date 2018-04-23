@@ -1,9 +1,7 @@
 ---
-layout: post
 title: Update Your Path For The New Android Emulator Location
 author: Stuart Kent
 tags: android
-comments: true
 
 ---
 

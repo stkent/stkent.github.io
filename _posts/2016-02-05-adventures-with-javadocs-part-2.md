@@ -1,9 +1,7 @@
 ---
-layout: post
-title: Adventures with Javadocs, part 2
+title: Adventures With Javadocs (Part 2)
 author: Stuart Kent
 tags: android, java, javadoc, gradle, open source, library
-comments: true
 
 ---
 

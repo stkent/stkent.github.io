@@ -1,6 +1,5 @@
 ---
-layout: post
-title: An Intro to PathInterpolatorCompat
+title: An Intro To PathInterpolatorCompat
 author: Stuart Kent
 tags: android, animation, math
 needs_math: true

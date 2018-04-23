@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Droidcon NYC 2015 Debrief
 author: Stuart Kent
 tags: android, conference, slides, videos
@@ -18,7 +17,7 @@ Though this talk didn't contain many surprises if you've been following the [pro
 
 - OkHttp is now the only supported HTTP client. This permits the removal of several public classes that existed solely to support alternative HTTP client implementations, as well as adding the ability to safely expose OkHttp types in the public API of Retrofit (e.g. to allow direct inspection or customization of the request/response);
 
-- deserialization can now be attempted by multiple prioritized type converters. Semantically-related network requests that happen to return data in different formats (e.g. json vs xml) can now be grouped in a single annotated service;
+- deserialization can now be attempted by multiple prioritized type converters. Semantically-related network requests that happen to return data in different formats (e.g. JSON vs XML) can now be grouped in a single annotated service;
 
 - request cancelation is now supported.
 

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: The Case For Asynchronous Feedback
 author: Stuart Kent
 tags: feedback

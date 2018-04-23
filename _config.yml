@@ -30,5 +30,13 @@ stack_overflow_user_id: 2911458
 
 # Content
 
-comments:          true
 excerpt_separator: <!--more-->
+
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true

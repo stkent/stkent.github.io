@@ -1,9 +1,7 @@
 ---
-layout: post
-title: Adventures with Javadocs, part 3
+title: Adventures With Javadocs (Part 3)
 author: Stuart Kent
 tags: android, java, javadoc, gradle, open source, library
-comments: true
 
 ---
 
@@ -156,7 +154,3 @@ android.libraryVariants.all { variant ->
     }
 }
 {% endhighlight %}
-
-# Next Time
-
-Linking to referenced classes, and more!

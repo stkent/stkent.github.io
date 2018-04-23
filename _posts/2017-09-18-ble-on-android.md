@@ -1,9 +1,7 @@
 ---
-layout: post
-title: Bluetooth Low Energy On Android
+title: (Talk) Bluetooth Low Energy On Android
 author: Stuart Kent
 tags: android, bluetooth low energy, talk
-comments: true
 
 ---
 

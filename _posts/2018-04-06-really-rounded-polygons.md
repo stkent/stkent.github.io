@@ -1,9 +1,7 @@
 ---
-layout: post
 title: Really Rounded Polygons
 author: Stuart Kent
 tags: android, animation, math
-comments: true
 
 ---
 

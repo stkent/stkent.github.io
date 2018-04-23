@@ -1,13 +1,9 @@
 ---
-layout: post
-title: Adventures with Javadocs, part 1
+title: Adventures With Javadocs (Part 1)
 author: Stuart Kent
 tags: android, java, javadoc, gradle, open source, library
-comments: true
 
 ---
-
-Hello! It's been a while since I wrote a post. This is because I have been busy: first learning Swift and iOS development on a crunchy client project, and more lately working on some open source Android tools. I still have more to write about interpolators - fret not! - but right now it's easier for me to write posts about my primary foci.
 
 Part of publishing high-quality libraries is providing high-quality documentation, which in Android-land means: high-quality Javadocs. There are tons of good resources around that explain proper Javadoc comment format and content, so in this series we'll explore the actual generation of documentation using Gradle/Android Studio. Let's begin!
 

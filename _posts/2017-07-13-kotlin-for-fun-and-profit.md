@@ -1,9 +1,7 @@
 ---
-layout: post
-title: Kotlin For Fun And Profit
+title: (Talk) Kotlin For Fun And Profit
 author: Stuart Kent
 tags: android, java, kotlin, talk
-comments: true
 
 ---
 

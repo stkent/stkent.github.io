@@ -1,9 +1,7 @@
 ---
-layout: post
-title: Capturing Nougat screenshots using adb shell
+title: Capturing Nougat Screenshots Using adb shell
 author: Stuart Kent
 tags: android
-comments: true
 
 ---
 

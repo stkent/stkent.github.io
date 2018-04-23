@@ -1,9 +1,7 @@
 ---
-layout: post
 title: proguardFiles&#58; A Cautionary Tale
 author: Stuart Kent
 tags: android, gradle
-comments: true
 
 ---
 
