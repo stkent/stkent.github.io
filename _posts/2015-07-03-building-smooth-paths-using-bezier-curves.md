@@ -3,6 +3,7 @@ layout: post
 title: Building Smooth Paths using B&eacute;zier Curves
 author: Stuart Kent
 tags: android, animation, math
+needs_math: true
 
 ---
 

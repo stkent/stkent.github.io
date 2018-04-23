@@ -3,6 +3,7 @@ layout: post
 title: An Intro to PathInterpolatorCompat
 author: Stuart Kent
 tags: android, animation, math
+needs_math: true
 
 ---
 
@@ -128,6 +129,7 @@ $$g(x) = x^2$$
 
 * numerically:
 
+{:.table-center}
 | $x$ | $g(x)$ |
 |:---:|:------:|
 |  $0$  |    $0$   |

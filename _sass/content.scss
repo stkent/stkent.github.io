@@ -94,41 +94,42 @@ a {
   transition: 0.3s;
 }
 
-table {
-  border-collapse: collapse;
-  border-style: hidden;
-  margin-left: auto;
-  margin-right: auto;
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
 }
 
-table td, table th {
-  min-width: 48px;
-  padding: 4px 12px;
-  border: 1px solid black;
+table tr th {
+  font-weight: bold;
+  border: 1px solid #cccccc;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
 }
 
-.slides-container {
-  margin: $vertical-block-separation 0;
+table tr td {
+  border: 1px solid #cccccc;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
 }
 
-/* From https://coolestguidesontheplanet.com/videodrome/youtube/
-   with custom margin-bottom. */
-.video-container {
-  margin: $vertical-block-separation 0;
-  position: relative;
-  padding-bottom: 56.25%;
-  padding-top: 30px;
-  height: 0;
-  overflow: hidden;
-}
-
-/* From https://coolestguidesontheplanet.com/videodrome/youtube/ */
-.video-container iframe, .video-container object, .video-container embed {
-  position:absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+kbd {
+    padding: 0.1em 0.6em;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    font-family: monospace;
+    background-color: #f7f7f7;
+    color: #333;
+    -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px #ffffff inset;
+    -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px #ffffff inset;
+    box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px #ffffff inset;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    display: inline-block;
+    margin: 0 0.1em;
+    text-shadow: 0 1px 0 #fff;
+    white-space: nowrap;
 }
 
 /*------------------------------------------------------------------------------
@@ -167,28 +168,6 @@ table td, table th {
   }
 }
 
-a.btn {
-  -webkit-border-radius: 8;
-  -moz-border-radius: 8;
-  border-radius: 8px;
-  background: $bright_green;
-  display: inline-block;
-  padding: 8px 16px;
-  text-decoration: none;
-
-  /* TODO: fix button styles, and remove this hack designed to make talk summary buttons look ok */
-  line-height: 1.0;
-
-  &:link, &:visited, &:hover, &:active {
-    color: $white;
-  }
-
-  &:hover {
-    background: $dark_green;
-    text-decoration: none;
-  }
-}
-
 .image-container {
   display: flex;
   flex-direction: row;
@@ -196,6 +175,40 @@ a.btn {
   align-items: flex-start;
   align-content: flex-start;
   margin: $vertical-block-separation 0;
+}
+
+.slides-container {
+  margin: $vertical-block-separation 0;
+}
+
+.table-center {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.table-left {
+  margin-right: auto;
+  margin-left: 0px;
+}
+
+/* From https://coolestguidesontheplanet.com/videodrome/youtube/
+   with custom margin-bottom. */
+.video-container {
+  margin: $vertical-block-separation 0;
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+
+/* From https://coolestguidesontheplanet.com/videodrome/youtube/ */
+.video-container iframe, .video-container object, .video-container embed {
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /*------------------------------------------------------------------------------

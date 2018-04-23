@@ -1,7 +1,6 @@
 # Build
 
 plugins:
-  - jekyll-paginate
   - jekyll-gist
 
 exclude:
@@ -31,6 +30,5 @@ stack_overflow_user_id: 2911458
 
 # Content
 
-paginate:          5
 comments:          true
 excerpt_separator: <!--more-->

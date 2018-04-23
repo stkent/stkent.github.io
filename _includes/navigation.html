@@ -1,27 +1,25 @@
 <div class="full-width-title-container">
-    <div class="content-width-title-container">
-        <div class="title">Stuart Kent</div><div class="subtitle">on Software</div>
-    </div>
+  <div class="content-width-title-container">
+    <div class="title">Stuart Kent</div><div class="subtitle">on Software</div>
+  </div>
 </div>
 <div class="full-width-navigation-container">
-    <div class="content-width-navigation-container">
-        <div class="primary-navigation">
-            {% for navigation_entry in site.data.navigation %}
-
-                {% if page.title == navigation_entry.title %}
-                    <li>{{ navigation_entry.title }}</li>
-                {% else %}
-                    <li><a href="{{ navigation_entry.url }}">{{ navigation_entry.title }}</a></li>
-                {% endif %}
-
-            {% endfor %}
-        </div>
-
-        <div class="secondary-navigation">
-            <li><a href="//twitter.com/{{ site.twitter_username }}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-            <li><a href="//stackoverflow.com/users/{{ site.stack_overflow_user_id }}?tab=profile"><i class="fa fa-stack-overflow" aria-hidden="true"></i></a></li>
-            <li><a href="//github.com/{{ site.github_username }}"><i class="fa fa-github" aria-hidden="true"></i></a></li>
-            <li><a href="{{ 'feed.xml' | relative_url }}"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-        </div>
+  <div class="content-width-navigation-container">
+    <div class="primary-navigation">
+      {% for navigation_entry in site.data.navigation %}
+      {% if page.title == navigation_entry.title %}
+      <li>{{ navigation_entry.title }}</li>
+      {% else %}
+      <li><a href="{{ navigation_entry.url }}">{{ navigation_entry.title }}</a></li>
+      {% endif %}
+      {% endfor %}
     </div>
+
+    <div class="secondary-navigation">
+      <li><a href="//twitter.com/{{ site.twitter_username }}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+      <li><a href="//stackoverflow.com/users/{{ site.stack_overflow_user_id }}?tab=profile"><i class="fa fa-stack-overflow" aria-hidden="true"></i></a></li>
+      <li><a href="//github.com/{{ site.github_username }}"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+      <li><a href="{{ 'feed.xml' | relative_url }}"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+    </div>
+  </div>
 </div>

@@ -146,16 +146,3 @@ and (max-width: $small_screen_width) {
     }
   }
 }
-
-/*------------------------------------------------------------------------------
-  Pagination navigation
-------------------------------------------------------------------------------*/
-
-.pagination {
-  display: flex;
-  text-transform: uppercase;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 0 0.5em;
-  color: $bright_green;
-}
