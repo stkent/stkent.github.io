@@ -41,7 +41,7 @@ main {
 }
 
 p, pre, blockquote, ul, ol, img {
-  margin: $vertical-block-separation/2 0;
+  margin: $vertical-block-separation 0;
   line-height: $content-line-height-multiple;
 }
 
@@ -92,6 +92,10 @@ img {
 
 a {
   transition: 0.3s;
+}
+
+table {
+  margin: $vertical-block-separation 0;
 }
 
 table tr:nth-child(2n) {
