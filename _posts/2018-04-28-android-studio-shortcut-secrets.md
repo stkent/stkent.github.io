@@ -82,7 +82,7 @@ Example (renaming an `Activity` layout ready for use with a `Fragment`):
 | Jump to next error in file    | <kbd>F2</kbd>                                                       | <kbd>F2</kbd>                                                    |
 | Show quick-fixes & actions    | <kbd>Opt</kbd>&nbsp;<kbd>Enter</kbd>                                | <kbd>Alt</kbd>&nbsp;<kbd>Enter</kbd>                             |
 
-If you haven't already encountered “Show quick-fixes & actions”, go practice with it now. It allows us access to all of Android Studio's context-aware atuomatic fixes, as well as partial access to certain common refactors (e.g. “Replace if with switch”). This shortcut pairs especially well with the lesser-known “Jump to next error in file”, which moves your cursor to the next most important error in the current file. Alternating between “Jump to next error in file” and “Show quick-fixes & actions” is a great way to squash errors without needing to use the gutter or red squiggly underlines to locate problems in our file.
+If you haven't already encountered “Show quick-fixes & actions”, go practice with it now. It allows us access to all of Android Studio's context-aware automatic fixes, as well as partial access to certain common refactors (e.g. “Replace if with switch”). This shortcut pairs especially well with the lesser-known “Jump to next error in file”, which moves your cursor to the next most important error in the current file. Alternating between “Jump to next error in file” and “Show quick-fixes & actions” is a great way to squash errors without needing to use the gutter or red squiggly underlines to locate problems in our file.
 
 Example (fixing multiple errors and warnings in a class):
 
