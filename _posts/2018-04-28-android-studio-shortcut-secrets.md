@@ -68,7 +68,7 @@ Example (navigating through several Android framework classes):
 | Select in project view        | <kbd>Opt</kbd>&nbsp;<kbd>F1</kbd>, <kbd>Enter</kbd>                 | <kbd>Alt</kbd>&nbsp;<kbd>F1</kbd>, <kbd>Enter</kbd>              |
 | Show/hide project view panel  | <kbd>Cmd</kbd>&nbsp;<kbd>F1</kbd>                                   | <kbd>Alt</kbd>&nbsp;<kbd>1</kbd>                                 |
 
-The “Rename” shortcut is incredibly powerful, able to refactor almost anything with a name. However, renaming a project file can still be time-consuming as it usually involves manually locating the relevant file in the project view panel[^1]. The “Show file in project view” shortcut will open the project panel if it's currently closed, then jump straight to the file we're currently editing in the file tree. Keep “Show/hide project view panel” handy for closing the project panel when your rename is completed.
+The “Rename” shortcut is incredibly powerful, able to refactor almost anything with a name. However, renaming a project file can still be time-consuming as it usually involves manually locating the relevant file in the project view panel[^1]. The “Select in project view” shortcut will open the project panel if it's currently closed, then jump straight to the file we're currently editing in the file tree. Keep “Show/hide project view panel” handy for closing the project panel when your rename is completed.
 
 Example (renaming an `Activity` layout ready for use with a `Fragment`):
 
