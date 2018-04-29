@@ -79,7 +79,7 @@ $secondary_navigation_item_separation: 2 * $primary_navigation_item_separation /
 .primary-navigation {
   font-size: 18px;
 
-  li {
+  entry {
     margin: 0 $primary_navigation_item_separation 0 0;
     display: inline;
   }
@@ -88,7 +88,7 @@ $secondary_navigation_item_separation: 2 * $primary_navigation_item_separation /
 .secondary-navigation {
   font-size: 24px;
 
-  li {
+  entry {
     margin: 0 0 0 $secondary_navigation_item_separation;
     display: inline;
   }
