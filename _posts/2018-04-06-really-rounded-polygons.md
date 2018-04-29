@@ -7,9 +7,7 @@ tags: android, animation, math
 
 [Nick Butcher](https://twitter.com/crafty) recently [demonstrated](https://medium.com/google-developers/playing-with-paths-3fbc679a6f77) a `Path`-and-`CornerPathEffect`-based method for drawing regular polygons with rounded corners. My library [PolygonDrawingUtil](https://github.com/stkent/PolygonDrawingUtil) solves the same problem but produces noticeably different results:
 
-<a name="animation"></a> 
-
-<div class="image-container">
+<div class="image-container" id="animation">
   <img src="/assets/images/really-rounded-polygons-comparison.gif" style="max-width: 400px" />
 </div>
 
