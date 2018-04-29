@@ -9,7 +9,7 @@ title: Posts
   {% capture prev_post_year %}{{ post.previous.date | date: "%Y" }}{% endcapture %}
 
   {% if forloop.first %}
-  <h1>{{curr_post_year}}</h2>
+  <h1>{{curr_post_year}}</h1>
   <ul>
   {% endif %}
 
@@ -19,7 +19,7 @@ title: Posts
   </ul>
   {% elsif curr_post_year != prev_post_year %}
   </ul>
-  <h1>{{prev_post_year}}</h2>
+  <h1>{{prev_post_year}}</h1>
   <ul>
   {% endif %}
 {% endfor %}
