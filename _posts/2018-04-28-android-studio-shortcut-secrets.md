@@ -39,8 +39,8 @@ Example (stepping into and out of an Android framework class (`View`)):
 {:.table-left}
 | Description                   | Mac Shortcut                                                        | Windows/Linux Shortcut                                           |
 |:------------------------------|:--------------------------------------------------------------------|:-----------------------------------------------------------------|
-| Go to definition              | <kbd>Cmd</kbd>&nbsp;<kbd>B</kbd>                                    | <kbd>Ctrl</kbd>&nbsp;<kbd>C</kbd>                                |
-| Go to implementation          | <kbd>Cmd</kbd>&nbsp;<kbd>Opt</kbd>&nbsp;<kbd>B</kbd>                | <kbd>Ctrl</kbd>&nbsp;<kbd>Alt</kbd>&nbsp;<kbd>C</kbd>            |
+| Go to definition              | <kbd>Cmd</kbd>&nbsp;<kbd>B</kbd>                                    | <kbd>Ctrl</kbd>&nbsp;<kbd>B</kbd>                                |
+| Go to implementation          | <kbd>Cmd</kbd>&nbsp;<kbd>Opt</kbd>&nbsp;<kbd>B</kbd>                | <kbd>Ctrl</kbd>&nbsp;<kbd>Alt</kbd>&nbsp;<kbd>B</kbd>            |
 | Go to usage                   | <kbd>Cmd</kbd>&nbsp;<kbd>Opt</kbd>&nbsp;<kbd>F7</kbd>               | <kbd>Ctrl</kbd>&nbsp;<kbd>Alt</kbd>&nbsp;<kbd>F7</kbd>           |
 | Go to super                   | <kbd>Cmd</kbd>&nbsp;<kbd>U</kbd>                                    | <kbd>Ctrl</kbd>&nbsp;<kbd>U</kbd>                                |
 
