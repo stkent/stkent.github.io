@@ -66,7 +66,13 @@ Helpfully, this bug (and many others) is already fixed in the latest beta of Goo
 
 This beta represents [the future direction of the Google Maps Android SDK](https://cloud.google.com/blog/products/maps-platform/whats-next-for-google-maps-platform) but is still a little [rough around the edges](https://issuetracker.google.com/issues/148084488) and adds a bunch of weight (approximately 10MB) to your APK/AAB[^1].
 
-Given their stated goals, it seems unlikely to me that the Google Maps team will backport fixes from v3 to v2. If the bug described in this post is unacceptable for your app I therefore recommend that you [update to Google Maps Android SDK v3](https://developers.google.com/maps/documentation/android-sdk/v3-client-migration#install_the_client_library) when possible.
+Given their stated goals and [past comments](https://issuetracker.google.com/issues/69629563#comment7), it seems unlikely to me that the Google Maps team will backport fixes from v3 to v2:
+
+> The Maps SDK for Android has recently received a major overhaul, now available in Beta, which made many bugs and feature requests inapplicable or obsolete.
+>
+> We believe that the issue or feature request reported [in the v2 issue tracker] has been fixed or is inapplicable with this new release, and therefore closed this report.
+
+If the bug described in this post is unacceptable for your app I therefore recommend that you [update to Google Maps Android SDK v3](https://developers.google.com/maps/documentation/android-sdk/v3-client-migration#install_the_client_library) when possible.
 
 If you do update, be sure to report any remaining bugs using the [issue tracker component dedicated to the beta SDK](https://issuetracker.google.com/issues?q=componentid:541018).
 
