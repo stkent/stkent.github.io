@@ -6,11 +6,11 @@ needs_math: true
 
 ---
 
-Version 22.1 of the v4 support library added [several new Interpolator classes](http://android-developers.blogspot.com/2015/04/android-support-library-221.html) to help developers infuse their applications with [Authentic Motion](http://www.google.com/design/spec/animation/authentic-motion.html). Today, we'll begin exploring the highly-flexible [`PathInterpolatorCompat`](http://developer.android.com/reference/android/support/v4/view/animation/PathInterpolatorCompat.html) class.
+Version 22.1 of the v4 support library added [several new Interpolator classes](http://android-developers.blogspot.com/2015/04/android-support-library-221.html) to help developers infuse their applications with [Authentic Motion](http://www.google.com/design/spec/animation/authentic-motion.html). Today, we'll explore the highly-flexible [`PathInterpolatorCompat`](http://developer.android.com/reference/android/support/v4/view/animation/PathInterpolatorCompat.html) class.
 
 <!--more-->
 
-As the name suggests, `PathInterpolatorCompat` is a utility for creating [`Path`](http://developer.android.com/reference/android/graphics/Path.html)-based interpolators. I plan to write several future posts that will dive much deeper into some `Path` and `PathInterpolatorCompat` concepts, so the goals for this first post are pretty straightforward:
+As the name suggests, `PathInterpolatorCompat` is a utility for creating [`Path`](http://developer.android.com/reference/android/graphics/Path.html)-based interpolators. The goals for this post are as follows:
 
 * recap `Path` basics;
 * understand which Paths can be used to create interpolators;
@@ -188,7 +188,7 @@ Our aim will be to construct a zig-zag interpolator whose interpolated value bou
 	<img src="/assets/images/an-intro-to-path-interpolator-compat-step-graph.png" width="40%" />
 </div>
 
-I'm not saying this is the most _useful_ interpolator ever; I designed it to convince you that there exist interpolators that are more naturally represented by composite paths than by a single algebraic expression. I'll discuss methods for building more practical (and more general) `Path`-based interpolators in a future blog post.
+I'm not saying this is the most _useful_ interpolator ever; I designed it to convince you that there exist interpolators that are more naturally represented by composite paths than by a single algebraic expression.
 
 Here's a `Path`-based representation of the class of interpolators described above:
 
@@ -205,7 +205,7 @@ final TimeInterpolator result = new PathInterpolatorCompat(path);
 
 I like this. It's short and fairly readable.
 
-Imagine trying to create this same interpolator by explicitly implementing `getInterpolation` for a general odd $n$. I'd wager that (a) computing the appropriate expression(s) would take you a while, and (b) the resulting algebraic representation could either be compact, or readable, but not both. (Consider this an invitation to prove me wrong in the comments.)
+Imagine trying to create this same interpolator by explicitly implementing `getInterpolation` for a general odd $n$. I'd wager that (a) computing the appropriate expression(s) would take you a while, and (b) the resulting algebraic representation could either be compact, or readable, but not both.
 
 # What Next?
 
@@ -216,8 +216,6 @@ Go forth and explore `Path`-based interpolators! Hopefully this introduction has
 * whether or not **numerical/tabular** representations of interpolators exist/are useful;
 
 * methods for generating more practical `Path`-based interpolators.
-
-I plan to address each of these topics in posts, and then tie them all together to form the basis of an overhauled Interpolator Maker. Stay tuned...
 
 # Further Reading
 
