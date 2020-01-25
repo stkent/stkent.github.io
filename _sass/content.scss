@@ -4,7 +4,6 @@
 
 $content-line-height-multiple: 1.6;
 $vertical-block-separation: 32px;
-$horizontal-divider-color: #DDDDDD;
 $horizontal-divider-height: 1px;
 
 /*------------------------------------------------------------------------------
@@ -18,24 +17,24 @@ html {
 
 body {
   font-size: 17px;
-  color: $dark_green;
+  color: $body-fg-color;
 }
 
 main {
   margin: 1.5*$vertical-block-separation auto;
-  max-width: $content_width;
-  padding: 0 $content_padding;
+  max-width: $content-width;
+  padding: 0 $content-padding;
 
   a {
     @extend %noselect;
 
     &:link, &:visited, &:hover, &:active {
-      color: $bright_green;
-      text-decoration: none;
+      color: $main-link-fg-color;
+      text-decoration: underline;
     }
 
-    &:hover {
-      color: $dark_green;
+    &:hover, &:focus {
+      background: $main-link-hover-bg-color;
     }
   }
 }
@@ -72,8 +71,8 @@ blockquote {
   font-style: italic;
   margin: $vertical-block-separation 16px;
   padding: 16px;
-  border-left: 4px solid $bright_green;
-  background: #F7F7F7;
+  border-left: 4px solid $quote-block-accent-color;
+  background: $quote-block-bg-color;
 }
 
 blockquote p {
@@ -99,19 +98,19 @@ table {
 }
 
 table tr:nth-child(2n) {
-  background-color: #f8f8f8;
+  background-color: $table-alternate-row-bg-color;
 }
 
 table tr th {
   font-weight: bold;
-  border: 1px solid #cccccc;
+  border: 1px solid $table-border-color;
   text-align: left;
   margin: 0;
   padding: 6px 13px;
 }
 
 table tr td {
-  border: 1px solid #cccccc;
+  border: 1px solid $table-border-color;
   text-align: left;
   margin: 0;
   padding: 6px 13px;
@@ -156,7 +155,7 @@ kbd {
 }
 
 .metadata {
-  color: #AAAAAA;
+  color: $post-metadata-fg-color;
   line-height: $content-line-height-multiple;
 }
 

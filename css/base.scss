@@ -9,18 +9,38 @@
   Colors
 ------------------------------------------------------------------------------*/
 
-$white:        #FFFFFF;
-$dark_green:   #243829;
-$bright_green: #28A646;
+/* Palette */
+$white:         #FFFFFF;
+$dark-gray:     #222222;
+$mid-blue:      #4463C1; /* From syntax highlighting palette, saturation adjusted */
+$intense-blue:  #2453E0; /* From syntax highlighting palette, saturation adjusted */
+$intense-green: #50fa7b; /* From syntax highlighting palette */
+$mid-gray:      #999999;
+$pale-gray:     #CCCCCC;
+$paler-gray:    #F8F8F8;
+
+/* Semantic */
+$body-fg-color:                $dark-gray;
+$horizontal-divider-color:     $pale-gray;
+$main-link-fg-color:           $intense-blue;
+$main-link-hover-bg-color:     $intense-green;
+$post-metadata-fg-color:       $mid-gray;
+$navigation-bar-bg-color:      $dark-gray;
+$quote-block-accent-color:     $mid-blue;
+$quote-block-bg-color:         $paler-gray;
+$table-alternate-row-bg-color: $paler-gray;
+$table-border-color:           $pale-gray;
+$title-banner-bg-color:        $mid-blue;
+$title-banner-fg-color:        $white;
 
 /*------------------------------------------------------------------------------
   Dimensions
 ------------------------------------------------------------------------------*/
 
-$content_width:   840px;
-$content_padding:  16px;
+$content-width:   840px;
+$content-padding:  16px;
 
-$medium-screen-width: $content_width + 2 * $content_padding;
+$medium-screen-width: $content-width + 2 * $content-padding;
 $small-screen-width:  560px;
 
 /*------------------------------------------------------------------------------

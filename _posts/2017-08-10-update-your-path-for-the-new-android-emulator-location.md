@@ -5,7 +5,7 @@ tags: android
 
 ---
 
-Since March 2017 (v25.3.0), the Android Emulator has been [released separately from the rest of the Android SDK tools](https://developer.android.com/studio/releases/emulator.html#25-3). As part of implementing this change, the `emulator` binary was ‘promoted’ from`${ANDROID_SDK_ROOT}/tools/`[^1]  to its own top-level directory, `${ANDROID_SDK_ROOT}/emulator/`. This relocation can cause some issues. I'll show you how to avoid them 🙂.
+Since March 2017 (v25.3.0), the Android Emulator has been [released separately from the rest of the Android SDK tools](https://developer.android.com/studio/releases/emulator.html#25-3). As part of implementing this change, the `emulator` binary was ‘promoted’ from `${ANDROID_SDK_ROOT}/tools/`[^1]  to its own top-level directory, `${ANDROID_SDK_ROOT}/emulator/`. This relocation can cause some issues. I'll show you how to avoid them.
 
 <!--more-->
 
@@ -59,7 +59,7 @@ emulator64-mips
 emulator64-x86
 {% endhighlight %}
 
-I'm not sure _why_ this discrepancy exists 🤷‍♂️.
+I'm not sure _why_ this discrepancy exists.
 
 If, like me, all you care about is having easy command-line access to the newest `emulator` binary, I recommend updating your `$PATH` to include
 
@@ -82,6 +82,6 @@ $ which emulator
 
 Happy emulating!
 
-[^1]: In writing this post I also discovered for the first time that `${ANDROID_HOME}` has been deprecated in favor of `${ANDROID_SDK_ROOT}`! Read more in the [Android Studio User Guide section on Environment Variables](https://developer.android.com/studio/command-line/variables.html#envar).
+[^1]: In writing this post I also discovered for the first time that `${ANDROID_HOME}` has been deprecated in favor of `${ANDROID_SDK_ROOT}`. Read more in the [Android Studio User Guide section on Environment Variables](https://developer.android.com/studio/command-line/variables.html#envar).
 
 [^2]: Run `echo $PATH` to check the full contents of your `$PATH` variable. Searched paths are separated by a colon and searched first-to-last.

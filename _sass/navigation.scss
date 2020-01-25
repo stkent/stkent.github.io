@@ -2,8 +2,8 @@
   SASS variables
 ------------------------------------------------------------------------------*/
 
-$primary_navigation_item_separation: 24px;
-$secondary_navigation_item_separation: 2 * $primary_navigation_item_separation / 3;
+$primary-navigation-item-separation: 24px;
+$secondary-navigation-item-separation: 2 * $primary-navigation-item-separation / 3;
 
 /*------------------------------------------------------------------------------
   Main site navigation
@@ -13,22 +13,22 @@ $secondary_navigation_item_separation: 2 * $primary_navigation_item_separation /
   top: 0;
   left: 0;
   right: 0;
-  background-color: $dark_green;
+  background-color: $navigation-bar-bg-color;
 }
 
 .full-width-title-container {
   top: 0;
   left: 0;
   right: 0;
-  background-color: $bright_green;
+  background-color: $title-banner-bg-color;
 }
 
 .content-width-title-container {
   @extend %noselect;
 
   font-size: 36px;
-  color: $white;
-  max-width: $content_width;
+  color: $title-banner-fg-color;
+  max-width: $content-width;
   min-height: 80px;
   margin: 0 auto;
   padding: 24px 0;
@@ -53,7 +53,7 @@ $secondary_navigation_item_separation: 2 * $primary_navigation_item_separation /
   font-weight: 500;
   text-transform: uppercase;
   color: $white;
-  max-width: $content_width;
+  max-width: $content-width;
   min-height: 36px;
   margin: 0 auto;
   padding: 4px 0;
@@ -63,14 +63,14 @@ $secondary_navigation_item_separation: 2 * $primary_navigation_item_separation /
   justify-content: space-between;
 
   a {
-    &:link, &:visited, &:hover, &:active {
+    &:link, &:visited, &:active {
       color: $white;
       opacity: 0.55;
       text-decoration: none;
     }
 
-    &:hover {
-      color: $white;
+    &:hover, &:focus {
+      color: $intense-green;
       opacity: 1.0;
     }
   }
@@ -80,7 +80,7 @@ $secondary_navigation_item_separation: 2 * $primary_navigation_item_separation /
   font-size: 18px;
 
   entry {
-    margin: 0 $primary_navigation_item_separation 0 0;
+    margin: 0 $primary-navigation-item-separation 0 0;
     display: inline;
   }
 }
@@ -89,15 +89,15 @@ $secondary_navigation_item_separation: 2 * $primary_navigation_item_separation /
   font-size: 24px;
 
   entry {
-    margin: 0 0 0 $secondary_navigation_item_separation;
+    margin: 0 0 0 $secondary-navigation-item-separation;
     display: inline;
   }
 }
 
 /* Medium screens */
 @media all
-and (max-width: $medium_screen_width)
-and (min-width: $small_screen_width) {
+and (max-width: $medium-screen-width)
+and (min-width: $small-screen-width) {
 
   .content-width-title-container {
     justify-content: center;
@@ -109,14 +109,14 @@ and (min-width: $small_screen_width) {
 
   .primary-navigation {
     li {
-      margin: 0 $primary_navigation_item_separation/2;
+      margin: 0 $primary-navigation-item-separation/2;
       text-align: center;
     }
   }
 
   .secondary-navigation {
     li {
-      margin: 0 $secondary_navigation_item_separation/2;
+      margin: 0 $secondary-navigation-item-separation/2;
       display: inline;
     }
 }
@@ -124,7 +124,7 @@ and (min-width: $small_screen_width) {
 
 /* Small screens */
 @media all
-and (max-width: $small_screen_width) {
+and (max-width: $small-screen-width) {
 
   .content-width-title-container {
     flex-direction: column;
@@ -141,7 +141,7 @@ and (max-width: $small_screen_width) {
   .primary-navigation {
     li {
       display: block;
-      margin: $primary_navigation_item_separation/2 0;
+      margin: $primary-navigation-item-separation/2 0;
       text-align: center;
     }
   }
