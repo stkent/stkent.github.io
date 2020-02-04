@@ -227,10 +227,22 @@ kbd {
   border-top: $horizontal-divider-color $horizontal-divider-height solid;
 }
 
+.footnotes p {
+  margin: 0;
+}
+
 /*------------------------------------------------------------------------------
   Disqus
 ------------------------------------------------------------------------------*/
 
 #disqus_thread {
   margin: 2.5*$vertical-block-separation 0 $vertical-block-separation 0;
+}
+
+/*------------------------------------------------------------------------------
+  Development
+------------------------------------------------------------------------------*/
+
+.todo {
+  background: #FFAA00 !important;
 }
