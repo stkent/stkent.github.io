@@ -12,11 +12,12 @@
 /* Palette */
 $white:         #FFFFFF;
 $dark-gray:     #222222;
-$mid-blue:      #4463C1; /* From syntax highlighting palette, saturation adjusted */
 $intense-blue:  #2453E0; /* From syntax highlighting palette, saturation adjusted */
 $intense-green: #50fa7b; /* From syntax highlighting palette */
+$mid-blue:      #4463C1; /* From syntax highlighting palette, saturation adjusted */
 $mid-gray:      #999999;
 $pale-gray:     #CCCCCC;
+$pale-green:    #AAFABE;
 $paler-gray:    #F8F8F8;
 
 /* Semantic */
@@ -24,8 +25,10 @@ $body-fg-color:                $dark-gray;
 $horizontal-divider-color:     $pale-gray;
 $main-link-fg-color:           $intense-blue;
 $main-link-hover-bg-color:     $intense-green;
-$post-metadata-fg-color:       $mid-gray;
 $navigation-bar-bg-color:      $dark-gray;
+$post-cta-background-color:    $pale-green;
+$post-cta-border-color:        $intense-green;
+$post-metadata-fg-color:       $mid-gray;
 $quote-block-accent-color:     $mid-blue;
 $quote-block-bg-color:         $paler-gray;
 $table-alternate-row-bg-color: $paler-gray;

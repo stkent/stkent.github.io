@@ -159,18 +159,6 @@ kbd {
   line-height: $content-line-height-multiple;
 }
 
-.separator {
-  display: inline-block;
-  min-width: 25px;
-  text-align: center;
-}
-
-.post-excerpt {
-  .footnote, .footnotes {
-    display: none;
-  }
-}
-
 .image-container {
   display: flex;
   flex-direction: row;
@@ -214,6 +202,16 @@ kbd {
   height: 100%;
 }
 
+#call-to-action {
+  background: $post-cta-background-color;
+  border-style: solid;
+  border-color: $post-cta-border-color;
+  border-width: 5px;
+  border-radius: 10px;
+  margin: 2*$vertical-block-separation 0 $vertical-block-separation 0;
+  padding: 40px 20px;
+}
+
 /*------------------------------------------------------------------------------
   Internal post navigation
 ------------------------------------------------------------------------------*/
@@ -236,7 +234,7 @@ kbd {
 ------------------------------------------------------------------------------*/
 
 #disqus_thread {
-  margin: 2.5*$vertical-block-separation 0 $vertical-block-separation 0;
+  margin: 2*$vertical-block-separation 0 $vertical-block-separation 0;
 }
 
 /*------------------------------------------------------------------------------
