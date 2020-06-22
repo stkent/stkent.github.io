@@ -44,5 +44,3 @@ One of the questions asked at the end of my talk focused on the robustness of to
 # Conclusions
 
 I really appreciate Andrew taking the time to watch my presentation pretty closely. Being able to engage 1-on-1 with developers working on Google APIs is pretty awesome, and often a lot more fruitful than trying to reverse-engineer architectural decisions and intentions in isolation. Plus, the benefits go both ways - in updating my presentation to use the latest and greatest version of the Nearby APIs, I [uncovered and reported a bug](https://twitter.com/andrewbunner/status/734825573105565696) that is now fixed and will be shipped soon (if it hasn't been already)!
-
-Explore, have fun, and remember to [skate to where the puck is going](http://blog.ieeemadc.org/2016/05/28/skate-to-where-the-puck-is-going/)... ;)
