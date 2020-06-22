@@ -5,7 +5,7 @@ tags: android, conferences, ios
 
 ---
 
-One of the risks of presenting on nascent APIs is that significant changes are fair game. Luckily, the timing of my Self Conference talk [The Human Context: Exploring Google's Nearby APIs]({% post_url 2016-05-21-self-conference-2016 %}) a couple weeks back allowed me to quickly update my slides to incorporate _most_ of the changes announced at Google I/O two days earlier. Google Nearby guy [Andrew Bunner](https://twitter.com/andrewbunner) was kind enough to review the recording of my talk and pass along some pointers!
+One of the risks of presenting on nascent APIs is that significant changes are fair game. Luckily, the timing of my Self Conference talk [The Human Context: Exploring Google's Nearby APIs]({% post_url 2016-05-21-self-conference-2016 %}) a couple weeks back allowed me to quickly update my slides to incorporate _most_ of the changes announced at Google I/O two days earlier. Google Nearby guy <a href="https://twitter.com/andrewbunner" target="_blank" rel="noopener noreferrer">Andrew Bunner</a> was kind enough to review the recording of my talk and pass along some pointers!
 
 <!--more-->
 

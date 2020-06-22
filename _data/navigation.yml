@@ -6,3 +6,6 @@
 
 - title: "About"
   url: "/about/"
+
+- title: "RSS"
+  url: "/feed.xml"

@@ -3,7 +3,6 @@
 ------------------------------------------------------------------------------*/
 
 $primary-navigation-item-separation: 24px;
-$secondary-navigation-item-separation: 2 * $primary-navigation-item-separation / 3;
 
 /*------------------------------------------------------------------------------
   Main site navigation
@@ -85,15 +84,6 @@ $secondary-navigation-item-separation: 2 * $primary-navigation-item-separation /
   }
 }
 
-.secondary-navigation {
-  font-size: 24px;
-
-  entry {
-    margin: 0 0 0 $secondary-navigation-item-separation;
-    display: inline;
-  }
-}
-
 /* Medium screens */
 @media all
 and (max-width: $medium-screen-width)
@@ -113,13 +103,6 @@ and (min-width: $small-screen-width) {
       text-align: center;
     }
   }
-
-  .secondary-navigation {
-    li {
-      margin: 0 $secondary-navigation-item-separation/2;
-      display: inline;
-    }
-}
 }
 
 /* Small screens */
