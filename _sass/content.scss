@@ -208,8 +208,8 @@ kbd {
   border-color: $post-cta-border-color;
   border-width: 5px;
   border-radius: 10px;
-  margin: 2*$vertical-block-separation 0 $vertical-block-separation 0;
-  padding: 40px 20px;
+  margin: $vertical-block-separation 0;
+  padding: 20px;
 }
 
 /*------------------------------------------------------------------------------
