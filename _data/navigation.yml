@@ -3,9 +3,11 @@
 
 - title: "Slides"
   url: "//speakerdeck.com/stkent"
+  openInNewTab: true
 
 - title: "About"
   url: "/about/"
 
 - title: "RSS"
   url: "/feed.xml"
+  openInNewTab: true

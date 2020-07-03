@@ -7,11 +7,17 @@
   <div class="content-width-navigation-container">
     <div class="primary-navigation">
       {% for navigation_entry in site.data.navigation %}
+      <entry>
       {% if page.title == navigation_entry.title %}
-      <entry>{{ navigation_entry.title }}</entry>
+      {{ navigation_entry.title }}
       {% else %}
-      <entry><a href="{{ navigation_entry.url }}">{{ navigation_entry.title }}</a></entry>
+        {% if navigation_entry.openInNewTab %}
+        <a href="{{ navigation_entry.url }}" target="_blank" rel="noopener noreferrer">{{ navigation_entry.title }}</a>
+        {% else %}
+        <a href="{{ navigation_entry.url }}">{{ navigation_entry.title }}</a>
+        {% endif %}
       {% endif %}
+      </entry>
       {% endfor %}
     </div>
   </div>
