@@ -7,7 +7,7 @@ tags: android
 
 {% include kramdown_definitions.md %}
 
-Since March 2017 (v25.3.0), the Android Emulator has been [released separately from the rest of the Android SDK tools](https://developer.android.com/studio/releases/emulator.html#25-3){:new_tab}. As part of implementing this change, the `emulator` binary was ‘promoted’ from `${ANDROID_SDK_ROOT}/tools/`[^1]  to its own top-level directory, `${ANDROID_SDK_ROOT}/emulator/`. This relocation can cause some issues. I'll show you how to avoid them.
+Since March 2017 (v25.3.0), the Android Emulator has been [released separately from the rest of the Android SDK tools](https://developer.android.com/studio/releases/emulator.html#25-3){:new_tab}. As part of implementing this change, the `emulator` binary was ‘promoted’ from `${ANDROID_SDK_ROOT}/tools/`[^1]  to its own top-level directory, `${ANDROID_SDK_ROOT}/emulator/`. This relocation can cause some issues. I’ll show you how to avoid them.
 
 <!--more-->
 
@@ -43,7 +43,7 @@ both report the same version information:
 Android emulator version 26.1.2.0 (build_id 4077558) (CL:500db745bd44dbc6000413b5e8969d83216ff7cd)
 {% endhighlight %}
 
-I'm guessing the error is due to a discrepency in the emulator-related files found in each location:
+I’m guessing the error is due to a discrepency in the emulator-related files found in each location:
 
 {% highlight none %}
 $ ls ${ANDROID_SDK_ROOT}/tools/ | grep "emulator"
@@ -61,7 +61,7 @@ emulator64-mips
 emulator64-x86
 {% endhighlight %}
 
-I'm not sure _why_ this discrepancy exists.
+I’m not sure _why_ this discrepancy exists.
 
 If, like me, all you care about is having easy command-line access to the newest `emulator` binary, I recommend updating your `$PATH` to include
 

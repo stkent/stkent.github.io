@@ -8,17 +8,17 @@ needs_math: true
 
 {% include kramdown_definitions.md %}
 
-[Last post]({% post_url 2015-06-07-an-intro-to-pathinterpolatorcompat %}), we built a super-simple `Path`-based interpolator using straight line segments. To produce smoother interpolators, without corners - typically preferred for animating motion - we'll need correspondingly smooth generating Paths. Our primary goal in this post, then, will be:
+[Last post]({% post_url 2015-06-07-an-intro-to-pathinterpolatorcompat %}), we built a super-simple `Path`-based interpolator using straight line segments. To produce smoother interpolators, without corners - typically preferred for animating motion - we’ll need correspondingly smooth generating Paths. Our primary goal in this post, then, will be:
 
 * given a sequence of $n$ points in the cartesian plane, calculate a smooth `Path` passing through all points in order.
 
 <!--more-->
 
-We'll start with the simplest possible case, and generalize from there.
+We’ll start with the simplest possible case, and generalize from there.
 
 # $n$ = 2
 
-This one's a gimme - we can use `Path.lineTo(...)` to connect the two given points with a straight line. While not very exciting, this curve does satisfy the smoothness condition since there are definitely no corners!
+This one’s a gimme - we can use `Path.lineTo(...)` to connect the two given points with a straight line. While not very exciting, this curve does satisfy the smoothness condition since there are definitely no corners!
 
 <div class="image-container">
 	<img src="/assets/images/building-smooth-paths-using-bezier-curves-2-point.png" width="30%" />
@@ -26,7 +26,7 @@ This one's a gimme - we can use `Path.lineTo(...)` to connect the two given poin
 
 # $n$ > 2
 
-When given more than two distinct points, it's no longer possible to connect them smoothly using straight lines only[^1]:
+When given more than two distinct points, it’s no longer possible to connect them smoothly using straight lines only[^1]:
 
 <div class="image-container">
 	<img src="/assets/images/building-smooth-paths-using-bezier-curves-3-point-linear.png" width="30%" />
@@ -57,7 +57,7 @@ and not like this:
 	<img src="/assets/images/building-smooth-paths-using-bezier-curves-3-point-bezier-corner.png" width="34%" />
 </div>
 
-Most of the rest of this post is dedicated to figuring out how to choose the 'right' control points for arbitrary given end points (aka _knots_ in B&eacute;zier curve lingo). It's not too hairy - there's a lot of algebra, sure, but because cubic B&eacute;zier curves can be represented as polynomials[^2], the numbers work out nicely :). The language is fairly formal so that I can refer back to the derivations with confidence in the future. If you're really not keen on math, you can skip ahead to the [results section](#results) now.
+Most of the rest of this post is dedicated to figuring out how to choose the ‘right’ control points for arbitrary given end points (aka _knots_ in B&eacute;zier curve lingo). It’s not too hairy - there’s a lot of algebra, sure, but because cubic B&eacute;zier curves can be represented as polynomials[^2], the numbers work out nicely :). The language is fairly formal so that I can refer back to the derivations with confidence in the future. If you’re really not keen on math, you can skip ahead to the [results section](#results) now.
 
 # Notation
 
@@ -154,7 +154,7 @@ $$
 \end{bmatrix}
 $$
 
-This tridiagonal system can be solved in linear time using [Thomas' Algorithm](http://en.wikipedia.org/wiki/Tridiagonal_matrix_algorithm){:new_tab}, which in this case is guaranteed to be stable since the tridiagonal matrix is diagonally dominant. Once all $c\_{i,0}$ are calculated, the remaining control points $\lbrace c\_{i,1} : i \in 0,\ldots,n-1 \rbrace$ are given by the following formulae:
+This tridiagonal system can be solved in linear time using [Thomas’ Algorithm](http://en.wikipedia.org/wiki/Tridiagonal_matrix_algorithm){:new_tab}, which in this case is guaranteed to be stable since the tridiagonal matrix is diagonally dominant. Once all $c\_{i,0}$ are calculated, the remaining control points $\lbrace c\_{i,1} : i \in 0,\ldots,n-1 \rbrace$ are given by the following formulae:
 
 $$ c_{i,1} = 2k_{i+1} - c_{i+1,0} \text{ for } i \in \lbrace 0,\ldots,n-2 \rbrace, $$
 
@@ -162,7 +162,7 @@ $$ c_{n-1,1} = \frac{1}{2}\left[ k_n + c_{n-1,0} \right]. $$
 
 # Implementation
 
-The following Android/Java code uses Thomas' Algorithm to compute appropriate control points and accomplish our original goal:
+The following Android/Java code uses Thomas’ Algorithm to compute appropriate control points and accomplish our original goal:
 
 > given a sequence of $n$ points in the cartesian plane, calculate a smooth `Path` passing through all points in order.
 
@@ -390,9 +390,9 @@ To test this implementation, I generated random points inside the square $[0,1]\
 
 # Further Reading
 
-A pleasing geometrical presentation of composite B&eacute;zier curves is provided by [these lecture notes](/assets/pdfs/UCLA-Math-149-Mathematics-of-Computer-Graphics-lecture-notes.pdf){:new_tab} from UCLA's Math 149: Mathematics of Computer Graphics course.
+A pleasing geometrical presentation of composite B&eacute;zier curves is provided by [these lecture notes](/assets/pdfs/UCLA-Math-149-Mathematics-of-Computer-Graphics-lecture-notes.pdf){:new_tab} from UCLA’s Math 149: Mathematics of Computer Graphics course.
 
-For an interesting application of B&eacute;zier curves, see the following technical articles on Square's blog: [Smooth Signatures](https://corner.squareup.com/2010/07/smooth-signatures.html){:new_tab} and [Smoother Signatures](https://corner.squareup.com/2012/07/smoother-signatures.html){:new_tab}. Given that written letters often contain sharp corners, I would be interested to know whether Square's algorithms could generate even better signatures if they were to switch back from cubic interpolation to linear interpolation near high-curvature regions.
+For an interesting application of B&eacute;zier curves, see the following technical articles on Square’s blog: [Smooth Signatures](https://corner.squareup.com/2010/07/smooth-signatures.html){:new_tab} and [Smoother Signatures](https://corner.squareup.com/2012/07/smoother-signatures.html){:new_tab}. Given that written letters often contain sharp corners, I would be interested to know whether Square’s algorithms could generate even better signatures if they were to switch back from cubic interpolation to linear interpolation near high-curvature regions.
 
 [^1]:Excepting the degenerate case in which the $n$ > 2 provided points are colinear.
 [^2]:The general (parametric) form of a cubic B&eacute;zier curve can be found in [the Wikipedia entry on B&eacute;zier Curves](http://en.wikipedia.org/wiki/B%C3%A9zier_curve#Cubic_B.C3.A9zier_curves){:new_tab}.

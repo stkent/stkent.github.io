@@ -5,7 +5,7 @@ tags: android, android studio
 
 ---
 
-Many “best Android Studio shortcuts” articles inhabit the blogosphere. Here are some perspectives on effective shortcut usage that I don't remember reading anywhere else.
+Many “best Android Studio shortcuts” articles inhabit the blogosphere. Here are some perspectives on effective shortcut usage that I don’t remember reading anywhere else.
 
 <!--more-->
 
@@ -21,14 +21,14 @@ Many “best Android Studio shortcuts” articles inhabit the blogosphere. Here 
 
 The “Go to class” and “Go to file” actions are ideal for quickly opening up existing files. I usually use “Go to class” for anything I know for sure is a Java or Kotlin class, and “Go to file” for anything else. The latter includes all build.gradle files, the Android manifest, and all resource files (layouts, strings, etc.). “Previous/next cursor position” and “Open recently used files” allow me to quickly step back in my navigation history or cycle between several relevant files.
 
-Once you are comfortable with these shortcuts, you'll find that you hardly ever need to use:
+Once you are comfortable with these shortcuts, you’ll find that you hardly ever need to use:
 
 - the project pane, or
 - tab-based navigation.
 
 At this point you can leave the project pane collapsed by default and turn off the tab bar in Android Studio (Preferences -> Editor -> General -> Editor Tabs; set Placement to None) to slightly increase the size of your code reading/writing area. So far, so good.
 
-An extra and underrated benefit of these same navigation shortcuts is the ability to use them to search library and Android framework classes and files as well as your own code. To do this, press the shortcuts listed above _twice_ before entering the text you'd like to search. I love introducing people to this functionality because it reduces the mental barrier between “code in my app that I wrote” and “code that supports my app that I didn't write”. Both types of code are equally important to the way your app will function (or not!) on user devices, so knowing shortcuts that makes them almost equally accessible is very beneficial. Take advantage of the availability of Android source code - not every platform is so generous!
+An extra and underrated benefit of these same navigation shortcuts is the ability to use them to search library and Android framework classes and files as well as your own code. To do this, press the shortcuts listed above _twice_ before entering the text you’d like to search. I love introducing people to this functionality because it reduces the mental barrier between “code in my app that I wrote” and “code that supports my app that I didn’t write”. Both types of code are equally important to the way your app will function (or not!) on user devices, so knowing shortcuts that makes them almost equally accessible is very beneficial. Take advantage of the availability of Android source code - not every platform is so generous!
 
 Example (stepping into and out of an Android framework class (`View`)):
 
@@ -51,7 +51,7 @@ This group of shortcuts operate on almost all Java constructs, like classes, met
 - places where a method is invoked;
 - the super implementation that our current method overrides.
 
-These same shortcuts are especially worth learning if you're using interfaces to decouple classes from their dependencies, since they make skipping between interfaces and implementations of those interfaces very fast. This is especially common when a codebase uses an architecture like MVP or MVVM in which every view (and sometimes presenter/view model) is modeled by an interface.
+These same shortcuts are especially worth learning if you’re using interfaces to decouple classes from their dependencies, since they make skipping between interfaces and implementations of those interfaces very fast. This is especially common when a codebase uses an architecture like MVP or MVVM in which every view (and sometimes presenter/view model) is modeled by an interface.
 
 Just like the first group of navigation shortcuts, this second group also work equally well for navigating into and around library and Android framework code.
 
@@ -68,7 +68,7 @@ Example (navigating through several Android framework classes):
 | Select in project view        | <kbd>Opt</kbd>&nbsp;<kbd>F1</kbd>, <kbd>Enter</kbd>                 | <kbd>Alt</kbd>&nbsp;<kbd>F1</kbd>, <kbd>Enter</kbd>              |
 | Show/hide project view panel  | <kbd>Cmd</kbd>&nbsp;<kbd>F1</kbd>                                   | <kbd>Alt</kbd>&nbsp;<kbd>1</kbd>                                 |
 
-The “Rename” shortcut is incredibly powerful, able to refactor almost anything with a name. However, renaming a project file can still be time-consuming as it usually involves manually locating the relevant file in the project view panel[^1]. The “Select in project view” shortcut will open the project panel if it's currently closed, then jump straight to the file we're currently editing in the file tree. Keep “Show/hide project view panel” handy for closing the project panel when your rename is completed.
+The “Rename” shortcut is incredibly powerful, able to refactor almost anything with a name. However, renaming a project file can still be time-consuming as it usually involves manually locating the relevant file in the project view panel[^1]. The “Select in project view” shortcut will open the project panel if it’s currently closed, then jump straight to the file we’re currently editing in the file tree. Keep “Show/hide project view panel” handy for closing the project panel when your rename is completed.
 
 Example (renaming an `Activity` layout ready for use with a `Fragment`):
 
@@ -82,7 +82,7 @@ Example (renaming an `Activity` layout ready for use with a `Fragment`):
 | Jump to next error in file    | <kbd>F2</kbd>                                                       | <kbd>F2</kbd>                                                    |
 | Show quick-fixes & actions    | <kbd>Opt</kbd>&nbsp;<kbd>Enter</kbd>                                | <kbd>Alt</kbd>&nbsp;<kbd>Enter</kbd>                             |
 
-If you haven't already encountered “Show quick-fixes & actions”, go practice with it now. It allows us access to all of Android Studio's context-aware automatic fixes, as well as partial access to certain common refactors (e.g. “Replace if with switch”). This shortcut pairs especially well with the lesser-known “Jump to next error in file”, which moves your cursor to the next most important error in the current file. Alternating between “Jump to next error in file” and “Show quick-fixes & actions” is a great way to squash errors without needing to use the gutter or red squiggly underlines to locate problems in our file.
+If you haven’t already encountered “Show quick-fixes & actions”, go practice with it now. It allows us access to all of Android Studio’s context-aware automatic fixes, as well as partial access to certain common refactors (e.g. “Replace if with switch”). This shortcut pairs especially well with the lesser-known “Jump to next error in file”, which moves your cursor to the next most important error in the current file. Alternating between “Jump to next error in file” and “Show quick-fixes & actions” is a great way to squash errors without needing to use the gutter or red squiggly underlines to locate problems in our file.
 
 Example (fixing multiple errors and warnings in a class):
 
@@ -105,6 +105,6 @@ Example (toggling between stock and custom macOS keymaps):
 
 # Over To You
 
-I'm always looking to improve my workflow. What tips do you have for underrated shortcuts or combos?
+I’m always looking to improve my workflow. What tips do you have for underrated shortcuts or combos?
 
 [^1]: Note that renaming class files is typically easier than naming resource files, because refactoring the class name in Java also automatically refactors the file name.

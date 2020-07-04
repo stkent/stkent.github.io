@@ -13,4 +13,4 @@ Last week, I gave an internal talk at Detroit Labs about peer feedback. We discu
 
 <!--more-->
 
-I'll post PDF slides later this week. The book referenced throughout the talk is [Thanks For The Feedback](http://www.amazon.com/Thanks-Feedback-Science-Receiving-Well/dp/0670014664){:new_tab}.
+I’ll post PDF slides later this week. The book referenced throughout the talk is [Thanks For The Feedback](http://www.amazon.com/Thanks-Feedback-Science-Receiving-Well/dp/0670014664){:new_tab}.

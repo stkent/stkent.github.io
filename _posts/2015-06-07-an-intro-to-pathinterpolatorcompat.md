@@ -8,7 +8,7 @@ needs_math: true
 
 {% include kramdown_definitions.md %}
 
-Version 22.1 of the v4 support library added [several new Interpolator classes](http://android-developers.blogspot.com/2015/04/android-support-library-221.html){:new_tab} to help developers infuse their applications with [Authentic Motion](http://www.google.com/design/spec/animation/authentic-motion.html){:new_tab}. Today, we'll explore the highly-flexible [`PathInterpolatorCompat`](http://developer.android.com/reference/android/support/v4/view/animation/PathInterpolatorCompat.html){:new_tab} class.
+Version 22.1 of the v4 support library added [several new Interpolator classes](http://android-developers.blogspot.com/2015/04/android-support-library-221.html){:new_tab} to help developers infuse their applications with [Authentic Motion](http://www.google.com/design/spec/animation/authentic-motion.html){:new_tab}. Today, we’ll explore the highly-flexible [`PathInterpolatorCompat`](http://developer.android.com/reference/android/support/v4/view/animation/PathInterpolatorCompat.html){:new_tab} class.
 
 <!--more-->
 
@@ -21,7 +21,7 @@ As the name suggests, `PathInterpolatorCompat` is a utility for creating [`Path`
 
 # Paths
 
- If it's been a while since you worked with a `Path`, here's the snappy definition from the docs:
+ If it’s been a while since you worked with a `Path`, here’s the snappy definition from the docs:
 
 > The Path class encapsulates compound (multiple contour) geometric paths consisting of straight line segments, quadratic curves, and cubic curves.
 
@@ -36,7 +36,7 @@ Paths are most commonly used to draw complex shapes on a [`Canvas`](http://devel
 * `Path.quadTo`/`Path.cubicTo`: adds a quadratic/cubic bezier curve.
 * `Path.addArc`/`Path.addCircle`/`Path.addOval`/`Path.addRect`: adds a shape with the specified geometry.
 
-Here's a super-simple example `Path` defined inside a custom view:
+Here’s a super-simple example `Path` defined inside a custom view:
 
 {% highlight java %}
 final Path path = new Path();
@@ -52,7 +52,7 @@ This `Path` consists of a single straight line that starts at the bottom left co
 	<img src="/assets/images/an-intro-to-path-interpolator-compat-line-path.png" width="40%" />
 </div>
 
-Here's a more complex `Path` that consists of multiple components:
+Here’s a more complex `Path` that consists of multiple components:
 
 {% highlight java %}
 final Path path = new Path();
@@ -96,7 +96,7 @@ and the corresponding output:
 	<img src="/assets/images/an-intro-to-path-interpolator-compat-smiley-path.png" width="40%" />
 </div>
 
-Hopefully it's clear that we can make super-general graphics using `Path`. However, this also means that we shouldn't expect to be able to convert _every_ `Path` into a valid interpolator. To figure out the appropriate constraints, let's take a peek at some Android source code.
+Hopefully it’s clear that we can make super-general graphics using `Path`. However, this also means that we shouldn’t expect to be able to convert _every_ `Path` into a valid interpolator. To figure out the appropriate constraints, let’s take a peek at some Android source code.
 
 # Interpolators &harr; Functions
 
@@ -182,17 +182,17 @@ However, there are also some significant drawbacks:
 
 # Using PathInterpolatorCompat
 
-Great; we've figured out why `PathInterpolatorCompat` exists and which Paths we can convert into interpolators. Let's give it a spin.
+Great; we’ve figured out why `PathInterpolatorCompat` exists and which Paths we can convert into interpolators. Let’s give it a spin.
 
-Our aim will be to construct a zig-zag interpolator whose interpolated value bounces between 0 and 1 $n$ times (where $n$ is odd). Here's a graph that represents this zig-zag interpolator with $n=5$:
+Our aim will be to construct a zig-zag interpolator whose interpolated value bounces between 0 and 1 $n$ times (where $n$ is odd). Here’s a graph that represents this zig-zag interpolator with $n=5$:
 
 <div class="image-container">
 	<img src="/assets/images/an-intro-to-path-interpolator-compat-step-graph.png" width="40%" />
 </div>
 
-I'm not saying this is the most _useful_ interpolator ever; I designed it to convince you that there exist interpolators that are more naturally represented by composite paths than by a single algebraic expression.
+I’m not saying this is the most _useful_ interpolator ever; I designed it to convince you that there exist interpolators that are more naturally represented by composite paths than by a single algebraic expression.
 
-Here's a `Path`-based representation of the class of interpolators described above:
+Here’s a `Path`-based representation of the class of interpolators described above:
 
 {% highlight java %}
 final Path path = new Path();
@@ -205,9 +205,9 @@ for (int i = 1; i <= n; i++) {
 final TimeInterpolator result = new PathInterpolatorCompat(path);
 {% endhighlight %}
 
-I like this. It's short and fairly readable.
+I like this. It’s short and fairly readable.
 
-Imagine trying to create this same interpolator by explicitly implementing `getInterpolation` for a general odd $n$. I'd wager that (a) computing the appropriate expression(s) would take you a while, and (b) the resulting algebraic representation could either be compact, or readable, but not both.
+Imagine trying to create this same interpolator by explicitly implementing `getInterpolation` for a general odd $n$. I’d wager that (a) computing the appropriate expression(s) would take you a while, and (b) the resulting algebraic representation could either be compact, or readable, but not both.
 
 # What Next?
 

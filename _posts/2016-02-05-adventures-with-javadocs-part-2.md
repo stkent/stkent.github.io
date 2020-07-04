@@ -7,13 +7,13 @@ tags: android, java, javadoc, gradle, open source, library
 
 {% include kramdown_definitions.md %}
 
-This is the follow-up to [Adventures with Javadocs, part 1]({% post_url 2016-01-28-adventures-with-javadocs-part-1 %}). If you haven't already, please go read that - this post will build on the sample project constructed there, and explore the extra configuration needed to properly handle Android framework classes.
+This is the follow-up to [Adventures with Javadocs, part 1]({% post_url 2016-01-28-adventures-with-javadocs-part-1 %}). If you haven’t already, please go read that - this post will build on the sample project constructed there, and explore the extra configuration needed to properly handle Android framework classes.
 
 <!--more-->
 
 # Introducing Android Framework Classes
 
-Let's add a third test class to our project, again in a separate package:
+Let’s add a third test class to our project, again in a separate package:
 
 {% highlight java %}
 package com.github.stkent.javadoctests.package3;
@@ -78,7 +78,7 @@ The code for this portion of the post is available [here](https://github.com/stk
 
 # Generated Documentation
 
-Here's the summary generated for `TestClassThree`:
+Here’s the summary generated for `TestClassThree`:
 
 <div class="image-container">
 	<img src="/assets/images/javadoc-tool-generated-testclassthree.png" />
@@ -99,7 +99,7 @@ The generated documentation for `TestClassThree` introduces a third variation:
   <li>as plain text, without a fully qualified class name, when the parameter type is not user-created <em>or</em> auto-imported.</li>
 </ol>
 
-As per the last post, the lack of a hyperlink in format 3 is straightforward to understand - since the Android `Bundle` class is not part of the collection of source files for which we are generating documentation, there's no way the `javadoc` tool could know where to link to![^1] To help us understand the difference between text formats 2 and 3, let's return to the `javadoc` documentation and try to understand the "package does not exist" and "symbol not found" errors we received above.
+As per the last post, the lack of a hyperlink in format 3 is straightforward to understand - since the Android `Bundle` class is not part of the collection of source files for which we are generating documentation, there’s no way the `javadoc` tool could know where to link to![^1] To help us understand the difference between text formats 2 and 3, let’s return to the `javadoc` documentation and try to understand the "package does not exist" and "symbol not found" errors we received above.
 
 # Class Classifications
 
@@ -111,9 +111,9 @@ The `javadoc` documentation [introduces](http://docs.oracle.com/javase/6/docs/te
 
 `TestClassOne`, `TestClassTwo` and `TestClassThree` are clearly examples of documented classes. What about `java.lang.String` and `android.os.Bundle`? Both are "explicitly referred to in the definition (implementation) or doc comments of the documented classes and interfaces", so both are referenced classes. However, this additional commentary regarding referenced classes gives us a clue as to why `java.lang.String` and `android.os.Bundle` are handled differently by `javadoc`:
 
-> When the Javadoc tool is run, it should load into memory all of the referenced classes in javadoc's bootclasspath and classpath. [...] The Javadoc tool can derive enough information from the .class files to determine their existence and the fully-qualified names of their members.
+> When the Javadoc tool is run, it should load into memory all of the referenced classes in javadoc’s bootclasspath and classpath. [...] The Javadoc tool can derive enough information from the .class files to determine their existence and the fully-qualified names of their members.
 
-The path stored in bootclasspath represents the location of Java's Bootstrap classes (the classes that implement the [Java platform](https://en.wikipedia.org/wiki/Java_(software_platform)#Platform){:new_tab}). This has default value `$JAVA_HOME/jre/lib`, which contains (among other things) compiled class files that collectively form Java's standard library. In particular, the rt.jar JAR contains a compiled String.class file.[^2]
+The path stored in bootclasspath represents the location of Java’s Bootstrap classes (the classes that implement the [Java platform](https://en.wikipedia.org/wiki/Java_(software_platform)#Platform){:new_tab}). This has default value `$JAVA_HOME/jre/lib`, which contains (among other things) compiled class files that collectively form Java’s standard library. In particular, the rt.jar JAR contains a compiled String.class file.[^2]
 
 The path stored in classpath represents the location of all referenced classes that are not part of the Java platform. By default, this is an empty path (i.e. no locations are searched to locate additional referenced classes).
 

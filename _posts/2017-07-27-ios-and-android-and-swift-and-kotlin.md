@@ -7,7 +7,7 @@ tags: ios, android, swift, kotlin, talk
 
 {% include kramdown_definitions.md %}
 
-[Oh look, another talk comparing modern mobile technologies! This time, the primary audience is iOS developers who are familiar with Swift and intrigued by Android. If you're a Kotlin-curious Android or Java developer, you might get more out of my previous talk, [Kotlin For Fun And Profit]({% post_url 2017-07-13-kotlin-for-fun-and-profit %}).
+[Oh look, another talk comparing modern mobile technologies! This time, the primary audience is iOS developers who are familiar with Swift and intrigued by Android. If you’re a Kotlin-curious Android or Java developer, you might get more out of my previous talk, [Kotlin For Fun And Profit]({% post_url 2017-07-13-kotlin-for-fun-and-profit %}).
 
 Last week, I crashed my [local CocoaHeads meetup](https://www.meetup.com/MotorCityCocoaHeads/){:new_tab} and gave a talk about... Android!
 
@@ -23,7 +23,7 @@ Several key aspects of the iOS and Android developer experiences have converged 
 
 - The IDEs that support our development efforts have continued to borrow the best features from one another: recent examples include Android Studio offering integrated run-time view debugging, and Xcode (re-)adding powerful refactoring capabilities.
 
-This means there's never been a better time for developers familiar with one ecosystem to learn the other. And you should: it's a lot easier than learning your first native platform, and with a little effort you'll quickly find yourself:
+This means there’s never been a better time for developers familiar with one ecosystem to learn the other. And you should: it’s a lot easier than learning your first native platform, and with a little effort you’ll quickly find yourself:
 
 - saving time by solving problems once, not twice,
 

@@ -51,12 +51,12 @@ This approach creates corners with exact and uniform radii. If the corner radius
   <img src="/assets/images/really-rounded-polygons-polygondrawingutil-degenerate.png" style="max-width: 400px" />
 </div>
 
-The code that constructs these `Path`s is shown below. I'm not going to dissect it line by line, but the essential steps are:
+The code that constructs these `Path`s is shown below. I’m not going to dissect it line by line, but the essential steps are:
 
 1. Calculate the length of arc to use for each corner;
 2. Calculate where each arc should be centered to ensure a smooth join with the sides;
 3. Draw each arc in turn, using a [neat feature of `Path.arcTo`](https://developer.android.com/reference/android/graphics/Path.html#arcTo(android.graphics.RectF,%20float,%20float){:new_tab}) to automatically insert the sides:
-    > If the start of the path is different from the path's current last point, then an automatic lineTo() is added to connect the current contour to the start of the arc.
+    > If the start of the path is different from the path’s current last point, then an automatic lineTo() is added to connect the current contour to the start of the arc.
 
 {% highlight java %}
 private void constructRoundedPolygonPath(
@@ -110,7 +110,7 @@ If the corner radius becomes too large relative to the polygon radius, the drawn
   <img src="/assets/images/really-rounded-polygons-cornerpatheffect-degenerate.png" style="max-width: 400px" />
 </div>
 
-As far as I can tell, there's no easy way to predict what this degenerate shape will look like ahead of time.
+As far as I can tell, there’s no easy way to predict what this degenerate shape will look like ahead of time.
 
 The relevant native code from [SkCornerPathEffect.cpp](https://android.googlesource.com/platform/external/skia/+/android-8.0.0_r4/src/effects/SkCornerPathEffect.cpp){:new_tab} is below[^2]. For each line in the original path, the essential steps are:
 
@@ -163,7 +163,7 @@ static bool ComputeStep(const SkPoint& a, const SkPoint& b, SkScalar radius, SkP
 
 # Usage
 
-The implementation differences highlighted above are interesting but perhaps still a little abstract. Let's get real. Which rounding method should you use?
+The implementation differences highlighted above are interesting but perhaps still a little abstract. Let’s get real. Which rounding method should you use?
 
 My recommendation would be to consider PolygonDrawingUtil if:
 
@@ -174,11 +174,11 @@ My recommendation would be to consider PolygonDrawingUtil if:
 
 On the other hand, consider `CornerPathEffect` if:
 
-- you are rounding an existing `Path` that's not a regular polygon, or
-- you don't care about exact corner shape or radius, or
+- you are rounding an existing `Path` that’s not a regular polygon, or
+- you don’t care about exact corner shape or radius, or
 - you prefer to or need to avoid third-party dependencies.
 
 Either way, I hope you learned a little about `Path`s, `PathEffect`s, and geometry during this exploration :)
 
-[^1]: Trivia: PolygonDrawingUtil was originally inspired by games based on hexagonal grids, which is why it's polygon-specific and allows such precise corner control.
+[^1]: Trivia: PolygonDrawingUtil was originally inspired by games based on hexagonal grids, which is why it’s polygon-specific and allows such precise corner control.
 [^2]: More useful native code if you want to go deeper: [SkPath.h](https://android.googlesource.com/platform/external/skia/+/android-8.0.0_r4/include/core/SkPath.h){:new_tab}, [SkPath.cpp](https://android.googlesource.com/platform/external/skia/+/android-8.0.0_r4/src/core/SkPath.cpp){:new_tab}, [SkPathEffect.h](https://android.googlesource.com/platform/external/skia/+/android-8.0.0_r4/include/core/SkPathEffect.h){:new_tab}, [SkPathEffect.cpp](https://android.googlesource.com/platform/external/skia/+/android-8.0.0_r4/src/core/SkPathEffect.cpp){:new_tab}.

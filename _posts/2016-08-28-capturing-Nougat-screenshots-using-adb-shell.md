@@ -21,7 +21,7 @@ However, executing this function when using a device running Android Nougat resu
 
 # Background
 
-The output of the adb shell's screencap utility is known to be somewhat funky on older (read: pre-Nougat) versions of Android. In particular, "adb shell" performs an automatic [line feed (LF) to {carriage return (CR) + line feed (LF)}](http://stackoverflow.com/a/13593914/2911458){:new_tab} conversion. This can be observed by capturing a “naive” screenshot (no [perl sanitization](http://blog.shvetsov.com/2013/02/grab-android-screenshot-to-computer-via.html){:new_tab}):
+The output of the adb shell’s screencap utility is known to be somewhat funky on older (read: pre-Nougat) versions of Android. In particular, "adb shell" performs an automatic [line feed (LF) to {carriage return (CR) + line feed (LF)}](http://stackoverflow.com/a/13593914/2911458){:new_tab} conversion. This can be observed by capturing a “naive” screenshot (no [perl sanitization](http://blog.shvetsov.com/2013/02/grab-android-screenshot-to-computer-via.html){:new_tab}):
 
 {% highlight bash %}
 adb shell screencap -p > "screenshot.png"
@@ -55,11 +55,11 @@ But look at the first 10 bytes of our “naively”-captured pre-Nougat screensh
 89 50 4e 47 0d 0d 0a 1a 0d 0a
 {% endhighlight %}
 
-They don't match! Each occurrence of the byte “0a” in the correct byte sequence has been replaced with a pair of bytes, “0d” “0a” in the incorrect byte sequencing. This is precisely the line feed (LF) to {carriage return (CR) + line feed (LF)} conversion mentioned earlier. The global perl search-and-replace in the original script reverts this heavy-handed manipulation and results in a valid PNG file.
+They don’t match! Each occurrence of the byte “0a” in the correct byte sequence has been replaced with a pair of bytes, “0d” “0a” in the incorrect byte sequencing. This is precisely the line feed (LF) to {carriage return (CR) + line feed (LF)} conversion mentioned earlier. The global perl search-and-replace in the original script reverts this heavy-handed manipulation and results in a valid PNG file.
 
 # Nougat
 
-Here's the hex dump of a “naively”-captured Nougat screenshot:
+Here’s the hex dump of a “naively”-captured Nougat screenshot:
 
 {% highlight text %}
 $ adb shell screencap -p > "screenshot.png"
@@ -80,7 +80,7 @@ The first 8 bytes **do** match the expected PNG file header, so we can deduce th
 
 # Solution
 
-For now, I've defined separate pre-Nougat and post-Nougat screenshot bash functions to deal with this change in behavior:
+For now, I’ve defined separate pre-Nougat and post-Nougat screenshot bash functions to deal with this change in behavior:
 
 {% highlight bash %}
 function screenshot() {
@@ -92,4 +92,4 @@ function screenshot-n() {
 }
 {% endhighlight %}
 
-There's probably a slick way to unify these functions by inspecting the incoming bytes and conditionally applying the global perl search-and-replace, but the solutions above work well enough for me.
+There’s probably a slick way to unify these functions by inspecting the incoming bytes and conditionally applying the global perl search-and-replace, but the solutions above work well enough for me.

@@ -7,7 +7,7 @@ tags: android
 
 {% include kramdown_definitions.md %}
 
-Most Android apps that I've worked on have included a `BaseFragment` that contains universal logic. This logic is often written within one or more lifecycle methods, creating an implicit contract: subclasses **must** call through to `super` if they override any of these lifecycle methods[^1].
+Most Android apps that I’ve worked on have included a `BaseFragment` that contains universal logic. This logic is often written within one or more lifecycle methods, creating an implicit contract: subclasses **must** call through to `super` if they override any of these lifecycle methods[^1].
 
 We can make this contract harder to accidentally break in a couple of different ways.
 
@@ -55,7 +55,7 @@ This warning **will** be flagged as a lint error with priority 9/10:
   />
 </div>
 
-Android Support Annotations are used extensively within Android's own AndroidX libraries, so they are probably already available for you to use in your own project (no new dependency needed).
+Android Support Annotations are used extensively within Android’s own AndroidX libraries, so they are probably already available for you to use in your own project (no new dependency needed).
 
 # The Template Method Pattern
 

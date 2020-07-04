@@ -7,7 +7,7 @@ tags: android, conferences, ios
 
 {% include kramdown_definitions.md %}
 
-One of the risks of presenting on nascent APIs is that significant changes are fair game. Luckily, the timing of my Self Conference talk [The Human Context: Exploring Google's Nearby APIs]({% post_url 2016-05-21-self-conference-2016 %}) a couple weeks back allowed me to quickly update my slides to incorporate _most_ of the changes announced at Google I/O two days earlier. Google Nearby guy [Andrew Bunner](https://twitter.com/andrewbunner){:new_tab} was kind enough to review the recording of my talk and pass along some pointers!
+One of the risks of presenting on nascent APIs is that significant changes are fair game. Luckily, the timing of my Self Conference talk [The Human Context: Exploring Google’s Nearby APIs]({% post_url 2016-05-21-self-conference-2016 %}) a couple weeks back allowed me to quickly update my slides to incorporate _most_ of the changes announced at Google I/O two days earlier. Google Nearby guy [Andrew Bunner](https://twitter.com/andrewbunner){:new_tab} was kind enough to review the recording of my talk and pass along some pointers!
 
 <!--more-->
 
@@ -37,11 +37,11 @@ Since Calling Card also uses an auto-managed `GoogleApiClient` instance to handl
 
 Contrary to my original claim, it is possible to publish more than 1 message simultaneously. Doing so is not recommended; instead, use a single consolidated message structure that is capable of carrying all the data you wish to communicate. This keeps subscriber code much cleaner and avoids issues with non-simultaneous receipt of messages from a single publisher.
 
-It might be possible to use multiple published messages to attempt to circumvent the 100KB cap on message size, but I wouldn't recommend it! Don't fight the framework.
+It might be possible to use multiple published messages to attempt to circumvent the 100KB cap on message size, but I wouldn’t recommend it! Don’t fight the framework.
 
 ## Transmission
 
-One of the questions asked at the end of my talk focused on the robustness of token transmission via audio. In particular, I knew that this topic had been addressed during [Andrew's Google I/O presentation](https://www.youtube.com/watch?v=Acdu2ZdBaZE&t=7m05s){:new_tab} but could not recall the details of that implementation. Andrew linked to a Wikipedia page [describing the technique used](https://en.wikipedia.org/wiki/Direct-sequence_spread_spectrum){:new_tab}. My math background does not include a lot of signal processing, so I'd need to dig in deeper to really understand what's going on here. Still, it's nice to have the information for future reference!
+One of the questions asked at the end of my talk focused on the robustness of token transmission via audio. In particular, I knew that this topic had been addressed during [Andrew’s Google I/O presentation](https://www.youtube.com/watch?v=Acdu2ZdBaZE&t=7m05s){:new_tab} but could not recall the details of that implementation. Andrew linked to a Wikipedia page [describing the technique used](https://en.wikipedia.org/wiki/Direct-sequence_spread_spectrum){:new_tab}. My math background does not include a lot of signal processing, so I’d need to dig in deeper to really understand what’s going on here. Still, it’s nice to have the information for future reference!
 
 # Conclusions
 

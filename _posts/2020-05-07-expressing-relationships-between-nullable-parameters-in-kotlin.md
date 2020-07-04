@@ -50,7 +50,7 @@ we allow 4 different combinations of parameter values:
   </tr>
 </table>
 
-Sometimes we know extra information about these parameters that makes one or more of these combinations impossible. We can write working code that accepts and ignores these invalid combinations[^1], but that code will be prone to accidental misuse and misinterpretation in the future. This post demonstrates how to use Kotlin's type system to eliminate these risks.
+Sometimes we know extra information about these parameters that makes one or more of these combinations impossible. We can write working code that accepts and ignores these invalid combinations[^1], but that code will be prone to accidental misuse and misinterpretation in the future. This post demonstrates how to use Kotlin’s type system to eliminate these risks.
 
 # Example 1: "Either both parameters are non-null or both parameters are null"
 
@@ -65,7 +65,7 @@ fun plotOnMap(
 
 **Function context**
 
-We're plotting a user's location on a map. If we know the user's location, we must _always_ include a circle representing location accuracy. If we don't know the user's location, we plot nothing.
+We’re plotting a user’s location on a map. If we know the user’s location, we must _always_ include a circle representing location accuracy. If we don’t know the user’s location, we plot nothing.
 
 **Valid parameter combinations**
 
@@ -137,7 +137,7 @@ fun plotOnMap(
 
 **Function context**
 
-We're plotting a user's location on a map. If we know the user's location, we include a circle representing location accuracy _if that accuracy is available_. If we don't know the user's location, we plot nothing.
+We’re plotting a user’s location on a map. If we know the user’s location, we include a circle representing location accuracy _if that accuracy is available_. If we don’t know the user’s location, we plot nothing.
 
 **Valid parameter combinations**
 
@@ -210,7 +210,7 @@ fun chargeOrder(
 
 **Function context**
 
-We're placing an online order. An order should be charged to exactly one credit card.
+We’re placing an online order. An order should be charged to exactly one credit card.
 
 **Valid parameter combinations**
 
@@ -267,7 +267,7 @@ and updating our function signature to receive a non-`null` instance of that sea
 fun chargeOrder(paymentMethod: PaymentMethod)
 ```
 
-In this example we've managed to remove nullability entirely!
+In this example we’ve managed to remove nullability entirely!
 
 # Example 4: "At most one parameter is non-null"
 
@@ -285,7 +285,7 @@ fun chargeOrder(
 
 **Function context**
 
-We're placing an online order. An order can be charged to a new bank account or a new credit card. If the user provides neither of these new payment methods, the order is charged to the user's default saved payment method.
+We’re placing an online order. An order can be charged to a new bank account or a new credit card. If the user provides neither of these new payment methods, the order is charged to the user’s default saved payment method.
 
 **Valid parameter combinations**
 
@@ -344,6 +344,6 @@ fun chargeOrder(newPaymentMethod: NewPaymentMethod?)
 
 # Summary
 
-Use Kotlin's type system to make illegal parameter combinations impossible. You'll thank yourself later.
+Use Kotlin’s type system to make illegal parameter combinations impossible. You'll thank yourself later.
 
 [^1]: Typically such code will deliberately include no-ops or theoretically throw a `NullPointerException`.
