@@ -5,13 +5,15 @@ tags: android, gradle
 
 ---
 
-This week, an assumption I made about the Android Gradle plugin method `proguardFiles` nearly resulted in a minor security slip. Let's all learn from my mistake!
+{% include kramdown_definitions.md %}
+
+This week, an assumption I made about the Android Gradle plugin method `proguardFiles` nearly resulted in a minor security slip. Let's all learn from my mistake.
 
 <!--more-->
 
 # Background
 
-The client codebase I'm currently working on has three build types: `debug`, `beta`, and `release`. The `beta` build type is a minor variation of the `debug` build type, so it's configured using the Android Gradle plugin's [`initWith`](http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Build-Types) method as shown below:
+The client codebase I'm currently working on has three build types: `debug`, `beta`, and `release`. The `beta` build type is a minor variation of the `debug` build type, so it's configured using the Android Gradle plugin's [`initWith`](http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Build-Types){:new_tab} method as shown below:
 
 {% highlight java %}
 buildTypes {
@@ -32,7 +34,7 @@ buildTypes {
 }
 {% endhighlight %}
 
-My tasks today included enabling [ProGuard](https://developer.android.com/studio/build/shrink-code.html) for every single build type. Here's the code I initially wrote to accomplish this:
+My tasks today included enabling [ProGuard](https://developer.android.com/studio/build/shrink-code.html){:new_tab} for every single build type. Here's the code I initially wrote to accomplish this:
 
 {% highlight groovy %}
 buildTypes {
@@ -71,9 +73,9 @@ The `proguard-debug.pro` file contains exactly one line:
 -dontobfuscate
 {% endhighlight %}
 
-[Obfuscation](https://en.wikipedia.org/wiki/Obfuscation_(software)) is a useful (but certainly not impenetrable) defense against [reverse engineering](https://en.wikipedia.org/wiki/Reverse_engineering) of a compiled application. However, I have found in the past that it interferes with Android Studio's debugger, so I like to disable it for the non-production build variants I actively develop with.
+[Obfuscation](https://en.wikipedia.org/wiki/Obfuscation_(software)){:new_tab} is a useful (but certainly not impenetrable) defense against [reverse engineering](https://en.wikipedia.org/wiki/Reverse_engineering){:new_tab} of a compiled application. However, I have found in the past that it interferes with Android Studio's debugger, so I like to disable it for the non-production build variants I actively develop with.
 
-As described above, my intention was to disable obfuscation for the `debug` build type _only_, leaving obfuscation enabled for the `beta` and `release` build types. To test that this was working as expected, I assembled a `beta` build and inspected the APK contents using [ClassyShark](https://github.com/google/android-classyshark). Here's what our `Parcelable` utility class looked like in ClassyShark:
+As described above, my intention was to disable obfuscation for the `debug` build type _only_, leaving obfuscation enabled for the `beta` and `release` build types. To test that this was working as expected, I assembled a `beta` build and inspected the APK contents using [ClassyShark](https://github.com/google/android-classyshark){:new_tab}. Here's what our `Parcelable` utility class looked like in ClassyShark:
 
 <div class="image-container">
 	<img src="/assets/images/proguardfiles-a-cautionary-tale-no-obfuscation.png" width="100%" />
@@ -83,7 +85,7 @@ Those method names are _definitely_ not obfuscated.
 
 # Huh?
 
-Confused, I jumped to the definition of the `proguardFiles` method commonly used to apply ProGuard configuration to a build type (remember that in Android Studio you can do this using the [“Go To Declaration” shortcut](https://www.jetbrains.com/help/idea/2016.2/navigating-to-declaration-or-type-declaration-of-a-symbol.html)):
+Confused, I jumped to the definition of the `proguardFiles` method commonly used to apply ProGuard configuration to a build type (remember that in Android Studio you can do this using the [“Go To Declaration” shortcut](https://www.jetbrains.com/help/idea/2016.2/navigating-to-declaration-or-type-declaration-of-a-symbol.html){:new_tab}):
 
 {% highlight java %}
 public BuildType proguardFiles(Object... files) {
@@ -110,7 +112,7 @@ public BuildType proguardFile(Object proguardFile) {
 
 Ah-ha!
 
-The `proguardFiles` method **adds** to an internal list of configuration files rather than specifying a **new** list of configuration files. In my opinion this is [not obvious from the method name](https://en.wikipedia.org/wiki/Principle_of_least_astonishment). At least the [documented behavior is clear](https://google.github.io/android-gradle-dsl/2.2/com.android.build.gradle.internal.dsl.BuildType.html#com.android.build.gradle.internal.dsl.BuildType:proguardFiles(java.lang.Object[])), though confusingly the name `proguardFiles` may also be used to refer to a [getter](https://google.github.io/android-gradle-dsl/2.2/com.android.build.gradle.internal.dsl.BuildType.html#com.android.build.gradle.internal.dsl.BuildType:proguardFiles) defined on the same type!
+The `proguardFiles` method **adds** to an internal list of configuration files rather than specifying a **new** list of configuration files. In my opinion this is [not obvious from the method name](https://en.wikipedia.org/wiki/Principle_of_least_astonishment){:new_tab}. At least the [documented behavior is clear](https://google.github.io/android-gradle-dsl/2.2/com.android.build.gradle.internal.dsl.BuildType.html#com.android.build.gradle.internal.dsl.BuildType:proguardFiles(java.lang.Object[])){:new_tab}, though confusingly the name `proguardFiles` may also be used to refer to a [getter](https://google.github.io/android-gradle-dsl/2.2/com.android.build.gradle.internal.dsl.BuildType.html#com.android.build.gradle.internal.dsl.BuildType:proguardFiles){:new_tab} defined on the same type!
 
 Armed with this knowledge, we can now walk through exactly what happens (with respect to ProGuard rules) when the `beta` build type is configured:
 
@@ -124,7 +126,7 @@ The result: `proguard-debug.pro` is unintentionally included in the `beta` build
 
 The most obvious solution to this problem might be to avoid initializing the `beta` build type using the `debug` build type. However, this would have lead to a lot more duplication in our build.gradle file. Luckily there's a better way.
 
-The `BuildType` class exposes a [`setProguardFiles` method](https://google.github.io/android-gradle-dsl/2.2/com.android.build.gradle.internal.dsl.BuildType.html#com.android.build.gradle.internal.dsl.BuildType:setProguardFiles(java.lang.Iterable)), defined as follows:
+The `BuildType` class exposes a [`setProguardFiles` method](https://google.github.io/android-gradle-dsl/2.2/com.android.build.gradle.internal.dsl.BuildType.html#com.android.build.gradle.internal.dsl.BuildType:setProguardFiles(java.lang.Iterable)){:new_tab}, defined as follows:
 
 {% highlight java %}
 public BuildType setProguardFiles(Iterable<?> proguardFileIterable) {

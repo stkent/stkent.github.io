@@ -5,6 +5,8 @@ tags: android
 
 ---
 
+{% include kramdown_definitions.md %}
+
 Prior to Android Nougat, I used the following bash function to speedily save screenshots to my local machine:
 
 {% highlight bash %}
@@ -19,13 +21,13 @@ However, executing this function when using a device running Android Nougat resu
 
 # Background
 
-The output of the adb shell's screencap utility is known to be somewhat funky on older (read: pre-Nougat) versions of Android. In particular, "adb shell" performs an automatic [line feed (LF) to {carriage return (CR) + line feed (LF)}](http://stackoverflow.com/a/13593914/2911458) conversion. This can be observed by capturing a “naive” screenshot (no [perl sanitization](http://blog.shvetsov.com/2013/02/grab-android-screenshot-to-computer-via.html)):
+The output of the adb shell's screencap utility is known to be somewhat funky on older (read: pre-Nougat) versions of Android. In particular, "adb shell" performs an automatic [line feed (LF) to {carriage return (CR) + line feed (LF)}](http://stackoverflow.com/a/13593914/2911458){:new_tab} conversion. This can be observed by capturing a “naive” screenshot (no [perl sanitization](http://blog.shvetsov.com/2013/02/grab-android-screenshot-to-computer-via.html){:new_tab}):
 
 {% highlight bash %}
 adb shell screencap -p > "screenshot.png"
 {% endhighlight %}
 
-and then inspecting the corresponding [hex dump](https://en.wikipedia.org/wiki/Hex_dump):
+and then inspecting the corresponding [hex dump](https://en.wikipedia.org/wiki/Hex_dump){:new_tab}:
 
 {% highlight text %}
 $ hexdump -C screenshot.png | head
@@ -41,7 +43,7 @@ $ hexdump -C screenshot.png | head
 00000090  de db dd 49 27 e9 ee 74  77 3a e3 79 bf 5e 37 e7  |...I'..tw:.y.^7.|
 {% endhighlight %}
 
-All valid PNG files start with the following [8-byte header](https://en.wikipedia.org/wiki/Portable_Network_Graphics#File_header):
+All valid PNG files start with the following [8-byte header](https://en.wikipedia.org/wiki/Portable_Network_Graphics#File_header){:new_tab}:
 
 {% highlight text %}
 89 50 4e 47 0d 0a 1a 0a
@@ -90,4 +92,4 @@ function screenshot-n() {
 }
 {% endhighlight %}
 
-There's probably a slick way to unify these functions by inspecting the incoming bytes and conditionally applying the global perl search-and-replace. Sadly, my bash-fu is not at that level - a challenge for the future!
+There's probably a slick way to unify these functions by inspecting the incoming bytes and conditionally applying the global perl search-and-replace, but the solutions above work well enough for me.

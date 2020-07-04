@@ -6,6 +6,8 @@ needs_math: true
 
 ---
 
+{% include kramdown_definitions.md %}
+
 [Last post]({% post_url 2015-06-07-an-intro-to-pathinterpolatorcompat %}), we built a super-simple `Path`-based interpolator using straight line segments. To produce smoother interpolators, without corners - typically preferred for animating motion - we'll need correspondingly smooth generating Paths. Our primary goal in this post, then, will be:
 
 * given a sequence of $n$ points in the cartesian plane, calculate a smooth `Path` passing through all points in order.
@@ -152,7 +154,7 @@ $$
 \end{bmatrix}
 $$
 
-This tridiagonal system can be solved in linear time using [Thomas' Algorithm](http://en.wikipedia.org/wiki/Tridiagonal_matrix_algorithm), which in this case is guaranteed to be stable since the tridiagonal matrix is diagonally dominant. Once all $c\_{i,0}$ are calculated, the remaining control points $\lbrace c\_{i,1} : i \in 0,\ldots,n-1 \rbrace$ are given by the following formulae:
+This tridiagonal system can be solved in linear time using [Thomas' Algorithm](http://en.wikipedia.org/wiki/Tridiagonal_matrix_algorithm){:new_tab}, which in this case is guaranteed to be stable since the tridiagonal matrix is diagonally dominant. Once all $c\_{i,0}$ are calculated, the remaining control points $\lbrace c\_{i,1} : i \in 0,\ldots,n-1 \rbrace$ are given by the following formulae:
 
 $$ c_{i,1} = 2k_{i+1} - c_{i+1,0} \text{ for } i \in \lbrace 0,\ldots,n-2 \rbrace, $$
 
@@ -164,7 +166,7 @@ The following Android/Java code uses Thomas' Algorithm to compute appropriate co
 
 > given a sequence of $n$ points in the cartesian plane, calculate a smooth `Path` passing through all points in order.
 
-Note that the code was written with readability, rather than performance, in mind. `EPointF` is a simple 2D point representation that provides some convenient [componentwise operations](http://en.wikipedia.org/wiki/Pointwise#Componentwise_operations); the definition is given below the main block of code.
+Note that the code was written with readability, rather than performance, in mind. `EPointF` is a simple 2D point representation that provides some convenient [componentwise operations](http://en.wikipedia.org/wiki/Pointwise#Componentwise_operations){:new_tab}; the definition is given below the main block of code.
 
 {% highlight java %}
 package com.example;
@@ -388,9 +390,9 @@ To test this implementation, I generated random points inside the square $[0,1]\
 
 # Further Reading
 
-A pleasing geometrical presentation of composite B&eacute;zier curves is provided by [these lecture notes](/assets/pdfs/UCLA-Math-149-Mathematics-of-Computer-Graphics-lecture-notes.pdf) from UCLA's Math 149: Mathematics of Computer Graphics course.
+A pleasing geometrical presentation of composite B&eacute;zier curves is provided by [these lecture notes](/assets/pdfs/UCLA-Math-149-Mathematics-of-Computer-Graphics-lecture-notes.pdf){:new_tab} from UCLA's Math 149: Mathematics of Computer Graphics course.
 
-For an interesting application of B&eacute;zier curves, see the following technical articles on Square's blog: [Smooth Signatures](https://corner.squareup.com/2010/07/smooth-signatures.html) and [Smoother Signatures](https://corner.squareup.com/2012/07/smoother-signatures.html). I just noticed that the latter post references the UCLA lecture notes I linked above - great minds, etc. Given that written letters often contain sharp corners, I would be interested to know whether Square's algorithms could generate even better signatures if they were to switch back from cubic interpolation to linear interpolation near high-curvature regions.
+For an interesting application of B&eacute;zier curves, see the following technical articles on Square's blog: [Smooth Signatures](https://corner.squareup.com/2010/07/smooth-signatures.html){:new_tab} and [Smoother Signatures](https://corner.squareup.com/2012/07/smoother-signatures.html){:new_tab}. Given that written letters often contain sharp corners, I would be interested to know whether Square's algorithms could generate even better signatures if they were to switch back from cubic interpolation to linear interpolation near high-curvature regions.
 
 [^1]:Excepting the degenerate case in which the $n$ > 2 provided points are colinear.
-[^2]:The general (parametric) form of a cubic B&eacute;zier curve can be found in [the Wikipedia entry on B&eacute;zier Curves](http://en.wikipedia.org/wiki/B%C3%A9zier_curve#Cubic_B.C3.A9zier_curves).
+[^2]:The general (parametric) form of a cubic B&eacute;zier curve can be found in [the Wikipedia entry on B&eacute;zier Curves](http://en.wikipedia.org/wiki/B%C3%A9zier_curve#Cubic_B.C3.A9zier_curves){:new_tab}.

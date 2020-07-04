@@ -5,7 +5,9 @@ tags: android
 
 ---
 
-Google Maps Android SDK v2 includes [default logic to help users tap through groups of overlapping markers](https://developers.google.com/maps/documentation/android-sdk/marker#marker_click_events):
+{% include kramdown_definitions.md %}
+
+Google Maps Android SDK v2 includes [default logic to help users tap through groups of overlapping markers](https://developers.google.com/maps/documentation/android-sdk/marker#marker_click_events){:new_tab}:
 
 > Clicking on a cluster of markers causes subsequent clicks to cycle through the cluster, selecting each in turn.
 
@@ -64,16 +66,16 @@ Helpfully, this bug (and many others) is already fixed in the latest beta of Goo
   <img src="/assets/images/a-map-marker-tapping-bug-in-google-maps-android-sdk-v2-v3-fixed.gif" width="50%" />
 </div>
 
-This beta represents [the future direction of the Google Maps Android SDK](https://cloud.google.com/blog/products/maps-platform/whats-next-for-google-maps-platform) but is still a little [rough around the edges](https://issuetracker.google.com/issues/148084488) and adds a bunch of weight (approximately 5-7MB) to your APK/AAB.
+This beta represents [the future direction of the Google Maps Android SDK](https://cloud.google.com/blog/products/maps-platform/whats-next-for-google-maps-platform){:new_tab} but is still a little [rough around the edges](https://issuetracker.google.com/issues/148084488){:new_tab} and adds a bunch of weight (approximately 5-7MB) to your APK/AAB.
 
-Given their stated goals and [past comments](https://issuetracker.google.com/issues/69629563#comment7), it seems unlikely to me that the Google Maps team will backport fixes from v3 to v2:
+Given their stated goals and [past comments](https://issuetracker.google.com/issues/69629563#comment7){:new_tab}, it seems unlikely to me that the Google Maps team will backport fixes from v3 to v2:
 
 > The Maps SDK for Android has recently received a major overhaul, now available in Beta, which made many bugs and feature requests inapplicable or obsolete.
 >
 > We believe that the issue or feature request reported [in the v2 issue tracker] has been fixed or is inapplicable with this new release, and therefore closed this report.
 
-If the bug described in this post is unacceptable for your app I therefore recommend that you [update to Google Maps Android SDK v3](https://developers.google.com/maps/documentation/android-sdk/v3-client-migration#install_the_client_library) when possible.
+If the bug described in this post is unacceptable for your app I therefore recommend that you [update to Google Maps Android SDK v3](https://developers.google.com/maps/documentation/android-sdk/v3-client-migration#install_the_client_library){:new_tab} when possible.
 
-If you do update, be sure to report any remaining bugs using the [issue tracker component dedicated to the beta SDK](https://issuetracker.google.com/issues?q=componentid:541018).
+If you do update, be sure to report any remaining bugs using the [issue tracker component dedicated to the beta SDK](https://issuetracker.google.com/issues?q=componentid:541018){:new_tab}.
 
-The code for this post is available [here](https://github.com/stkent/google-maps-marker-tap-cycling-bug).
+The code for this post is available [here](https://github.com/stkent/google-maps-marker-tap-cycling-bug){:new_tab}.

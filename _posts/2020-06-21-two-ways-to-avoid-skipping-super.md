@@ -5,13 +5,15 @@ tags: android
 
 ---
 
+{% include kramdown_definitions.md %}
+
 Most Android apps that I've worked on have included a `BaseFragment` that contains universal logic. This logic is often written within one or more lifecycle methods, creating an implicit contract: subclasses **must** call through to `super` if they override any of these lifecycle methods[^1].
 
 We can make this contract harder to accidentally break in a couple of different ways.
 
 # The @CallSuper Annotation
 
-The [`@CallSuper`](https://developer.android.com/reference/kotlin/androidx/annotation/CallSuper) annotation is one of many [Android Support Annotations](https://developer.android.com/studio/write/annotations). When added to a method declaration, it signals that any overriding implementation should include a call to `super`:
+The [`@CallSuper`](https://developer.android.com/reference/kotlin/androidx/annotation/CallSuper){:new_tab} annotation is one of many [Android Support Annotations](https://developer.android.com/studio/write/annotations){:new_tab}. When added to a method declaration, it signals that any overriding implementation should include a call to `super`:
 
 ```kotlin
 // in BaseFragment:
@@ -57,7 +59,7 @@ Android Support Annotations are used extensively within Android's own AndroidX l
 
 # The Template Method Pattern
 
-The [template method pattern](https://en.wikipedia.org/wiki/Template_method_pattern) allows us to enforce our implicit contract even more strongly. In this pattern, the method containing universal logic is marked `final` so that it can no longer be overridden by subclasses. Calls to one or more empty "template methods" are then inserted into the `final` method for subclasses to override instead. This allows subclasses to add to (but never skip or erase) superclass logic:
+The [template method pattern](https://en.wikipedia.org/wiki/Template_method_pattern){:new_tab} allows us to enforce our implicit contract even more strongly. In this pattern, the method containing universal logic is marked `final` so that it can no longer be overridden by subclasses. Calls to one or more empty "template methods" are then inserted into the `final` method for subclasses to override instead. This allows subclasses to add to (but never skip or erase) superclass logic:
 
 ```kotlin
 // in BaseFragment:

@@ -5,11 +5,13 @@ tags: ios, android, swift, kotlin, talk
 
 ---
 
-[Oh look, another talk comparing modern mobile technologies! This time, the primary audience is iOS developers who are familiar with Swift and intrigued by Android. If you're a Kotlin-curious Android or Java developer, you might get more out of my previous talk, _[Kotlin For Fun And Profit]({% post_url 2017-07-13-kotlin-for-fun-and-profit %})_.]
+{% include kramdown_definitions.md %}
 
-Last week, I crashed my [local CocoaHeads meetup](https://www.meetup.com/MotorCityCocoaHeads/) and gave a talk about... Android!
+[Oh look, another talk comparing modern mobile technologies! This time, the primary audience is iOS developers who are familiar with Swift and intrigued by Android. If you're a Kotlin-curious Android or Java developer, you might get more out of my previous talk, [Kotlin For Fun And Profit]({% post_url 2017-07-13-kotlin-for-fun-and-profit %}).
 
-Sort of 😉.
+Last week, I crashed my [local CocoaHeads meetup](https://www.meetup.com/MotorCityCocoaHeads/){:new_tab} and gave a talk about... Android!
+
+Sort of...
 
 <!--more-->
 
@@ -27,7 +29,7 @@ This means there's never been a better time for developers familiar with one eco
 
 - more easily maintaining consistency when building dual-platform apps, and
 
-- becoming a more flexible (and therefore more valuable) employee 🤑,
+- becoming a more flexible (and therefore more valuable) employee,
 
 all without sacrificing any of the benefits of native development.
 
@@ -35,4 +37,4 @@ Not convinced? Check out the video and slides from _iOS &amp; Android &amp; Swif
 
 {% include youtube.html video_id="hylwSuqSJ_E" %}
 
-[Slides](https://speakerdeck.com/stkent/ios-and-android-and-swift-and-kotlin-video)
+[Slides](https://speakerdeck.com/stkent/ios-and-android-and-swift-and-kotlin-video){:new_tab}

@@ -5,7 +5,9 @@ tags: android, animation, math
 
 ---
 
-[Nick Butcher](https://twitter.com/crafty) recently [demonstrated](https://medium.com/google-developers/playing-with-paths-3fbc679a6f77) a `Path`-and-`CornerPathEffect`-based method for drawing regular polygons with rounded corners. My library [PolygonDrawingUtil](https://github.com/stkent/PolygonDrawingUtil) solves the same problem but produces noticeably different results:
+{% include kramdown_definitions.md %}
+
+[Nick Butcher](https://twitter.com/crafty){:new_tab} recently [demonstrated](https://medium.com/google-developers/playing-with-paths-3fbc679a6f77){:new_tab} a `Path`-and-`CornerPathEffect`-based method for drawing regular polygons with rounded corners. My library [PolygonDrawingUtil](https://github.com/stkent/PolygonDrawingUtil){:new_tab} solves the same problem but produces noticeably different results:
 
 <div class="image-container" id="animation">
   <img src="/assets/images/really-rounded-polygons-comparison.gif" style="max-width: 400px" />
@@ -35,7 +37,7 @@ PolygonDrawingUtil dynamically generates and draws rounded polygon `Path`s based
 - polygon radius (center to corner), and
 - desired corner radius.
 
-These `Path`s use exactly two components: straight lines for sides, and [circular arcs](https://en.wikipedia.org/wiki/Arc_(geometry)) for corners.
+These `Path`s use exactly two components: straight lines for sides, and [circular arcs](https://en.wikipedia.org/wiki/Arc_(geometry){:new_tab}) for corners.
 
 Below are some examples created using this method. The full circles used to create the rounded corner arcs are shown in light gray for illustration:
 
@@ -53,7 +55,7 @@ The code that constructs these `Path`s is shown below. I'm not going to dissect 
 
 1. Calculate the length of arc to use for each corner;
 2. Calculate where each arc should be centered to ensure a smooth join with the sides;
-3. Draw each arc in turn, using a [neat feature of `Path.arcTo`](https://developer.android.com/reference/android/graphics/Path.html#arcTo(android.graphics.RectF,%20float,%20float)) to automatically insert the sides:
+3. Draw each arc in turn, using a [neat feature of `Path.arcTo`](https://developer.android.com/reference/android/graphics/Path.html#arcTo(android.graphics.RectF,%20float,%20float){:new_tab}) to automatically insert the sides:
     > If the start of the path is different from the path's current last point, then an automatic lineTo() is added to connect the current contour to the start of the arc.
 
 {% highlight java %}
@@ -110,7 +112,7 @@ If the corner radius becomes too large relative to the polygon radius, the drawn
 
 As far as I can tell, there's no easy way to predict what this degenerate shape will look like ahead of time.
 
-The relevant native code from [SkCornerPathEffect.cpp](https://android.googlesource.com/platform/external/skia/+/android-8.0.0_r4/src/effects/SkCornerPathEffect.cpp) is below[^2]. For each line in the original path, the essential steps are:
+The relevant native code from [SkCornerPathEffect.cpp](https://android.googlesource.com/platform/external/skia/+/android-8.0.0_r4/src/effects/SkCornerPathEffect.cpp){:new_tab} is below[^2]. For each line in the original path, the essential steps are:
 
 1. Calculate the control and end point locations for the corner curve;
 2. Draw a quadratic B&eacute;zier curve using these points;
@@ -178,5 +180,5 @@ On the other hand, consider `CornerPathEffect` if:
 
 Either way, I hope you learned a little about `Path`s, `PathEffect`s, and geometry during this exploration :)
 
-[^1]: Trivia: PolygonDrawingUtil was originally inspired by games based on hexagonal grids, which is why it's polygon-specific and allows such precise corner control!
-[^2]: More useful native code if you want to go deeper: [SkPath.h](https://android.googlesource.com/platform/external/skia/+/android-8.0.0_r4/include/core/SkPath.h), [SkPath.cpp](https://android.googlesource.com/platform/external/skia/+/android-8.0.0_r4/src/core/SkPath.cpp), [SkPathEffect.h](https://android.googlesource.com/platform/external/skia/+/android-8.0.0_r4/include/core/SkPathEffect.h), [SkPathEffect.cpp](https://android.googlesource.com/platform/external/skia/+/android-8.0.0_r4/src/core/SkPathEffect.cpp).
+[^1]: Trivia: PolygonDrawingUtil was originally inspired by games based on hexagonal grids, which is why it's polygon-specific and allows such precise corner control.
+[^2]: More useful native code if you want to go deeper: [SkPath.h](https://android.googlesource.com/platform/external/skia/+/android-8.0.0_r4/include/core/SkPath.h){:new_tab}, [SkPath.cpp](https://android.googlesource.com/platform/external/skia/+/android-8.0.0_r4/src/core/SkPath.cpp){:new_tab}, [SkPathEffect.h](https://android.googlesource.com/platform/external/skia/+/android-8.0.0_r4/include/core/SkPathEffect.h){:new_tab}, [SkPathEffect.cpp](https://android.googlesource.com/platform/external/skia/+/android-8.0.0_r4/src/core/SkPathEffect.cpp){:new_tab}.

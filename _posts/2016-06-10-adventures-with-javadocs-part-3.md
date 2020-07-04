@@ -5,13 +5,15 @@ tags: android, java, javadoc, gradle, open source, library
 
 ---
 
+{% include kramdown_definitions.md %}
+
 This is the follow-up to Adventures with Javadocs parts [1]({% post_url 2016-01-28-adventures-with-javadocs-part-1 %}) and [2]({% post_url 2016-02-05-adventures-with-javadocs-part-2 %}). If you haven't already, please go read those - this post continues to build on the sample project constructed there, and explores the extra configuration needed to properly handle classes supplied by third party dependencies.
 
 <!--more-->
 
 # Introducing Classes From Third Party Dependencies
 
-Let's add Google's [Gson](https://github.com/google/gson) as a third party dependency of our library:
+Let's add Google's [Gson](https://github.com/google/gson){:new_tab} as a third party dependency of our library:
 
 {% highlight groovy %}
 dependencies {
@@ -85,7 +87,7 @@ BUILD SUCCESSFUL
 
 This should not be at all surprising. Based on our investigations in the last post, we know that `com.google.gson.Gson` is a newly-added _referenced class_ whose definition is currently _not_ included in the classpath we are supplying to the `javadoc` tool. Let's fix that.
 
-The code for this portion of the post is available [here](https://github.com/stkent/javadoc-tests/tree/528fd7f).
+The code for this portion of the post is available [here](https://github.com/stkent/javadoc-tests/tree/528fd7f){:new_tab}.
 
 # Adding Third Party Classes To The Classpath
 
@@ -105,7 +107,7 @@ android.libraryVariants.all { variant ->
 
 There are a few new things going on here, so let's break this code down a bit.
 
-- The `android.libraryVariants.all` method accepts a closure that will be applied to each variant of our library. (If you need a refresher on what a variant is, see [the Android Gradle Plugin documentation](http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Build-Type-Product-Flavor-Build-Variant).);
+- The `android.libraryVariants.all` method accepts a closure that will be applied to each variant of our library. (If you need a refresher on what a variant is, see [the Android Gradle Plugin documentation](http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Build-Type-Product-Flavor-Build-Variant){:new_tab}.);
 
 - We define our docs task based on the variant with name 'release' only. This is fine for our simple test library, since we aren't leveraging product flavors at all. For more complex library project structures, it may be desirable to define a separate Javadoc-generating task per-variant;
 
@@ -139,7 +141,7 @@ Let's check our actual Javadoc output and verify that it includes the full packa
 
 Perfect :-)
 
-The code for this portion of the post is available [here](https://github.com/stkent/javadoc-tests/tree/2c8a42c).
+The code for this portion of the post is available [here](https://github.com/stkent/javadoc-tests/tree/2c8a42c){:new_tab}.
 
 # Generalizing
 

@@ -5,6 +5,8 @@ tags: android, java, javadoc, gradle, open source, library
 
 ---
 
+{% include kramdown_definitions.md %}
+
 This is the follow-up to [Adventures with Javadocs, part 1]({% post_url 2016-01-28-adventures-with-javadocs-part-1 %}). If you haven't already, please go read that - this post will build on the sample project constructed there, and explore the extra configuration needed to properly handle Android framework classes.
 
 <!--more-->
@@ -72,7 +74,7 @@ import android.os.Bundle;
 BUILD SUCCESSFUL
 {% endhighlight %}
 
-The code for this portion of the post is available [here](https://github.com/stkent/javadoc-tests/tree/9e9125850ba13b7988ac5105fe826cccd6a2f681).
+The code for this portion of the post is available [here](https://github.com/stkent/javadoc-tests/tree/9e9125850ba13b7988ac5105fe826cccd6a2f681){:new_tab}.
 
 # Generated Documentation
 
@@ -101,7 +103,7 @@ As per the last post, the lack of a hyperlink in format 3 is straightforward to 
 
 # Class Classifications
 
-The `javadoc` documentation [introduces](http://docs.oracle.com/javase/6/docs/technotes/tools/windows/javadoc.html#terminology) the following terminology to describe the different roles that can be played by Java classes during a documentation-generating run:
+The `javadoc` documentation [introduces](http://docs.oracle.com/javase/6/docs/technotes/tools/windows/javadoc.html#terminology){:new_tab} the following terminology to describe the different roles that can be played by Java classes during a documentation-generating run:
 
 > **documented/included classes:** The classes and interfaces for which detailed documentation is generated during a javadoc run.
 
@@ -111,7 +113,7 @@ The `javadoc` documentation [introduces](http://docs.oracle.com/javase/6/docs/te
 
 > When the Javadoc tool is run, it should load into memory all of the referenced classes in javadoc's bootclasspath and classpath. [...] The Javadoc tool can derive enough information from the .class files to determine their existence and the fully-qualified names of their members.
 
-The path stored in bootclasspath represents the location of Java's Bootstrap classes (the classes that implement the [Java platform](https://en.wikipedia.org/wiki/Java_(software_platform)#Platform)). This has default value `$JAVA_HOME/jre/lib`, which contains (among other things) compiled class files that collectively form Java's standard library. In particular, the rt.jar JAR contains a compiled String.class file.[^2]
+The path stored in bootclasspath represents the location of Java's Bootstrap classes (the classes that implement the [Java platform](https://en.wikipedia.org/wiki/Java_(software_platform)#Platform){:new_tab}). This has default value `$JAVA_HOME/jre/lib`, which contains (among other things) compiled class files that collectively form Java's standard library. In particular, the rt.jar JAR contains a compiled String.class file.[^2]
 
 The path stored in classpath represents the location of all referenced classes that are not part of the Java platform. By default, this is an empty path (i.e. no locations are searched to locate additional referenced classes).
 
@@ -158,11 +160,11 @@ This addition uses the `bootClassPath` property that is conveniently exposed by 
 TestClassThree(android.os.Bundle bundle)
 {% endhighlight %}
 
-The code for this portion of the post is available [here](https://github.com/stkent/javadoc-tests/tree/806e5bfcad8000949bfa5158ecc9b0a90f6b377a).
+The code for this portion of the post is available [here](https://github.com/stkent/javadoc-tests/tree/806e5bfcad8000949bfa5158ecc9b0a90f6b377a){:new_tab}.
 
 # Next Time
 
-Up next: handling third-party dependencies!
+Up next: handling third-party dependencies.
 
-[^1]: Note that it is possible to introduce links to the documentation hosted on d.android.com with a little more configuration work - we'll address this in a later post in the series!
-[^2]: You can verify this yourself by unarchiving the `$JAVA_HOME/jre/lib/rt.jar` JAR, and navigating to the `java/lang` subfolder!
+[^1]: Note that it is possible to introduce links to the documentation hosted on d.android.com with a little more configuration work.
+[^2]: You can verify this yourself by unarchiving the `$JAVA_HOME/jre/lib/rt.jar` JAR, and navigating to the `java/lang` subfolder.

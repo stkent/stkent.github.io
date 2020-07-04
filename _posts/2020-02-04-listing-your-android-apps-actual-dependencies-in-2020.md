@@ -5,7 +5,9 @@ tags: android
 
 ---
 
-Gradle lets us list all the dependencies of our projects using the [`dependencies` task](https://docs.gradle.org/6.1.1/userguide/viewing_debugging_dependencies.html#sec:listing_dependencies). Here's a small snippet of sample output:
+{% include kramdown_definitions.md %}
+
+Gradle lets us list all the dependencies of our projects using the [`dependencies` task](https://docs.gradle.org/6.1.1/userguide/viewing_debugging_dependencies.html#sec:listing_dependencies){:new_tab}. Here's a small snippet of sample output:
 
 {% highlight text %}
 +--- org.jetbrains.kotlin:kotlin-android-extensions-runtime:1.3.61
@@ -24,13 +26,13 @@ Gradle lets us list all the dependencies of our projects using the [`dependencie
 .    .
 {% endhighlight %}
 
-This output shows both the direct and [indirect (aka transitive)](https://en.wikipedia.org/wiki/Transitive_dependency) dependencies of our project. Indirect dependencies are indicated by indentation, so in the example above:
+This output shows both the direct and [indirect (aka transitive)](https://en.wikipedia.org/wiki/Transitive_dependency){:new_tab} dependencies of our project. Indirect dependencies are indicated by indentation, so in the example above:
 
 - `androidx.appcompat:appcompat:1.1.0` is a **direct** dependency of our project;
 - `androidx.core:core:1.1.0` is a direct dependency of `androidx.appcompat:appcompat:1.1.0`, and is therefore an **indirect** dependency of our project;
 - `androidx.lifecycle:lifecycle-runtime` is a direct dependency of `androidx.core:core:1.1.0` which is a direct dependency of `androidx.appcompat:appcompat:1.1.0`, and is therefore a (doubly) **indirect** dependency of our project; etc.
 
-Running `./gradlew :app:dependencies` on an Android project outputs [**many**](https://github.com/gradle/gradle/issues/11648) separate lists of dependencies; one for each Gradle [configuration](https://docs.gradle.org/6.1.1/userguide/dependency_management_for_java_projects.html#sec:configurations_java_tutorial). While the term may sound unfamiliar, you've definitely interacted with configurations before; the `implementation` keyword you use when declaring dependencies of your app refers to a configuration with the same name.
+Running `./gradlew :app:dependencies` on an Android project outputs [**many**](https://github.com/gradle/gradle/issues/11648){:new_tab} separate lists of dependencies; one for each Gradle [configuration](https://docs.gradle.org/6.1.1/userguide/dependency_management_for_java_projects.html#sec:configurations_java_tutorial){:new_tab}. While the term may sound unfamiliar, you've definitely interacted with configurations before; the `implementation` keyword you use when declaring dependencies of your app refers to a configuration with the same name.
 
 We can reduce the verbosity of the `dependencies` task by passing the name of a single configuration using the `--configuration` parameter:
 
@@ -44,13 +46,13 @@ The rest of this post explains which Gradle configurations we should use with th
 
 # Historical Context
 
-<a id="configuration_purpose_list"></a> Prior to Gradle 3.4, configurations could be used for one or more of [several distinct purposes](https://docs.gradle.org/6.1.1/userguide/dependency_management_for_java_projects.html#sec:configurations_java_tutorial):
+<a id="configuration_purpose_list"></a> Prior to Gradle 3.4, configurations could be used for one or more of [several distinct purposes](https://docs.gradle.org/6.1.1/userguide/dependency_management_for_java_projects.html#sec:configurations_java_tutorial){:new_tab}:
 
 1. holding a list of direct dependencies declared via the `dependencies` block of our `build.gradle` files;
-2. resolving and operating on a complete dependency tree (effectively a [classpath](https://en.wikipedia.org/wiki/Classpath_(Java))) based on a list of direct dependencies **and** a target usage (compilation, runtime, etc);
+2. resolving and operating on a complete dependency tree (effectively a [classpath](https://en.wikipedia.org/wiki/Classpath_(Java)){:new_tab}) based on a list of direct dependencies **and** a target usage (compilation, runtime, etc);
 3. declaring project artifacts for other projects to consume.
 
-In these versions of Gradle, the [typical advice for Android developers](https://stackoverflow.com/a/44496539/2911458) was to run the `dependencies` task using the `compile` configuration:
+In these versions of Gradle, the [typical advice for Android developers](https://stackoverflow.com/a/44496539/2911458){:new_tab} was to run the `dependencies` task using the `compile` configuration:
 
 {% highlight bash %}
 ./gradlew :app:dependencies --configuration compile
@@ -60,7 +62,7 @@ This did exactly what you probably guessed; it output the full dependency tree b
 
 # Modern Gradle
 
-In Gradle 3.4, new configurations were restricted to each being used for [exactly one](https://docs.gradle.org/6.1.1/userguide/dependency_management.html#sec:resolvable-consumable-configs) of the three purposes described [above](#configuration_purpose_list). This improved separation of concerns allowed some previously-impossible performance optimizations to be implemented.
+In Gradle 3.4, new configurations were restricted to each being used for [exactly one](https://docs.gradle.org/6.1.1/userguide/dependency_management.html#sec:resolvable-consumable-configs){:new_tab} of the three purposes described [above](#configuration_purpose_list). This improved separation of concerns allowed some previously-impossible performance optimizations to be implemented.
 
 As part of this change, the `compile` configuration was deprecated and replaced by the `api` and `implementation` configurations. Running `./gradlew :app:dependencies --configuration compile` now results in the output below:
 
@@ -99,7 +101,7 @@ This output only includes our direct dependencies and does not include any indir
 
 This is signalling to us that the `implementation` configuration is **only** for holding a list of direct dependencies and (unlike the deprecated `compile` configuration) cannot also be used for resolving a complete dependency tree.
 
-The [upgrade notes for Gradle 6](https://docs.gradle.org/6.1.1/userguide/upgrading_version_5.html#dependencies_should_no_longer_be_declared_using_the_compile_and_runtime_configurations) indicate that `compileClasspath` and `runtimeClasspath` are the configurations we should use for dependency resolution in modern Gradle projects:
+The [upgrade notes for Gradle 6](https://docs.gradle.org/6.1.1/userguide/upgrading_version_5.html#dependencies_should_no_longer_be_declared_using_the_compile_and_runtime_configurations){:new_tab} indicate that `compileClasspath` and `runtimeClasspath` are the configurations we should use for dependency resolution in modern Gradle projects:
 
 > The `implementation`, `api`, `compileOnly` and `runtimeOnly` configurations should be used to declare dependencies and the `compileClasspath` and `runtimeClasspath` configurations to resolve dependencies.
 
@@ -137,4 +139,4 @@ androidx.appcompat:appcompat:1.1.0
       - By constraint : releaseRuntimeClasspath uses version 1.1.0
 {% endhighlight %}
 
-[^1]: [Gradle documentation description of Java library plugin configurations](https://docs.gradle.org/6.1.1/userguide/java_library_plugin.html#sec:java_library_configurations_graph).
+[^1]: [Gradle documentation description of Java library plugin configurations](https://docs.gradle.org/6.1.1/userguide/java_library_plugin.html#sec:java_library_configurations_graph){:new_tab}.

@@ -9,6 +9,4 @@ In February I gave my second[^1] lightning talk at Detroit Labs. This time I wen
 
 {% include youtube.html video_id="Wg8-4Cn1YBI" %}
 
-[Slides](https://speakerdeck.com/stkent/a-deadly-proof-video)
-
 [^1]:You can find my first lightning talk, Cameras 101, [here]({% post_url 2017-01-15-cameras-101 %}).

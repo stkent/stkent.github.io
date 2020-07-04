@@ -1,0 +1,1 @@
+{:new_tab: target="_blank" rel="noreferrer noopener"}

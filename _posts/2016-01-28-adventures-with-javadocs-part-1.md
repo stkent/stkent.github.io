@@ -5,13 +5,15 @@ tags: android, java, javadoc, gradle, open source, library
 
 ---
 
-Part of publishing high-quality libraries is providing high-quality documentation, which in Android-land means: high-quality Javadocs. There are tons of good resources around that explain proper Javadoc comment format and content, so in this series we'll explore the actual generation of documentation using Gradle/Android Studio. Let's begin!
+{% include kramdown_definitions.md %}
+
+Part of publishing high-quality libraries is providing high-quality documentation, which in Android-land means: high-quality Javadocs. There are tons of good resources around that explain proper Javadoc comment format and content, so in this series we'll explore the actual generation of documentation using Gradle/Android Studio.
 
 <!--more-->
 
 # Javadoc Task Type Basics
 
-The Gradle Java plugin provides a [template Javadoc task](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.javadoc.Javadoc.html) with the following description:
+The Gradle Java plugin provides a [template Javadoc task](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.javadoc.Javadoc.html){:new_tab} with the following description:
 
 > Generates HTML API documentation for Java classes.
 > 
@@ -156,4 +158,4 @@ which produces the output files shown below (viewed within Android Studio):
 
 This is identical to the output of the Gradle task itself, minus the temporary javadoc.options file! Which is neat, because it means we can leverage all the existing `javadoc` tool documentation to help us overcome some of the challenges we'll be facing in the next post, in which we add classes from the Android framework and third-party dependencies to our sample project.
 
-The code for this post is available [here](https://github.com/stkent/javadoc-tests/tree/a3f27d5904648f6a32c55399c1f2bdeb265f99d6).
+The code for this post is available [here](https://github.com/stkent/javadoc-tests/tree/a3f27d5904648f6a32c55399c1f2bdeb265f99d6){:new_tab}.

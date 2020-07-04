@@ -6,16 +6,18 @@ needs_math: true
 
 ---
 
-Version 22.1 of the v4 support library added [several new Interpolator classes](http://android-developers.blogspot.com/2015/04/android-support-library-221.html) to help developers infuse their applications with [Authentic Motion](http://www.google.com/design/spec/animation/authentic-motion.html). Today, we'll explore the highly-flexible [`PathInterpolatorCompat`](http://developer.android.com/reference/android/support/v4/view/animation/PathInterpolatorCompat.html) class.
+{% include kramdown_definitions.md %}
+
+Version 22.1 of the v4 support library added [several new Interpolator classes](http://android-developers.blogspot.com/2015/04/android-support-library-221.html){:new_tab} to help developers infuse their applications with [Authentic Motion](http://www.google.com/design/spec/animation/authentic-motion.html){:new_tab}. Today, we'll explore the highly-flexible [`PathInterpolatorCompat`](http://developer.android.com/reference/android/support/v4/view/animation/PathInterpolatorCompat.html){:new_tab} class.
 
 <!--more-->
 
-As the name suggests, `PathInterpolatorCompat` is a utility for creating [`Path`](http://developer.android.com/reference/android/graphics/Path.html)-based interpolators. The goals for this post are as follows:
+As the name suggests, `PathInterpolatorCompat` is a utility for creating [`Path`](http://developer.android.com/reference/android/graphics/Path.html){:new_tab}-based interpolators. The goals for this post are as follows:
 
 * recap `Path` basics;
 * understand which Paths can be used to create interpolators;
 * understand the role of `PathInterpolatorCompat` in the Android ecosystem;
-* build a `Path`-based interpolator!
+* build a `Path`-based interpolator.
 
 # Paths
 
@@ -27,7 +29,7 @@ In plainer English:
 
 > A Path is a collection of (not-necessarily-connected) straight lines, curves and shapes.
 
-Paths are most commonly used to draw complex shapes on a [`Canvas`](http://developer.android.com/reference/android/graphics/Canvas.html) via the [`Canvas.drawPath`](http://developer.android.com/reference/android/graphics/Canvas.html#drawPath(android.graphics.Path,+android.graphics.Paint)) method. We build them by calling a sequence of methods to add new components. Key methods include but are not limited to:
+Paths are most commonly used to draw complex shapes on a [`Canvas`](http://developer.android.com/reference/android/graphics/Canvas.html){:new_tab} via the [`Canvas.drawPath`](http://developer.android.com/reference/android/graphics/Canvas.html#drawPath(android.graphics.Path,+android.graphics.Paint)){:new_tab} method. We build them by calling a sequence of methods to add new components. Key methods include but are not limited to:
 
 * `Path.moveTo`: sets the start point for the next contour.
 * `Path.lineTo`: adds a straight line.
@@ -116,7 +118,7 @@ public interface TimeInterpolator {
 }
 {% endhighlight %}
 
-Armed with this context, the [wordy restrictions](https://developer.android.com/reference/android/view/animation/PathInterpolator.html) placed on Paths passed as arguments to the `PathInterpolator(Path path)` and `PathInterpolatorCompat(Path path)` constructors become a little less mysterious - we just have to make sure our `Path` corresponds to the graph of some function $f$ satisfying $f(0) = 0$ and $f(1) = 1$.[^1]
+Armed with this context, the [wordy restrictions](https://developer.android.com/reference/android/view/animation/PathInterpolator.html){:new_tab} placed on Paths passed as arguments to the `PathInterpolator(Path path)` and `PathInterpolatorCompat(Path path)` constructors become a little less mysterious - we just have to make sure our `Path` corresponds to the graph of some function $f$ satisfying $f(0) = 0$ and $f(1) = 1$.[^1]
 
 # Function Representations
 
@@ -176,11 +178,11 @@ However, there are also some significant drawbacks:
 
 * creating expressions that satisfy the boundary conditions is non-trivial; matching the desired high-level interpolator behavior too is very difficult indeed. This limitation makes it difficult to effectively explore the space of available interpolators.
 
-`PathInterpolatorCompat` addresses the limitations above by allowing us first to design our interpolator **graphically** (an intuitive method, since most interpolators are used to generate animations), and then to represent this interpolator in code using the ["natural language"](http://en.wikipedia.org/wiki/Natural_language_programming) methods provided by the `Path` class.
+`PathInterpolatorCompat` addresses the limitations above by allowing us first to design our interpolator **graphically** (an intuitive method, since most interpolators are used to generate animations), and then to represent this interpolator in code using the ["natural language"](http://en.wikipedia.org/wiki/Natural_language_programming){:new_tab} methods provided by the `Path` class.
 
 # Using PathInterpolatorCompat
 
-Great; we've figured out why `PathInterpolatorCompat` exists and which Paths we can convert into interpolators! Let's give it a spin.
+Great; we've figured out why `PathInterpolatorCompat` exists and which Paths we can convert into interpolators. Let's give it a spin.
 
 Our aim will be to construct a zig-zag interpolator whose interpolated value bounces between 0 and 1 $n$ times (where $n$ is odd). Here's a graph that represents this zig-zag interpolator with $n=5$:
 
@@ -209,7 +211,7 @@ Imagine trying to create this same interpolator by explicitly implementing `getI
 
 # What Next?
 
-Go forth and explore `Path`-based interpolators! Hopefully this introduction has given you some inspiration. There are definitely many areas to investigate still, including:
+Go forth and explore `Path`-based interpolators. Hopefully this introduction has given you some inspiration. There are definitely many areas to investigate still, including:
 
 * how interpolated values are actually calculated when using a `Path`-based interpolator;
 
@@ -219,7 +221,7 @@ Go forth and explore `Path`-based interpolators! Hopefully this introduction has
 
 # Further Reading
 
-The Android framework has some interesting internal interpolators. For a more complex algebraic interpolator based on fluid physics, check out `ViscousFluidInterpolator`, an inner class of [`android.widget.Scroller`](https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/core/java/android/widget/Scroller.java) used to animate flings.
+The Android framework has some interesting internal interpolators. For a more complex algebraic interpolator based on fluid physics, check out `ViscousFluidInterpolator`, an inner class of [`android.widget.Scroller`](https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/core/java/android/widget/Scroller.java){:new_tab} used to animate flings.
 
 [^1]:`Path`-based interpolators are therefore incapable of generating repeating animations.
 [^2]:The constant name `mTension` suggests that this motion may be related to the oscillations of an underdamped spring.

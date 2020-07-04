@@ -5,11 +5,13 @@ tags: android
 
 ---
 
-Since March 2017 (v25.3.0), the Android Emulator has been [released separately from the rest of the Android SDK tools](https://developer.android.com/studio/releases/emulator.html#25-3). As part of implementing this change, the `emulator` binary was ‘promoted’ from `${ANDROID_SDK_ROOT}/tools/`[^1]  to its own top-level directory, `${ANDROID_SDK_ROOT}/emulator/`. This relocation can cause some issues. I'll show you how to avoid them.
+{% include kramdown_definitions.md %}
+
+Since March 2017 (v25.3.0), the Android Emulator has been [released separately from the rest of the Android SDK tools](https://developer.android.com/studio/releases/emulator.html#25-3){:new_tab}. As part of implementing this change, the `emulator` binary was ‘promoted’ from `${ANDROID_SDK_ROOT}/tools/`[^1]  to its own top-level directory, `${ANDROID_SDK_ROOT}/emulator/`. This relocation can cause some issues. I'll show you how to avoid them.
 
 <!--more-->
 
-At the time of the change, it was indicated that [old versions of Android Studio should be unaffected](https://developer.android.com/studio/releases/sdk-tools.html). However, I recently needed to launch the emulator from the command line to test customized Android system images, and in doing so discovered some rough edges:
+At the time of the change, it was indicated that [old versions of Android Studio should be unaffected](https://developer.android.com/studio/releases/sdk-tools.html){:new_tab}. However, I recently needed to launch the emulator from the command line to test customized Android system images, and in doing so discovered some rough edges:
 
 {% highlight none %}
 $ ${ANDROID_SDK_ROOT}/tools/emulator -avd my-custom-avd
@@ -82,6 +84,6 @@ $ which emulator
 
 Happy emulating!
 
-[^1]: In writing this post I also discovered for the first time that `${ANDROID_HOME}` has been deprecated in favor of `${ANDROID_SDK_ROOT}`. Read more in the [Android Studio User Guide section on Environment Variables](https://developer.android.com/studio/command-line/variables.html#envar).
+[^1]: In writing this post I also discovered for the first time that `${ANDROID_HOME}` has been deprecated in favor of `${ANDROID_SDK_ROOT}`. Read more in the [Android Studio User Guide section on Environment Variables](https://developer.android.com/studio/command-line/variables.html#envar){:new_tab}.
 
 [^2]: Run `echo $PATH` to check the full contents of your `$PATH` variable. Searched paths are separated by a colon and searched first-to-last.
