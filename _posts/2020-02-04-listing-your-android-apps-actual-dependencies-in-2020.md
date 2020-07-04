@@ -1,5 +1,5 @@
 ---
-title: Listing Your Android App's (Actual) Dependencies In 2020
+title: Listing Your Android App’s (Actual) Dependencies In 2020
 author: Stuart Kent
 tags: android
 
@@ -7,7 +7,7 @@ tags: android
 
 {% include kramdown_definitions.md %}
 
-Gradle lets us list all the dependencies of our projects using the [`dependencies` task](https://docs.gradle.org/6.1.1/userguide/viewing_debugging_dependencies.html#sec:listing_dependencies){:new_tab}. Here's a small snippet of sample output:
+Gradle lets us list all the dependencies of our projects using the [`dependencies` task](https://docs.gradle.org/6.1.1/userguide/viewing_debugging_dependencies.html#sec:listing_dependencies){:new_tab}. Here’s a small snippet of sample output:
 
 {% highlight text %}
 +--- org.jetbrains.kotlin:kotlin-android-extensions-runtime:1.3.61
@@ -32,7 +32,7 @@ This output shows both the direct and [indirect (aka transitive)](https://en.wik
 - `androidx.core:core:1.1.0` is a direct dependency of `androidx.appcompat:appcompat:1.1.0`, and is therefore an **indirect** dependency of our project;
 - `androidx.lifecycle:lifecycle-runtime` is a direct dependency of `androidx.core:core:1.1.0` which is a direct dependency of `androidx.appcompat:appcompat:1.1.0`, and is therefore a (doubly) **indirect** dependency of our project; etc.
 
-Running `./gradlew :app:dependencies` on an Android project outputs [**many**](https://github.com/gradle/gradle/issues/11648){:new_tab} separate lists of dependencies; one for each Gradle [configuration](https://docs.gradle.org/6.1.1/userguide/dependency_management_for_java_projects.html#sec:configurations_java_tutorial){:new_tab}. While the term may sound unfamiliar, you've definitely interacted with configurations before; the `implementation` keyword you use when declaring dependencies of your app refers to a configuration with the same name.
+Running `./gradlew :app:dependencies` on an Android project outputs [**many**](https://github.com/gradle/gradle/issues/11648){:new_tab} separate lists of dependencies; one for each Gradle [configuration](https://docs.gradle.org/6.1.1/userguide/dependency_management_for_java_projects.html#sec:configurations_java_tutorial){:new_tab}. While the term may sound unfamiliar, you’ve definitely interacted with configurations before; the `implementation` keyword you use when declaring dependencies of your app refers to a configuration with the same name.
 
 We can reduce the verbosity of the `dependencies` task by passing the name of a single configuration using the `--configuration` parameter:
 
@@ -58,7 +58,7 @@ In these versions of Gradle, the [typical advice for Android developers](https:/
 ./gradlew :app:dependencies --configuration compile
 {% endhighlight %}
 
-This did exactly what you probably guessed; it output the full dependency tree based on the dependencies you'd declared to be part of the `compile` configuration in your `build.gradle` file's `dependencies` block. However, the target usage being considered was not immediately apparent.
+This did exactly what you probably guessed; it output the full dependency tree based on the dependencies you’d declared to be part of the `compile` configuration in your `build.gradle` file’s `dependencies` block. However, the target usage being considered was not immediately apparent.
 
 # Modern Gradle
 
@@ -77,7 +77,7 @@ You might guess that the proper way to inspect Android app dependencies using mo
 ./gradlew :app:dependencies --configuration implementation
 {% endhighlight %}
 
-If you try this, you'll see output similar to:
+If you try this, you’ll see output similar to:
 
 {% highlight text %}
 implementation - Implementation only dependencies for 'main' sources. (n)
