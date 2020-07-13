@@ -42,3 +42,5 @@ I create branches much less frequently than I update them, so I consider this tr
 
 [^1]: For example, as of June 2020, GitHub Pages [required that website source code be kept on the `master` branch](https://web.archive.org/web/20200615013912/https://help.github.com/en/github/working-with-github-pages/about-github-pages#publishing-sources-for-github-pages-sites){:new_tab}:
     > The default publishing source for user and organization sites is the master branch. If the repository for your user or organization site has a master branch, your site will publish automatically from that branch. **You cannot choose a different publishing source for user or organization sites.**
+
+    July 2020 update: GitHub is working on allowing GitHub Pages sites to be deployed from a custom branch name ([source](https://twitter.com/neovintage/status/1281216968784179201)). 
