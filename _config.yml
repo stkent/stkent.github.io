@@ -17,14 +17,14 @@ sass:
 
 # Site
 
-title:            Stuart Kent on Android
-feed_description: An Android Dev's Perspectives
+title:            Stuart Kent (Android Developer)
+feed_description: I write sporadically about stuff that interests me.
 url:              http://www.stkent.com
 baseurl:          ""
 
 # Author
 
-twitter_username:       skentphd
+mastodon_profile_url:   https://androiddev.social/@stkent
 github_username:        stkent
 stack_overflow_user_id: 2911458
 

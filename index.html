@@ -1,27 +1,12 @@
 ---
 layout: default
-title: Posts
+title: Home
 
 ---
 
-{% include cta.html %}
-
+<h1>Posts</h1>
+<ul>
 {% for post in site.posts  %}
-  {% capture curr_post_year %}{{ post.date | date: "%Y" }}{% endcapture %}
-  {% capture prev_post_year %}{{ post.previous.date | date: "%Y" }}{% endcapture %}
-
-  {% if forloop.first %}
-  <h1>{{curr_post_year}}</h1>
-  <ul>
-  {% endif %}
-
   <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-
-  {% if forloop.last %}
-  </ul>
-  {% elsif curr_post_year != prev_post_year %}
-  </ul>
-  <h1>{{prev_post_year}}</h1>
-  <ul>
-  {% endif %}
 {% endfor %}
+<ul>
