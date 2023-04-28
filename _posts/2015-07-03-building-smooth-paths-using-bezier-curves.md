@@ -392,7 +392,7 @@ To test this implementation, I generated random points inside the square $[0,1]\
 
 A pleasing geometrical presentation of composite B&eacute;zier curves is provided by [these lecture notes](/assets/pdfs/UCLA-Math-149-Mathematics-of-Computer-Graphics-lecture-notes.pdf){:new_tab} from UCLA’s Math 149: Mathematics of Computer Graphics course.
 
-For an interesting application of B&eacute;zier curves, see the following technical articles on Square’s blog: [Smooth Signatures](https://corner.squareup.com/2010/07/smooth-signatures.html){:new_tab} and [Smoother Signatures](https://corner.squareup.com/2012/07/smoother-signatures.html){:new_tab}. Given that written letters often contain sharp corners, I would be interested to know whether Square’s algorithms could generate even better signatures if they were to switch back from cubic interpolation to linear interpolation near high-curvature regions.
+For an interesting application of B&eacute;zier curves, see the following technical articles on Square’s blog: [Smooth Signatures](https://developer.squareup.com/blog/smooth-signatures/){:new_tab} and [Smoother Signatures](https://developer.squareup.com/blog/smoother-signatures/){:new_tab}. Given that written letters often contain sharp corners, I would be interested to know whether Square’s algorithms could generate even better signatures if they were to switch back from cubic interpolation to linear interpolation near high-curvature regions.
 
 [^1]:Excepting the degenerate case in which the $n$ > 2 provided points are colinear.
 [^2]:The general (parametric) form of a cubic B&eacute;zier curve can be found in [the Wikipedia entry on B&eacute;zier Curves](http://en.wikipedia.org/wiki/B%C3%A9zier_curve#Cubic_B.C3.A9zier_curves){:new_tab}.
