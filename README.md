@@ -1,3 +1,1 @@
-# Development Instructions
-
-Run `bundle exec jekyll serve` to run the app locally on port 4000.
+Stuff I like. Inspired by Web 1.0.
